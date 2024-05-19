@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Студия Печати{% endblock %}</title>
+  <link href="{% static 'css/index.css' %}" rel="stylesheet">
+  <script src="{% static 'js/index.js' %}" defer></script>
+</head>
+<body>
+  <header>
+    <img class="logo" src="{% static 'img/header/logo.svg' %}" alt="">
+    <div class="burger">
+      <span></span>
+    </div>
+    <nav class="navbar">
+      <a href="#">
+        <img class="num-icon" src="{% static 'img/header/wa.svg' %}" alt="">
+      </a>
+      <a href="#"><img class="num-icon" src="{% static 'img/header/tg.svg' %}" alt=""></a>
+      <a href="#"><img class="num-icon" src="{% static 'img/header/ph.svg' %}" alt=""> +7(913)-114-55-24</a>
+      <a href="#">ПРАЙС</a>
+      <a href="#">В2В</a>
+      <a href="#">КОНТАКТЫ</a>
+      <a href="#">О НАС</a>
+    </nav>
+  </header>
+  <main>
+    <div class="fst">
+      <img src="{% static 'img/main/add_swap.svg' %}" alt="">
+    </div>
+    <div class="scd">
+      <h1>Работа с нами - это выгодно!</h1>
+      <div style="text-align: center; position: relative">
+        <div class="image-container">
+          <img class="scdm" src="{% static 'img/main/snd/image 4.svg' %}" alt="">
+          <p class="overlay-text">Текст для первой картинки</p>
+        </div>
+        <div class="image-container">
+          <img class="scdm" src="{% static 'img/main/snd/image 5.svg' %}" alt="">
+          <p class="overlay-text">Текст для второй картинки</p>
+        </div>
+        <div class="image-container">
+          <img class="scdm" src="{% static 'img/main/snd/image 6.svg' %}" alt="">
+          <p class="overlay-text">Текст для третьей картинки</p>
+        </div>
+        <div style="width: 100%; height: 700px; border: 0px solid #000"></div>
+      </div>
+    </div>
+    <div class="map">
+      <a class="dg-widget-link" href="http://2gis.ru/tomsk/profiles/70000001025710625,70000001027631299,70000001021112001,70000001037942308,70000001078540254,70000001018853225,70000001083395090/center/85.01134872436525,56.49330096298038/zoom/12?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=bigMap">Посмотреть на карте Томска</a>
+      <script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script>
+      <script charset="utf-8">
+        new DGWidgetLoader({
+          width: 1600,
+          height: 350,
+          borderColor: "#a3a3a3",
+          pos: { lat: 56.49330096298038, lon: 85.01134872436525, zoom: 12 },
+          opt: { city: "tomsk" },
+          org: [
+            { id: "70000001025710625" },
+            { id: "70000001027631299" },
+            { id: "70000001021112001" },
+            { id: "70000001037942308" },
+            { id: "70000001078540254" },
+            { id: "70000001018853225" },
+            { id: "70000001083395090" },
+          ],
+        });
+      </script>
+      <noscript style="color: #c00; font-size: 16px; font-weight: bold">Виджет карты использует JavaScript. Включите его в настройках вашего браузера.</noscript>
+    </div>
+  </main>
+  <footer style="background-image: url('{% static 'img/footer/tryapka.svg' %}')">
+    <div class="fst">
+      <div class="footer-table">
+        <div class="contacts">
+          <p>Контакты</p>
+          <h4>8(800)553535</h4>
+          <div class="social-icons">
+            <!-- Здесь вставьте код для ваших иконок соцсетей -->
+            <!-- Пример: -->
+          </div>
+          <h4>Адреса</h4>
+        </div>
+        <div class="navigation">
+          <p>Навигация</p>
+          <h4><a href="#">Главная страница</a></h4>
+          <h4><a href="#">Услуги</a></h4>
+          <h4><a href="#">Блог</a></h4>
+          <h4><a href="#">О нас</a></h4>
+        </div>
+      </div>
+
+      <div class="footer2">
+        <div class="image-container-footer">
+          <img src="{% static 'img/footer/logo.svg' %}" alt="">
+        </div>
+        <div class="text-container">
+          <a>© 2024 | SP-TOMSK.RU | Все права защищены.</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
