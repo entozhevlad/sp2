@@ -15,6 +15,14 @@ py -m venv .venv
 ````bash
 pip install -r requirements.txt
 ````
+### Выполните миграции
+````bash
+python manage.py makemigrations
+````
+````bash
+python manage.py migrate
+````
+
 # Установка Docker контейнера
 ### Запустить развёртывание Docker контейнера
 ````bash
