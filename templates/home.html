@@ -10,7 +10,9 @@
 </head>
 <body>
   <header>
-    <img class="logo" src="{% static 'img/header/logo.svg' %}" alt="">
+      <a href="{% url 'home' %}">
+        <img class="logo" src="{% static 'img/header/logo.svg' %}" alt="">
+      </a>
     <div class="burger">
       <span></span>
     </div>
@@ -20,7 +22,7 @@
       </a>
       <a href="#"><img class="num-icon" src="{% static 'img/header/tg.svg' %}" alt=""></a>
       <a href="#"><img class="num-icon" src="{% static 'img/header/ph.svg' %}" alt=""> +7(913)-114-55-24</a>
-      <a href="#">ПРАЙС</a>
+      <a href="{% url 'price' %}">ПРАЙС</a>
       <a href="#">В2В</a>
       <a href="#">КОНТАКТЫ</a>
       <a href="#">О НАС</a>

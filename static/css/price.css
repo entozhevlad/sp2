@@ -1,0 +1,160 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Mont";
+}
+
+.open {
+  display: flex !important ;
+}
+header {
+  align-items: center;
+  justify-content: space-between;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #fff; /* Set the background color as needed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for a subtle effect */
+}
+
+.burger {
+  display: none;
+  float: right;
+  margin-right: 5%;
+  margin-top: 20px;
+  position: relative;
+  z-index: 50;
+  align-items: center;
+  justify-content: flex-end;
+  width: 30px;
+  height: 18px;
+}
+.burger::before,
+.burger::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background-color: black;
+  transition: all 0.3s ease 0s;
+}
+.burger span {
+  height: 2px;
+  width: 100%;
+  transform: scale(1);
+  background-color: black;
+}
+
+.burger::before {
+  top: 0;
+}
+
+.burger::after {
+  bottom: 0;
+}
+
+/* Добавляем класс active для анимации иконки бургера */
+.burger.active span {
+  transform: scale(0);
+}
+
+.burger.active::before {
+  top: 50%;
+  transform: rotate(-45deg) translate(0, -50%);
+}
+
+.burger.active::after {
+  bottom: 50%;
+  transform: rotate(45deg) translate(0, 50%);
+}
+
+/* Задаем минимальный размер для изображения логотипа */
+.logo {
+  max-width: 320px; /* Максимальная ширина логотипа */
+  height: auto; /* Сохраняем пропорции */
+  float: left;
+  margin-left: 5%; /* Отступ слева от логотипа */
+}
+
+.navbar {
+  float: right;
+  font-family: "Mont";
+  font-weight: 500;
+  font-size: larger;
+  color: black;
+  text-decoration: none;
+  margin-right: 5%;
+  margin-top: 20px;
+}
+.navbar a {
+  text-decoration: none;
+  color: inherit;
+  vertical-align: middle; /* Выравнивание элементов по вертикали */
+}
+
+.navbar a:not(:last-child)::after {
+  display: flex;
+  content: "|"; /* Add the separator content */
+  margin-left: 10px; /* Adjust the space between link and separator */
+  color: black; /* Color of the separator */
+  display: inline-block; /* Make sure the separator is inline with the text */
+  vertical-align: middle; /* Выравнивание элементов по вертикали */
+}
+
+.navbar a:hover {
+  font-weight: bold;
+}
+
+.navbar a:hover::after {
+  font-weight: 500; /* To ensure the separator doesn't get bold on hover */
+}
+
+.num-icon {
+  max-width: 20px; /* Максимальная ширина логотипа */
+  height: auto; /* Сохраняем пропорции */
+  vertical-align: middle; /* Выравнивание элементов по вертикали */
+}
+@media (max-width: 1040px) {
+  .navbar a:nth-child(1),
+  .navbar a:nth-child(2),
+  .navbar a:nth-child(3) {
+    display: none; /* Скрываем первый, второй и третий элементы в мобильной версии */
+  }
+}
+@media (max-width: 768px) {
+  .navbar {
+    width: 100%; /* Занимаем всю доступную ширину */
+    float: left;
+    margin-left: 5%;
+
+    display: none;
+    flex-direction: column;
+    align-items: left;
+    margin-bottom: 20px; /* Увеличиваем отступы между элементами */
+    font-size: 24px;
+  }
+  .navbar a:not(:last-child)::after {
+    content: none; /* Убираем разделитель для мобильной версии */
+    margin-left: 0; /* Убираем отступ разделителя для мобильной версии */
+  }
+  .navbar a:nth-child(1),
+  .navbar a:nth-child(2),
+  .navbar a:nth-child(3) {
+    display: none; /* Скрываем первый, второй и третий элементы в мобильной версии */
+  }
+  .logo {
+    width: 290px; /* Максимальная ширина логотипа */
+    height: auto; /* Сохраняем пропорции */
+    margin-left: 5%; /* Отступ слева от логотипа */
+  }
+
+  .burger {
+    display: flex;
+  }
+}
+main {
+  width: 100%;
+  margin-top: 4%;
+}

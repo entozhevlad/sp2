@@ -17,7 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from main.views import PricePageView, HomePageView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('main.urls'))
+    path('', include('main.urls')),
+    path('price', PricePageView.as_view(), name='price'),
+    path('home', HomePageView.as_view(), name='home'),
 ]

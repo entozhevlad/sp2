@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Студия Печати :: Прайс-лист{% endblock %}</title>
+  <link href="{% static 'css/price.css' %}" rel="stylesheet">
+  <script src="{% static 'js/price.js' %}" defer></script>
+</head>
+<body>
+<header>
+    <a href="{% url 'home' %}">
+        <img class="logo" src="{% static 'img/header/logo.svg' %}" alt="">
+    </a>
+    <div class="burger">
+      <span></span>
+    </div>
+    <nav class="navbar">
+      <a href="#">
+        <img class="num-icon" src="{% static 'img/header/wa.svg' %}" alt="">
+      </a>
+      <a href="#"><img class="num-icon" src="{% static 'img/header/tg.svg' %}" alt=""></a>
+      <a href="#"><img class="num-icon" src="{% static 'img/header/ph.svg' %}" alt=""> +7(913)-114-55-24</a>
+        <a href="{% url 'price' %}"><strong>ПРАЙС</strong></a>
+      <a href="#">В2В</a>
+      <a href="#">КОНТАКТЫ</a>
+      <a href="#">О НАС</a>
+    </nav>
+  </header>
+
+<main>
+    <table >
+        <caption><h1>Список всех заказов</h1></caption>
+        <thead>
+        <tr>
+            <th>Номер заказа</th>
+            <th>Продукт</th>
+            <th>Дата заказа</th>
+            <th>Покупатель</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for order in list_of_all_orders %}
+        <tr>
+            <td>{{ order.order_id }}</td>
+            <td>{{ order.product }}</td>
+            <td>{{ order.order_date }}</td>
+            <td>{{ order.customer }}</td>
+        </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+</main>
+
+</body>
+
+</html>

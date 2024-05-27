@@ -3,3 +3,10 @@ from django.views.generic import TemplateView
 # Create your views here.
 class HomePageView(TemplateView):
     template_name = 'home.html'
+
+class HomePageView(TemplateView):
+    template_name = 'home.html'
+
+class PricePageView(TemplateView):
+    template_name = 'price.html'
+
