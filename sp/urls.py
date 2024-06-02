@@ -24,4 +24,6 @@ urlpatterns = [
     path('', include('main.urls')),
     path('price', PricePageView.as_view(), name='price'),
     path('home', HomePageView.as_view(), name='home'),
+
 ]
+
