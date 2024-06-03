@@ -20,8 +20,8 @@
       <a href="#">
         <img class="num-icon" src="{% static 'img/header/wa.svg' %}" alt="">
       </a>
-      <a href="#"><img class="num-icon" src="{% static 'img/header/tg.svg' %}" alt=""></a>
-      <a href="#"><img class="num-icon" src="{% static 'img/header/ph.svg' %}" alt=""> +7(913)-114-55-24</a>
+      <a href="https://t.me/sptomsk"><img class="num-icon" src="{% static 'img/header/tg.svg' %}" alt=""></a>
+      <a href="https://wa.me/sptomsk"><img class="num-icon" src="{% static 'img/header/ph.svg' %}" alt=""> +7(913)-114-55-24</a>
       <a href="{% url 'price' %}">ПРАЙС</a>
       <a href="#">В2В</a>
       <a href="#">КОНТАКТЫ</a>
@@ -30,7 +30,12 @@
   </header>
   <main>
     <div class="fst">
-      <img src="{% static 'img/main/add_swap.svg' %}" alt="">
+        <div class="pc">
+            <img src="{% static 'img/main/add_swap.svg' %}" alt="">
+        </div>
+        <div class="mob">
+            <img src="{% static 'img/main/mob_add.svg' %}" alt="">
+        </div>
     </div>
     <div class="scd">
       <hr><h1>Работа с нами - это выгодно!</h1><hr>
@@ -71,8 +76,8 @@
             <div class="slide-content">
                 <div class="text-container">
                     <h1>СУВЕНИРНАЯ ПЕЧАТЬ</h1>
-                    <p>что-то про термопечать</p>
-                    <p>что-то про термопечать</p>
+                    <p>Создание уникальных подарков с логотипом: кружки, футболки, ручки.</p>
+                    <p>Отличный способ продвижения бренда и повышения его узнаваемости.</p>
                 </div>
                 <div class="image-container">
                     <img src="{% static 'img/main/thd/slide1.png' %}" alt="slide1">
@@ -84,8 +89,8 @@
             <div class="slide-content">
                 <div class="text-container">
                     <h1>ПОЛИГРАФИЯ</h1>
-                    <p>что-то про термопечать</p>
-                    <p>что-то про термопечать</p>
+                    <p>Производство визиток, брошюр, каталогов и другой печатной продукции.</p>
+                    <p>Высокое качество печати для рекламы и маркетинга.</p>
                 </div>
                 <div class="image-container">
                     <img src="{% static 'img/main/thd/slide2.png' %}" alt="slide2" style="margin-top: 20px">
@@ -98,7 +103,7 @@
           <hr><h1>О нас</h1><hr>
           <div class="container">
           <div class = "left">
-              <h2>Сеть копировальных центров в Томске</h2>
+              <h2>Сеть копицентров в Томске</h2>
                 <p>У нас доступен весь спектр оперативно-полиграфических услуг, а так же изготовление сувенирной продукции. 
                     Действуют скидки и специальные цены на многие товары, благодаря которым с нами выгодно работать.</p>
           </div>
@@ -114,7 +119,7 @@
       <script charset="utf-8">
         new DGWidgetLoader({
           width: 1600,
-          height: 350,
+          height: 400,
           borderColor: "#a3a3a3",
           pos: { lat: 56.49330096298038, lon: 85.01134872436525, zoom: 12 },
           opt: { city: "tomsk" },
@@ -133,35 +138,41 @@
     </div>
   </main>
   <footer style="background-image: url('{% static 'img/footer/tryapka.svg' %}')">
-    <div class="fst">
-      <div class="footer-table">
-        <div class="contacts">
-          <p>Контакты</p>
-          <h4>8(800)553535</h4>
-          <div class="social-icons">
-            <!-- Здесь вставьте код для ваших иконок соцсетей -->
-            <!-- Пример: -->
-          </div>
-          <h4>Адреса</h4>
-        </div>
-        <div class="navigation">
-          <p>Навигация</p>
-          <h4><a href="#">Главная страница</a></h4>
-          <h4><a href="#">Услуги</a></h4>
-          <h4><a href="#">Блог</a></h4>
-          <h4><a href="#">О нас</a></h4>
-        </div>
-      </div>
+      <div class="footer_fst">
+        <img class="line" src="{% static 'img\footer\line.svg' %}" alt="line">
+        <div class="footer">
+            <div class="contact">
+                <h3>Контакты</h3>
+                <a href="#"><img src="{% static 'img/footer/phone.svg' %}" alt="">+7(913)-114-55-24</a>
+                <div class="social-icons">
+                    <a href="https://t.me/sptomsk" target="_blank"><img src="{% static 'img/footer/tg.svg' %}" alt="Telegram"></a>
+                    <a href="https://wa.me/sptomsk" target="_blank"><img src="{% static 'img/footer/wa.svg' %}" alt="WhatsApp"></a>
+                    <a href="https://vk.com/sptomsk" target="_blank"><img src="{% static 'img/footer/vk.svg' %}" alt="VK"></a>
+                    <a href="https://www.instagram.com/sptomsk" target="_blank"><img src="{% static 'img/footer/inst.svg' %}" alt="Instagram"></a>
+                </div>
+                <a href="#"><img src="{% static 'img/footer/map.svg' %}" alt="">Адреса</a>
 
-      <div class="footer2">
-        <div class="image-container-footer">
-          <img src="{% static 'img/footer/logo.svg' %}" alt="">
+            </div>
+            <div class="navigation">
+                <h3>Навигация</h3>
+                <a href="#">Главная страница</a>
+                <a href="#">Услуги</a>
+                <a href="#">Блог</a>
+                <a href="#">Контавкты</a>
+
+            </div>
         </div>
-        <div class="text-container">
-          <a>© 2024 | SP-TOMSK.RU | Все права защищены.</a>
-        </div>
-      </div>
+        <img class="line" src="{% static 'img\footer\line.svg' %}" alt="line">
     </div>
+
+
+<div class="footer2">
+    <img src="{% static 'img/footer/logo.svg' %}" alt="">
+    <div class="text-container">
+        <a>© 2024 | SP-TOMSK.RU | Все права защищены.</a>
+    </div>
+</div>
+
   </footer>
 </body>
 
