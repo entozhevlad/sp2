@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Контакты</title>
 </head>
 <body>
 <div style="margin:80px">
     <h1>Контакты</h1>
     <h4>Напишите нам, если у вас есть вопросы</h4>
     <p>
-        Пожалуйста, напишите свое имя, адрес электронной почты и сообщение.
+        Пожалуйста, напишите свое имя, адрес электронной почты, номер телефона и сообщение.
     </p>
     <form method="post">
         {% csrf_token %}
@@ -17,6 +17,5 @@
         <button type="submit">Отправить</button>
     </form>
 </div>
-
 </body>
 </html>
