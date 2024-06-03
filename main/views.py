@@ -9,4 +9,5 @@ class HomePageView(TemplateView):
 
 class PricePageView(TemplateView):
     template_name = 'price.html'
-
+class ContactsPageView(TemplateView):
+    template_name='contacts.htm;'
