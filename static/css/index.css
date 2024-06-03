@@ -131,7 +131,7 @@ header {
 
     display: none;
     flex-direction: column;
-    align-items: left;
+
     margin-bottom: 20px; /* Увеличиваем отступы между элементами */
     font-size: 24px;
   }
@@ -157,17 +157,38 @@ header {
 
 main {
   width: 100%; /* Ширина main будет 100% от родительского контейнера */
-  margin-top: 4%;
 }
 
 hr{
   margin-top: 0;
 }
-.fst img {
-  width: 100%;
-  height: auto;
-  display: block; /* Ensures the image doesn't have any extra space below it */
-  margin: auto; /* Remove any default margin */
+.fst {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #173494;
+}
+
+.pc {
+    display: block;
+}
+
+.mob {
+    display: none;
+}
+
+.fst .pc img, .fst .mob img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+@media (max-width: 767px) {
+    .pc {
+        display: none;
+    }
+    .mob {
+        display: block;
+    }
 }
 .scd h1{
   font-weight: 400;
@@ -205,7 +226,7 @@ hr{
    justify-content: center;
 }
 .flex p{
-  padding: 0 60px;
+  padding: 0 20px;
   font-size: 20px;
 }
 @media(max-width: 768px){
@@ -285,11 +306,6 @@ hr{
     align-items: center;
   flex: 1 0 100%;
 }
-.text-container{
-  float: right;
-  margin-right: 30%;
-  margin-top: 3%;
-}
 
 .image-container{
   float: left;
@@ -356,78 +372,107 @@ hr{
 
 .map {
   width: 100%;
+  height: 350px;
   position: relative;
+  margin: 0;
+  padding: 0;
 }
 
 .map iframe {
   width: 100%;
   height: 350px; /* Высоту можно настроить по вашему усмотрению */
   border: none;
-  margin-bottom: -20px;
+  margin: 0;
+  padding: 0;
 }
+/*Footer*/
 footer {
-  background-origin: content-box;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.footer-table {
-  display: flex;
-  justify-content: space-around;
-  font-family: "Mont";
-  color: white;
-  font-size: larger;
-  padding: 20px 0; /* Уменьшим верхний и нижний внутренний отступ для плотности */
+
+    color: #D2D2D2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.contacts,
+.footer {
+    display: flex;
+    justify-content: space-around; /* Adjust this value */
+    width: 100%;
+}
+
+.footer_fst {
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Changed from vertical-align to text-align */
+}
+
+.line {
+    width: 90%; /* Ensure the line spans the full width */
+    margin: 20px 0;
+}
+.contact h3,
+.navigation h3{
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+.contact,
 .navigation {
-  padding-top: 20px;
-  font-size: medium;
-  color: white;
-  margin: 0; /* Уменьшим внешний отступ у ячеек */
+    display: flex;
+    float: left;
+    align-items: start;
+    flex-direction: column;
 }
-
-.social-icons {
-  display: flex;
-  gap: 5px; /* Уменьшим расстояние между иконками соцсетей */
-}
-
-/* Стили для ссылок */
+.contact a,
 .navigation a {
-  text-decoration: none;
-  color: white;
+    color: white;
+    float: left;
+    text-align: left;
+    text-decoration: none;
+    font-size: 16px;
 }
 
-.navigation a:hover {
-  text-decoration: underline;
+.contact a img,
+.navigation a img {
+    float: left;
+    margin-right: 10px;
+}
+
+.social-icons a img{
+    float: left;
+    margin: 10px 20px 10px 0;
 }
 
 .footer2 {
-  height: 70px;
-  width: 100%;
-  background-color: #050b20;
-  display: flex;
-  align-items: center;
+    color: white;
+    margin: 0;
+    bottom: 0;
+    height: 70px;
+    width: 100%;
+    background-color: #050b20;
+    display: flex;
+    align-items: flex-end; /* Adjust alignment */
 }
 
-.image-container-footer {
-  height: 60px;
-  width: 60px;
-  margin-left: 2%;
-  vertical-align: middle;
+.footer2 img {
+    margin-left: 2%;
 }
 
 .text-container {
-  font-family: "Mont";
-  color: white;
-  text-align: left;
-  font-size: 16px;
+    margin-left: 0.5%;
+    margin-bottom: 5px;
 }
-@media (max-width: 768px) {
-  .text-container {
-    font-family: "Mont";
-    color: white;
-    text-align: left;
-    font-size: 10px;
+
+
+
+@media (max-width: 980px) {
+
+
+;
+}
+@media (max-width: 500px) {
+  .left h2, .right h2{
+    font-size: 1.1em;
   }
 }
+
