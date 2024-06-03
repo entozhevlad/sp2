@@ -3,7 +3,9 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import ContactForm
+import environ
 
+env = environ.Env()
 class ContactsPageView(TemplateView):
     template_name = 'contact.html'
 
@@ -23,7 +25,7 @@ def contact_view(request):
                 'Новое сообщение с сайта',
                 full_message,
                 settings.EMAIL_HOST_USER,
-                ['vaz30@tpu.ru'],  # Замените на фиксированный почтовый адрес
+                [env('STATIC_EMAIL')],  # Замените на фиксированный почтовый адрес
                 fail_silently=False,
             )
             return redirect('main:home')
