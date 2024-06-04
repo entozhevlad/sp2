@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'main'
+    'main',
+    'admin_interface',
 ]
 
 MIDDLEWARE = [
@@ -136,3 +137,5 @@ STATICFILES_DIRS = [STATIC_DIR]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/admin_sp/'
