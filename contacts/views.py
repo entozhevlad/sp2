@@ -7,7 +7,7 @@ import environ
 
 env = environ.Env()
 class ContactsPageView(TemplateView):
-    template_name = 'b2b.html'
+    template_name = 'contacts.html'
 
 
 def contact_view(request):
@@ -31,7 +31,7 @@ def contact_view(request):
             return redirect('main:home')
     else:
         form = ContactForm()
-    return render(request, 'b2b.html', {'form': form})
+    return render(request, 'contacts.html', {'form': form})
 
 
 def success_view(request):
