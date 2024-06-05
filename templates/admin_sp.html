@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Админка</title>
 </head>
 <body>
 <h1>Админка</h1>
+
+<h2>Категории</h2>
+<ul>
+    {% for category in categories %}
+        <li>{{ category.name }} <a href="{% url 'edit_category' category.id %}">Изменить</a></li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_category' %}">Добавить категорию</a>
+
+<h2>Услуги</h2>
+<ul>
+    {% for service in services %}
+        <li>{{ service.name }} - {{ service.price }} <a href="{% url 'edit_service' service.id %}">Изменить</a></li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_service' %}">Добавить услугу</a>
+
 </body>
 </html>
