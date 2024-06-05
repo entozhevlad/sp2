@@ -25,6 +25,7 @@ urlpatterns = [
     path('price', PricePageView.as_view(), name='price'),
     path('home', HomePageView.as_view(), name='home'),
     path('', include('admin_interface.urls')),
+    path('', include('contacts.urls'))
 
 ]
 
