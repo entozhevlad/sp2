@@ -25,7 +25,7 @@ def contact_view(request):
                 'Новое сообщение с сайта',
                 full_message,
                 settings.EMAIL_HOST_USER,
-                [env('STATIC_EMAIL')],  # Замените на фиксированный почтовый адрес
+                [env('STATIC_EMAIL')],
                 fail_silently=False,
             )
             return redirect('main:home')
