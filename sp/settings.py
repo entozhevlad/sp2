@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
+    'admin_interface',
     'contacts',
 ]
 
@@ -136,17 +137,17 @@ STATICFILES_DIRS = [STATIC_DIR]
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/admin_sp/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_HOST='smtp.yandex.ru'
-EMAIL_PORT=465
 EMAIL_HOST_USER=env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD=env('EMAIL_HOST_PASSWORD')
+EMAIL_PORT=465
 EMAIL_USE_SSL=True
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
 EMAIL_ADMIN = EMAIL_HOST_USER
-
-
