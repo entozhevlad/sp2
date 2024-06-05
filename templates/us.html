@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Студия Печати :: Прайс-лист{% endblock %}</title>
-    <link href="{% static 'css/price.css' %}" rel="stylesheet">
+    <title>{% block title %}Студия Печати :: О нас{% endblock %}</title>
+    <link href="{% static 'css/us.css' %}" rel="stylesheet">
     <script src="{% static 'js/index.js' %}" defer></script>
 </head>
 <body>
@@ -22,34 +22,39 @@
         </a>
         <a href="#"><img class="num-icon" src="{% static 'img/header/tg.svg' %}" alt=""></a>
         <a href="#"><img class="num-icon" src="{% static 'img/header/ph.svg' %}" alt=""> +7(913)-114-55-24</a>
-        <a href="{% url 'main:price' %}"><strong>ПРАЙС</strong></a>
+        <a href="{% url 'main:price' %}">ПРАЙС</a>
         <a href="{% url 'main:b2b' %}">В2В</a>
         <a href="{% url 'contacts:contacts' %}">КОНТАКТЫ</a>
-        <a href="{% url 'main:us' %}">О НАС</a>
+        <a href="{% url 'main:us' %}"><strong>О НАС</strong></a>
     </nav>
 </header>
 
 <main>
-<div class="list">
-    <ul>
-        {% for category in categories %}
-            <li class="category">
-                <strong class="category_name">{{ category.name }}</strong>
-                <ul>
-                    {% for service in services %}
-                        {% if service.category.id == category.id %}
-                            <table class="service">
-                            <td id="td1">{{ service.name }}</td>
-                            <td id="td2">{{ service.price }}</td>
-                            </table>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
-<strong id="prim">*только по адресу пр-т Ленина 41</strong>
-</div>
+    <div class="container">
+        <h1>Студия печати: ксерокопия, печать фото, сувениры</h1>
+        <p>Студия печати - сеть копировальных центров в Томске.</p>
+        <p>Мы сеть копировальных центров в городе Томск. У нас доступен весь спектр оперативно-полиграфических услуг, а
+            также изготовление сувенирной продукции.</p>
+        <p>Действуют скидки и специальные цены на многие товары, благодаря которым с нами выгодно работать.</p>
+        <p>Обратившись в Студию печати, можете рассчитывать на качественный и вежливый сервис, оперативность выполнения
+            заказа.</p>
+    </div>
+    <div class="vacancies">
+        <h1>Вступай в нашу команду!</h1>
+        <div class="vacancy">
+            <h2>Менеджер по продажам</h2>
+            <p>Требуется опытный менеджер по продажам. Отличные коммуникативные навыки, умение работать в команде.
+                Зарплата по результатам собеседования.</p>
+        </div>
+        <div class="vacancy">
+            <h2>Оператор ксерокса</h2>
+            <p>Приглашаем на работу оператора ксерокса. Опыт работы приветствуется. График работы обсуждается.</p>
+        </div>
+        <div class="vacancy">
+            <h2>Дизайнер</h2>
+            <p>Ищем талантливого дизайнера. Опыт работы с графическими редакторами. Гибкий график работы.</p>
+        </div>
+    </div>
 </main>
 
 

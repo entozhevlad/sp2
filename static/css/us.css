@@ -257,81 +257,16 @@ main {
     width: 100%;
     margin-top: 70px;
 }
-
-li {
-    list-style-type: none; /* Убираем маркеры */
+.container, .vacancies{
+    margin: 0 10%;
 }
-
-.list {
-    margin: 0 10% 2% 10%;
-    text-align: center;
-}
-
-#td2 {
-    width: 40%;
-}
-
-#td1 {
-    padding-left: 10%;
-    width: 50%;
-    text-align: left;
-}
-
-.category_name {
-    position: relative;
-    font-size: 26px;
-    text-align: center;
-    color: #173494;
-}
-#prim {
-    position: relative;
-    font-size: 22px;
-    text-align: center;
-    color: black;
-}
-
-
-.service {
-    font-size: 22px;
-    width: 100%;
+.container p{
+    font-size: 20px;
     font-weight: 500;
+    text-align: justify;
 }
-
-.category {
-    border-top: #0A1947 solid 2px;
-}
-.category:nth-child(1){
-    border: none;
-}
-ul {
-    margin: 0;
-    padding: 0;
-}
-
-@media (max-width: 748px) {
-    .service{
-        font-size: 18px;
-    }
-    .category_name{
-        font-size: 22px;
-    }
-    #prim{
-        font-size: 16px;
-    }
-}
-@media (max-width: 500px) {
-    .service{
-        font-size: 16px;
-        border-bottom: black dashed 1px;
-    }
-    .category_name{
+.vacancy{
         font-size: 20px;
-    }
-    #prim{
-        font-size: 14px;
-    }
-
+    font-weight: 500;
+    text-align: justify;
 }
-
-
-

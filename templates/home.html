@@ -10,7 +10,7 @@
 </head>
 <body>
 <header>
-    <a href="{% url 'home' %}">
+    <a href="{% url 'main:home' %}">
         <img class="logo" src="{% static 'img/header/logo.svg' %}" alt="">
     </a>
     <div class="burger">
@@ -23,10 +23,10 @@
         <a href="https://t.me/sptomsk"><img class="num-icon" src="{% static 'img/header/tg.svg' %}" alt=""></a>
         <a href="https://wa.me/sptomsk"><img class="num-icon" src="{% static 'img/header/ph.svg' %}" alt="">
             +7(913)-114-55-24</a>
-        <a href="{% url 'price' %}">ПРАЙС</a>
-        <a href="#">В2В</a>
+        <a href="{% url 'main:price' %}">ПРАЙС</a>
+        <a href="{% url 'main:b2b' %}">В2В</a>
         <a href="{% url 'contacts:contacts' %}">КОНТАКТЫ</a>
-        <a href="#">О НАС</a>
+        <a href="{% url 'main:us' %}">О НАС</a>
     </nav>
 </header>
 <main>
