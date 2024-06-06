@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Подтверждение удаления</h1>
-    <p>Вы уверены, что хотите удалить {{ type }} "{{ object.name }}"?</p>
+    <p>Вы уверены, что хотите удалить "{{ object.name }}"?</p>
     <form method="post">
         {% csrf_token %}
         <button type="submit">Удалить</button>
