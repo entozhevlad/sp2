@@ -66,7 +66,10 @@
         {% for category in categories %}
             <tr>
                 <td>{{ category.name }}</td>
-                <td><a href="{% url 'edit_category' category.id %}">Изменить</a></td>
+                <td>
+                    <a href="{% url 'edit_category' category.id %}">Изменить</a> |
+                    <a href="{% url 'delete_category' category.id %}">Удалить</a>
+                </td>
             </tr>
         {% endfor %}
     </tbody>
@@ -87,7 +90,10 @@
             <tr>
                 <td>{{ service.name }}</td>
                 <td>{{ service.price }}</td>
-                <td><a href="{% url 'edit_service' service.id %}">Изменить</a></td>
+                <td>
+                    <a href="{% url 'edit_service' service.id %}">Изменить</a> |
+                    <a href="{% url 'delete_service' service.id %}">Удалить</a>
+                </td>
             </tr>
         {% endfor %}
     </tbody>
