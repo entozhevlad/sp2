@@ -5,24 +5,22 @@ SHELL ["/bin/bash", "-c"]
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN pip install --upgrade pip
-
-# Установка необходимых пакетов
 RUN apt-get update && \
-    apt-get install -qy gcc libjpeg-dev libxslt-dev \
-    libpq-dev libmariadb-dev libmariadb-dev-compat gettext cron openssh-client flake8 locales vim && \
+    apt-get install -qy gcc libjpeg-dev libxslt-dev libpq-dev \
+    libmariadb-dev libmariadb-dev-compat gettext cron openssh-client flake8 locales vim && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Создание пользователя и назначение прав на директории
 RUN useradd -rms /bin/bash sp && \
+    mkdir -p /sp /var/log/sp /var/run/sp && \
+    chown -R sp:sp /sp /var/log/sp /var/run/sp && \
     chmod 777 /opt /run
 
 WORKDIR /sp
 
 COPY --chown=sp:sp . .
 
-RUN pip install -r requirements.txt
+RUN if [ -f "requirements.txt" ]; then pip install -r requirements.txt; fi
 
 USER sp
 
