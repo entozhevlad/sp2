@@ -35,6 +35,14 @@ def edit_category(request, category_id):
     return render(request, 'edit_category.html', {'form': form})
 
 @login_required
+def delete_category(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    if request.method == 'POST':
+        category.delete()
+        return redirect('admin_sp')
+    return render(request, 'confirm_delete.html', {'object': category, 'type': 'category'})
+
+@login_required
 def add_service(request):
     if request.method == 'POST':
         form = ServiceForm(request.POST)
@@ -56,6 +64,14 @@ def edit_service(request, service_id):
     else:
         form = ServiceForm(instance=service)
     return render(request, 'edit_service.html', {'form': form})
+
+@login_required
+def delete_service(request, service_id):
+    service = get_object_or_404(Service, id=service_id)
+    if request.method == 'POST':
+        service.delete()
+        return redirect('admin_sp')
+    return render(request, 'confirm_delete.html', {'object': service, 'type': 'service'})
 
 def login_view(request):
     if request.method == 'POST':
