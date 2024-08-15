@@ -23,33 +23,33 @@
         <a href="#"><img class="num-icon" src="{% static 'img/header/tg.svg' %}" alt=""></a>
         <a href="#"><img class="num-icon" src="{% static 'img/header/ph.svg' %}" alt=""> +7(913)-114-55-24</a>
         <a href="{% url 'main:price' %}"><strong>ПРАЙС</strong></a>
-        <a href="{% url 'main:b2b' %}">В2В</a>
+        <a href="{% url 'main:catalog' %}">КАТАЛОГ</a>
         <a href="{% url 'contacts:contacts' %}">КОНТАКТЫ</a>
-        <a href="{% url 'main:us' %}">О НАС</a>
+
     </nav>
 </header>
 
 <main>
-<div class="list">
-    <ul>
-        {% for category in categories %}
-            <li class="category">
-                <strong class="category_name">{{ category.name }}</strong>
-                <ul>
-                    {% for service in services %}
-                        {% if service.category.id == category.id %}
-                            <table class="service">
-                            <td id="td1">{{ service.name }}</td>
-                            <td id="td2">{{ service.price }}</td>
-                            </table>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
-<strong id="prim">*только по адресу пр-т Ленина 41</strong>
-</div>
+    <div class="list">
+        <ul>
+            {% for category in categories %}
+                <li class="category">
+                    <strong class="category_name">{{ category.name }}</strong>
+                    <ul>
+                        {% for service in services %}
+                            {% if service.category.id == category.id %}
+                                <table class="service">
+                                    <td id="td1">{{ service.name }}</td>
+                                    <td id="td2">{{ service.price }}</td>
+                                </table>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+        <strong id="prim">*только по адресу пр-т Ленина 41</strong>
+    </div>
 </main>
 
 

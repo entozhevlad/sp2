@@ -24,9 +24,9 @@
         <a href="https://wa.me/sptomsk"><img class="num-icon" src="{% static 'img/header/ph.svg' %}" alt="">
             +7(913)-114-55-24</a>
         <a href="{% url 'main:price' %}">ПРАЙС</a>
-        <a href="{% url 'main:b2b' %}">В2В</a>
+        <a href="{% url 'main:catalog' %}">КАТАЛОГ</a>
         <a href="{% url 'contacts:contacts' %}">КОНТАКТЫ</a>
-        <a href="{% url 'main:us' %}">О НАС</a>
+
     </nav>
 </header>
 <main>
@@ -40,31 +40,22 @@
     </div>
     <div class="scd">
         <hr>
-        <h1>Работа с нами - это выгодно!</h1>
+        <h1>О нас</h1>
         <hr>
-        <div class="three_img">
-            <div class="image_container">
-                <img src="{% static 'img/main/snd/image 5.svg' %}" alt="time">
-                <h2>Скорость</h2>
-                <div class="flex">
-                    <p>Кратчайшие сроки выполнения</p>
-                </div>
+        <div class="container">
+            <div class="left">
+                <h2>Сеть копицентров в Томске</h2>
+                <p>У нас доступен весь спектр оперативно-полиграфических услуг, а так же изготовление сувенирной
+                    продукции.
+                    Действуют скидки и специальные цены на многие товары, благодаря которым с нами выгодно работать.</p>
             </div>
-            <div class="image_container">
-                <img src="{% static 'img/main/snd/image 4.svg' %}" alt="money">
-                <h2>Доступность</h2>
-                <div class="flex">
-                    <p>Проверены временем</p>
-                </div>
-            </div>
-            <div class="image_container">
-                <img src="{% static 'img/main/snd/image 6.svg' %}" alt="premium">
-                <h2>Компетентность</h2>
-                <div class="flex">
-                    <p>Профессиональные сотрудники</p>
-                </div>
+            <div class="right">
+                <h2>Появился вопрос? Решим быстро!</h2>
+                <p>Обратившись в Студию печати можете рассчитывать на качественный и вежливый сервис, оперативность
+                    выполнения заказа.</p>
             </div>
         </div>
+    </div>
 
     </div>
     <div class="thd">
