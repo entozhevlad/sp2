@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'main',
     'admin_interface',
     'contacts',
+    'catalog'
+
 ]
 
 MIDDLEWARE = [
@@ -154,3 +156,6 @@ SERVER_EMAIL = EMAIL_HOST_USER
 EMAIL_ADMIN = EMAIL_HOST_USER
 
 TEST_USERNAME = env('TEST_USERNAME')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
