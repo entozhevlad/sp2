@@ -16,4 +16,10 @@ def catalog_view(request, category_slug=None):
         'products': products,
         'current_category': category,
     }
-    return render(request, 'catalog.html', context)
+    return render(request, 'product_list.html', context)
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    context = {
+        'product': product,
+    }
+    return render(request, 'product_detail.html', context)

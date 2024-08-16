@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .product-detail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .product-detail img {
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+        .product-detail h1 {
+            margin: 20px 0;
+        }
+        .product-detail p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-detail">
+        {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% else %}
+        <img src="https://via.placeholder.com/300" alt="Нет изображения">
+        {% endif %}
+        <h1>{{ product.name }}</h1>
+        <p><strong>Описание:</strong> {{ product.description }}</p>
+        {% if product.color %}
+        <p><strong>Цвет:</strong> {{ product.color }}</p>
+        {% endif %}
+        {% if product.height %}
+        <p><strong>Высота:</strong> {{ product.height }} см</p>
+        {% endif %}
+        {% if product.diameter %}
+        <p><strong>Диаметр:</strong> {{ product.diameter }} см</p>
+        {% endif %}
+        {% if product.material %}
+        <p><strong>Материал:</strong> {{ product.material }}</p>
+        {% endif %}
+        {% if product.application_method %}
+        <p><strong>Метод нанесения:</strong> {{ product.application_method }}</p>
+        {% endif %}
+        {% if product.volume %}
+        <p><strong>Объём:</strong> {{ product.volume }} л</p>
+        {% endif %}
+        {% if product.additional_details %}
+        <p><strong>Дополнительные детали:</strong> {{ product.additional_details }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

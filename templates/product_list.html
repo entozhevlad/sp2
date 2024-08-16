@@ -50,17 +50,18 @@
     <h1>Каталог товаров</h1>
     
     <div class="category-list">
-        <a href="{% url 'product_list' %}" class="{% if not current_category %}active{% endif %}">Все товары</a>
+        <a href="{% url 'catalog:catalog' %}" class="{% if not current_category %}active{% endif %}">Все товары</a>
         {% for category in categories %}
-            <a href="{% url 'product_list_by_category' category.slug %}" class="{% if current_category and current_category.slug == category.slug %}active{% endif %}">
+            <a href="{% url 'catalog:catalog_by_category' category.slug %}" class="{% if current_category and current_category.slug == category.slug %}active{% endif %}">
                 {{ category.name }}
             </a>
         {% endfor %}
     </div>
 
     <div class="container">
-        {% for product in products %}
-        <div class="product">
+    {% for product in products %}
+    <div class="product">
+        <a href="{% url 'catalog:product_detail' product.id %}">
             {% if product.image %}
             <img src="{{ product.image.url }}" alt="{{ product.name }}">
             {% else %}
@@ -74,8 +75,10 @@
             {% if product.price %}
             <p><strong>Цена:</strong> {{ product.price }} ₽</p>
             {% endif %}
-        </div>
-        {% endfor %}
+        </a>
     </div>
+    {% endfor %}
+</div>
+
 </body>
 </html>
