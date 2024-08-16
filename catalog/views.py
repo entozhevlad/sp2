@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from .models import Product, ProductCategory
 
 
-def product_list(request, category_slug=None):
+def catalog_view(request, category_slug=None):
     category = None
     categories = ProductCategory.objects.all()
     products = Product.objects.all()
@@ -16,4 +16,4 @@ def product_list(request, category_slug=None):
         'products': products,
         'current_category': category,
     }
-    return render(request, 'product_list.html', context)
+    return render(request, 'catalog.html', context)

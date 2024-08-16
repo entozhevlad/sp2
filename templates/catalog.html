@@ -23,14 +23,53 @@
         <a href="#"><img class="num-icon" src="{% static 'img/header/tg.svg' %}" alt=""></a>
         <a href="#"><img class="num-icon" src="{% static 'img/header/ph.svg' %}" alt=""> +7(913)-114-55-24</a>
         <a href="{% url 'main:price' %}">ПРАЙС</a>
-        <a href="{% url 'main:catalog' %}"><strong>КАТАЛОГ</strong></a>
+        <a href="{% url 'catalog:catalog' %}"><strong>КАТАЛОГ</strong></a>
         <a href="{% url 'contacts:contacts' %}">КОНТАКТЫ</a>
     </nav>
 </header>
 
-<main>
 
+{# Начало блока для рефакторинга #}
+
+
+<main>
+    <h1>Каталог товаров</h1>
+    
+    <div class="category-list">
+        <a href="{% url 'catalog:catalog' %}" class="{% if not current_category %}active{% endif %}">Все товары</a>
+        {% for category in categories %}
+            <a href="{% url 'catalog:catalog_by_category' category.slug %}" class="{% if current_category and current_category.slug == category.slug %}active{% endif %}">
+                {{ category.name }}
+            </a>
+        {% endfor %}
+    </div>
+
+    <div class="container">
+        {% for product in products %}
+        <div class="product">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% else %}
+            <img src="https://via.placeholder.com/250" alt="Нет изображения">
+            {% endif %}
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            {% if product.color %}
+            <p><strong>Цвет:</strong> {{ product.color }}</p>
+            {% endif %}
+            {% if product.price %}
+            <p><strong>Цена:</strong> {{ product.price }} ₽</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
 </main>
+
+
+{# Конец блока для рефакторинга #}
+
+
+
 
 
 <footer style="background-image: url('{% static 'img/footer/tryapka.svg' %}')">

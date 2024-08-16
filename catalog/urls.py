@@ -1,7 +1,9 @@
 from django.urls import path
-from . import views
+from .views import *
+
+app_name = 'catalog'
 
 urlpatterns = [
-    path('catalog/', views.product_list, name='product_list'),  # Главная страница каталога
-    path('catalog/category/<slug:category_slug>/', views.product_list, name='product_list_by_category'),  # Фильтр по категориям
+    path('catalog/', catalog_view, name='catalog'),  # Главная страница каталога
+    path('catalog/category/<slug:category_slug>/', catalog_view, name='catalog_by_category'),
 ]
