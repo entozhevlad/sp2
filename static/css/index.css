@@ -32,7 +32,7 @@ header .logo {
     text-decoration: none;
     font-weight: bolder;
     float: left;
-
+    color: black;
     vertical-align: middle;
     margin: 12px 0;
     font-size: 32px;
@@ -138,6 +138,7 @@ header .logo {
         display: none; /* Скрываем первый, второй и третий элементы в мобильной версии */
     }
 }
+
 @media (max-width: 1100px) {
     .navbar a:nth-child(1),
     .navbar a:nth-child(2) {
@@ -251,6 +252,7 @@ hr {
 }
 
 .scd h1 {
+    font-size: 26px;
     font-weight: 400;
     text-align: center
 }
@@ -291,8 +293,138 @@ hr {
 }
 
 
+.four {
+    width: 100%;
+    display: flex;
+
+}
+
+.socials {
+    float: left;
+    width: 50%;
 
 
+}
+
+.socials h1, .property h1 {
+    font-weight: 400;
+    text-align: center
+}
+
+.property {
+    float: right;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
+
+
+}
+
+.socials-hr, .property-hr {
+    font-size: 26px;
+    text-align: center;
+    color: black;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+}
+
+.socials-hr, .property-hr {
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.socials-hr:before, .property-hr:before {
+    content: " ";
+    height: 1px;
+    background: #000;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+
+.socials-hr:after, .property-hr:after {
+    content: " ";
+    height: 1px;
+    background: #000;
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+}
+
+.socials-hr:before, .socials-hr:after {
+    width: 40%;
+}
+
+.property-hr:before, .property-hr:after {
+    width: 38%;
+}
+
+.socials a {
+    position: relative;
+    display: inline-block;
+    overflow: hidden; /* Обрезаем все, что выходит за границы элемента */
+
+}
+
+.socials a img {
+    display: block;
+    transition: transform 0.5s ease; /* Анимация для основного изображения */
+}
+
+/* Скрываем псевдоэлемент по умолчанию */
+.socials a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: left 0.3s ease; /* Анимация движения слева-направо */
+    z-index: 1;
+}
+
+/* VK */
+.socials a[href*="vk.com"]::before {
+    background: url("/static/img/main/home/four/vkontakte-hover.svg");
+}
+
+/* Telegram */
+.socials a[href*="t.me"]::before {
+    background: url("/static/img/main/home/four/telegram-hover.svg");
+}
+
+/* WhatsApp */
+.socials a[href*="wa.me"]::before {
+    background: url("/static/img/main/home/four/whatapp-hover.svg");
+}
+
+/* Instagram */
+.socials a[href*="instagram.com"]::before {
+    background: url("/static/img/main/home/four/instagram-hover.svg");
+}
+
+/* Эффект наведения */
+.socials a:hover img {
+    transform: translateX(100%); /* Сдвиг основного изображения вправо */
+}
+
+.socials a:hover::before {
+    left: 0; /* Плавный сдвиг псевдоэлемента на место изображения */
+}
+
+
+.property p {
+    font-size: 20px;
+}
 
 .map {
     width: 100%;
