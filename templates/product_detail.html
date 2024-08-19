@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ product.name }}</title>
+    <title>{{ product.product.name }}</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,38 +24,75 @@
         .product-detail p {
             margin-bottom: 10px;
         }
+               }
+        .other-variants {
+            margin-top: 30px;
+            width: 100%;
+        }
+        .other-variants h2 {
+            margin-bottom: 10px;
+        }
+        .other-variants ul {
+            list-style: none;
+            padding: 0;
+        }
+        .other-variants li {
+            margin-bottom: 5px;
+        }
+        .other-variants a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .other-variants a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
     <div class="product-detail">
-        {% if product.image %}
-        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        {% if product.main_image %}
+        <img src="{{ product.main_image.url }}" alt="{{ product.product.name }} - {{ product.color.name }}">
         {% else %}
         <img src="https://via.placeholder.com/300" alt="Нет изображения">
         {% endif %}
-        <h1>{{ product.name }}</h1>
-        <p><strong>Описание:</strong> {{ product.description }}</p>
+        <h1>{{ product.product.name }}</h1>
+        <p><strong>Описание:</strong> {{ product.product.description }}</p>
         {% if product.color %}
-        <p><strong>Цвет:</strong> {{ product.color }}</p>
+        <p><strong>Цвет:</strong> {{ product.color.name }}</p>
         {% endif %}
-        {% if product.height %}
-        <p><strong>Высота:</strong> {{ product.height }} см</p>
+        {% if product.product.height %}
+        <p><strong>Высота:</strong> {{ product.product.height }} см</p>
         {% endif %}
-        {% if product.diameter %}
-        <p><strong>Диаметр:</strong> {{ product.diameter }} см</p>
+        {% if product.product.diameter %}
+        <p><strong>Диаметр:</strong> {{ product.product.diameter }} см</p>
         {% endif %}
-        {% if product.material %}
-        <p><strong>Материал:</strong> {{ product.material }}</p>
+        {% if product.product.material %}
+        <p><strong>Материал:</strong> {{ product.product.material }}</p>
         {% endif %}
-        {% if product.application_method %}
-        <p><strong>Метод нанесения:</strong> {{ product.application_method }}</p>
+        {% if product.product.application_method %}
+        <p><strong>Метод нанесения:</strong> {{ product.product.application_method }}</p>
         {% endif %}
-        {% if product.volume %}
-        <p><strong>Объём:</strong> {{ product.volume }} л</p>
+        {% if product.product.volume %}
+        <p><strong>Объём:</strong> {{ product.product.volume }} л</p>
         {% endif %}
-        {% if product.additional_details %}
-        <p><strong>Дополнительные детали:</strong> {{ product.additional_details }}</p>
+        {% if product.product.additional_details %}
+        <p><strong>Дополнительные детали:</strong> {{ product.product.additional_details }}</p>
         {% endif %}
+    </div>
+    <!-- Ссылки на другие варианты -->
+    <div class="other-variants">
+        <h2>Другие варианты:</h2>
+        <ul>
+            {% for variant in other_variants %}
+            <li>
+                <a href="{% url 'catalog:product_detail' variant.id %}">
+                    {{ variant.color.name }} - {{ variant.main_image.url|default:"Нет изображения" }}
+                </a>
+            </li>
+            {% empty %}
+            <li>Нет других вариантов</li>
+            {% endfor %}
+        </ul>
     </div>
 </body>
 </html>
