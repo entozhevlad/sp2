@@ -22,4 +22,8 @@ def catalog_view(request):
 def service_view(request):
     services = Service.objects.filter(is_visible=True)
     categories = Category.objects.all()
+
+    for service in services:
+        service.price_display = f'{int(service.price)}'
+
     return render(request, 'price.html', {'categories': categories, 'services': services})

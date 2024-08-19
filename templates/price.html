@@ -7,11 +7,15 @@
     <title>{% block title %}Студия Печати :: Прайс-лист{% endblock %}</title>
     <link href="{% static 'css/price.css' %}" rel="stylesheet">
     <script src="{% static 'js/index.js' %}" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
 </head>
 <body>
 <header>
     <a href="{% url 'main:home' %}">
-        <img class="logo" src="{% static 'img/header/logo.svg' %}" alt="">
+        <img class="logo" src="{% static 'img/header/logo.svg' %}" alt=""><p id="firm_name">СТУДИЯ ПЕЧАТИ</p>
     </a>
     <div class="burger">
         <span></span>
@@ -23,7 +27,7 @@
         <a href="#"><img class="num-icon" src="{% static 'img/header/tg.svg' %}" alt=""></a>
         <a href="#"><img class="num-icon" src="{% static 'img/header/ph.svg' %}" alt=""> +7(913)-114-55-24</a>
         <a href="{% url 'main:price' %}"><strong>ПРАЙС</strong></a>
-        <a href="{% url 'main:catalog' %}">КАТАЛОГ</a>
+        <a href="{% url 'catalog:catalog' %}">КАТАЛОГ</a>
         <a href="{% url 'contacts:contacts' %}">КОНТАКТЫ</a>
 
     </nav>
@@ -40,7 +44,8 @@
                             {% if service.category.id == category.id %}
                                 <table class="service">
                                     <td id="td1">{{ service.name }}</td>
-                                    <td id="td2">{{ service.price }}</td>
+                                    <td id="td2">{{ service.price_display}} &#8381;</td>
+
                                 </table>
                             {% endif %}
                         {% endfor %}

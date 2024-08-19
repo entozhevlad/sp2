@@ -7,11 +7,15 @@
     <title>{% block title %}Студия Печати{% endblock %}</title>
     <link href="{% static 'css/index.css' %}" rel="stylesheet">
     <script src="{% static 'js/index.js' %}" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
 </head>
 <body>
 <header>
     <a href="{% url 'main:home' %}">
-        <img class="logo" src="{% static 'img/header/logo.svg' %}" alt="">
+        <img class="logo" src="{% static 'img/header/logo.svg' %}" alt=""> <p id="firm_name">СТУДИЯ ПЕЧАТИ</p>
     </a>
     <div class="burger">
         <span></span>
@@ -59,57 +63,10 @@
 
     </div>
     <div class="thd">
-        <button class="slide-arrow" id="slide-arrow-prev">
-            &#8249;
-        </button>
-        <button class="slide-arrow" id="slide-arrow-next">
-            &#8250;
-        </button>
-        <ul class="slides-container" id="slides-container">
-            <div class="slide">
-                <div class="slide-content">
-                    <div class="text-container">
-                        <h1>СУВЕНИРНАЯ ПЕЧАТЬ</h1>
-                        <p>Создание уникальных подарков с логотипом: кружки, футболки, ручки.</p>
-                        <p>Отличный способ продвижения бренда и повышения его узнаваемости.</p>
-                    </div>
-                    <div class="image-container">
-                        <img src="{% static 'img/main/thd/slide1.png' %}" alt="slide1">
-                    </div>
 
-                </div>
-            </div>
-            <div class="slide">
-                <div class="slide-content">
-                    <div class="text-container">
-                        <h1>ПОЛИГРАФИЯ</h1>
-                        <p>Производство визиток, брошюр, каталогов и другой печатной продукции.</p>
-                        <p>Высокое качество печати для рекламы и маркетинга.</p>
-                    </div>
-                    <div class="image-container">
-                        <img src="{% static 'img/main/thd/slide2.png' %}" alt="slide2" style="margin-top: 20px">
-                    </div>
-                </div>
-            </div>
-        </ul>
     </div>
     <div class="four">
-        <hr>
-        <h1>О нас</h1>
-        <hr>
-        <div class="container">
-            <div class="left">
-                <h2>Сеть копицентров в Томске</h2>
-                <p>У нас доступен весь спектр оперативно-полиграфических услуг, а так же изготовление сувенирной
-                    продукции.
-                    Действуют скидки и специальные цены на многие товары, благодаря которым с нами выгодно работать.</p>
-            </div>
-            <div class="right">
-                <h2>Появился вопрос? Решим быстро!</h2>
-                <p>Обратившись в Студию печати можете рассчитывать на качественный и вежливый сервис, оперативность
-                    выполнения заказа.</p>
-            </div>
-        </div>
+
     </div>
     <div class="map">
         <a class="dg-widget-link"

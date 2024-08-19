@@ -7,12 +7,16 @@
     <title>{% block title %}Студия Печати :: Контакты{% endblock %}</title>
     <link href="{% static 'css/contacts.css' %}" rel="stylesheet">
     <script src="{% static 'js/index.js' %}" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
 </head>
 <body>
 
 <header>
     <a href="{% url 'main:home' %}">
-        <img class="logo" src="{% static 'img/header/logo.svg' %}" alt="">
+        <img class="logo" src="{% static 'img/header/logo.svg' %}" alt=""><p id="firm_name">СТУДИЯ ПЕЧАТИ</p>
     </a>
     <div class="burger">
         <span></span>
@@ -25,7 +29,7 @@
         <a href="https://wa.me/sptomsk"><img class="num-icon" src="{% static 'img/header/ph.svg' %}" alt="">
             +7(913)-114-55-24</a>
         <a href="{% url 'main:price' %}">ПРАЙС</a>
-        <a href="{% url 'main:catalog' %}">КАТАЛОГ</a>
+        <a href="{% url 'catalog:catalog' %}">КАТАЛОГ</a>
         <a href="{% url 'contacts:contacts' %}"><strong>КОНТАКТЫ</strong></a>
 
     </nav>
@@ -108,18 +112,7 @@
             </tbody>
         </table>
     </div>
-    <div class="form">
-        <h2 class="hotline-hr">КОНТАКТЫ</h2>
-        <h4>Напишите нам, если у вас есть вопросы!</h4>
-        <p>
-            Пожалуйста, напишите свое имя, адрес электронной почты и номер телефона.
-        </p>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Отправить</button>
-        </form>
-    </div>
+    
 
 
     <div class="map">

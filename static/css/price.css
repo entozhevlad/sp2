@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: "Mont";
+    font-family: Montserrat, serif;
 }
 
 .open {
@@ -73,17 +73,27 @@ header {
     transform: rotate(45deg) translate(0, 50%);
 }
 
-/* Задаем минимальный размер для изображения логотипа */
-.logo {
-    max-width: 320px; /* Максимальная ширина логотипа */
-    height: auto; /* Сохраняем пропорции */
+header .logo {
+    height: auto;
+    width: 65px;
     float: left;
-    margin-left: 5%; /* Отступ слева от логотипа */
+    margin-left: 5%;
+}
+
+#firm_name {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bolder;
+    float: left;
+color: black;
+    vertical-align: middle;
+    margin: 12px 0;
+    font-size: 32px;
 }
 
 .navbar {
     float: right;
-    font-family: "Mont";
+    font-family: Montserrat, serif;
     font-weight: 500;
     font-size: larger;
     color: black;
@@ -120,13 +130,36 @@ header {
     height: auto; /* Сохраняем пропорции */
     vertical-align: middle; /* Выравнивание элементов по вертикали */
 }
-
-@media (max-width: 1040px) {
+@media (max-width: 1200px) {
     .navbar a:nth-child(1),
-    .navbar a:nth-child(2),
+    .navbar a:nth-child(2) {
+        display: none; /* Скрываем первый, второй и третий элементы в мобильной версии */
+    }
+}
+@media (max-width: 1100px) {
+    .navbar a:nth-child(1),
+    .navbar a:nth-child(2) {
+        display: none; /* Скрываем первый, второй и третий элементы в мобильной версии */
+    }
+
+    .logo {
+        width: 55px; /* Максимальная ширина логотипа */
+        height: auto; /* Сохраняем пропорции */
+        margin-left: 5%; /* Отступ слева от логотипа */
+    }
+
+    #firm_name {
+        font-size: 26px;
+        margin: 16px 0;
+    }
+}
+
+@media (max-width: 950px) {
+
     .navbar a:nth-child(3) {
         display: none; /* Скрываем первый, второй и третий элементы в мобильной версии */
     }
+
 }
 
 @media (max-width: 768px) {
@@ -137,7 +170,7 @@ header {
 
         display: none;
         flex-direction: column;
-        align-items: left;
+
         margin-bottom: 20px; /* Увеличиваем отступы между элементами */
         font-size: 24px;
     }
@@ -154,13 +187,25 @@ header {
     }
 
     .logo {
-        width: 290px; /* Максимальная ширина логотипа */
+        width: 60px; /* Максимальная ширина логотипа */
         height: auto; /* Сохраняем пропорции */
         margin-left: 5%; /* Отступ слева от логотипа */
     }
 
+    #firm_name {
+        font-size: 24px;
+        margin: 16px 0;
+    }
+
     .burger {
         display: flex;
+    }
+}
+
+@media (max-width: 360px) {
+    #firm_name {
+        font-size: 20px;
+        margin: 18px 0;
     }
 }
 
@@ -283,6 +328,7 @@ li {
     text-align: center;
     color: #173494;
 }
+
 #prim {
     position: relative;
     font-size: 22px;
@@ -300,34 +346,41 @@ li {
 .category {
     border-top: #0A1947 solid 2px;
 }
-.category:nth-child(1){
+
+.category:nth-child(1) {
     border: none;
 }
+
 ul {
     margin: 0;
     padding: 0;
 }
 
 @media (max-width: 748px) {
-    .service{
+    .service {
         font-size: 18px;
     }
-    .category_name{
+
+    .category_name {
         font-size: 22px;
     }
-    #prim{
+
+    #prim {
         font-size: 16px;
     }
 }
+
 @media (max-width: 500px) {
-    .service{
+    .service {
         font-size: 16px;
         border-bottom: black dashed 1px;
     }
-    .category_name{
+
+    .category_name {
         font-size: 20px;
     }
-    #prim{
+
+    #prim {
         font-size: 14px;
     }
 

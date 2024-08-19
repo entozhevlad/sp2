@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Подтверждение удаления</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
 </head>
 <body>
-    <h1>Подтверждение удаления</h1>
-    <p>Вы уверены, что хотите удалить "{{ object.name }}"?</p>
-    <form method="post">
-        {% csrf_token %}
-        <button type="submit">Удалить</button>
-        <a href="{% url 'admin_sp' %}">Отмена</a>
-    </form>
+<h1>Подтверждение удаления</h1>
+<p>Вы уверены, что хотите удалить "{{ object.name }}"?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+    <a href="{% url 'admin_sp' %}">Отмена</a>
+</form>
 </body>
 </html>

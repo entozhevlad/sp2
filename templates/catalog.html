@@ -5,13 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Студия Печати :: О нас{% endblock %}</title>
-    <link href="{% static 'css/us.css' %}" rel="stylesheet">
+    <link href="{% static 'css/catalog.css' %}" rel="stylesheet">
     <script src="{% static 'js/index.js' %}" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
 </head>
 <body>
 <header>
     <a href="{% url 'main:home' %}">
-        <img class="logo" src="{% static 'img/header/logo.svg' %}" alt="">
+        <img class="logo" src="{% static 'img/header/logo.svg' %}" alt=""><p id="firm_name">СТУДИЯ ПЕЧАТИ</p>
     </a>
     <div class="burger">
         <span></span>
@@ -34,7 +38,7 @@
 
 <main>
     <h1>Каталог товаров</h1>
-    
+
     <div class="category-list">
         <a href="{% url 'catalog:catalog' %}" class="{% if not current_category %}active{% endif %}">Все товары</a>
         {% for category in categories %}
