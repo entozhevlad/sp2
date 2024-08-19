@@ -63,21 +63,21 @@
     </div>
 
     <div class="container">
-    {% for product in products %}
+    {% for variant in variants %}
     <div class="product">
-        <a href="{% url 'catalog:product_detail' product.id %}">
-            {% if product.image %}
-            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        <a href="{% url 'catalog:product_detail' variant.id %}">
+            {% if variant.main_image %}
+            <img src="{{ variant.main_image.url }}" alt="{{ variant.name }}">
             {% else %}
             <img src="https://via.placeholder.com/250" alt="Нет изображения">
             {% endif %}
-            <h3>{{ product.name }}</h3>
-            <p>{{ product.description }}</p>
-            {% if product.color %}
-            <p><strong>Цвет:</strong> {{ product.color }}</p>
+            <h3>{{ variant.product.name }}</h3>
+            <p>{{ variant.product.description }}</p>
+            {% if variant.color %}
+            <p><strong>Цвет:</strong> {{ variant.color.name }}</p>
             {% endif %}
-            {% if product.price %}
-            <p><strong>Цена:</strong> {{ product.price }} ₽</p>
+            {% if variant.price %}
+            <p><strong>Цена:</strong> {{ variant.price }} ₽</p>
             {% endif %}
         </a>
     </div>
