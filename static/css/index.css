@@ -309,13 +309,14 @@ hr {
         margin-left: 20%;
         width: 80%;
     }
-    .right p {
-    width: 80%;
-}
 
-.right h2 {
-    width: 68%;
-}
+    .right p {
+        width: 80%;
+    }
+
+    .right h2 {
+        width: 68%;
+    }
 }
 
 /* Стили для мобильных устройств */
