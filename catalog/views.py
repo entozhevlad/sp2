@@ -15,7 +15,7 @@ def catalog_view(request, category_slug=None):
         'variants': variants,  # Передаем варианты в контекст
         'current_category': category,
     }
-    return render(request, 'product_list.html', context)
+    return render(request, 'catalog.html', context)
 
 def product_detail(request, product_id):
     product = get_object_or_404(ProductVariant, id=product_id)
