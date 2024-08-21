@@ -1,0 +1,318 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat, serif;
+}
+
+.open {
+    display: flex !important;
+}
+
+header {
+    align-items: center;
+    justify-content: space-between;
+
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #fff; /* Set the background color as needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for a subtle effect */
+}
+
+.burger {
+    display: none;
+    float: right;
+    margin-right: 5%;
+    margin-top: 20px;
+    position: relative;
+    z-index: 50;
+    align-items: center;
+    justify-content: flex-end;
+    width: 30px;
+    height: 18px;
+}
+
+.burger::before,
+.burger::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background-color: black;
+    transition: all 0.3s ease 0s;
+}
+
+.burger span {
+    height: 2px;
+    width: 100%;
+    transform: scale(1);
+    background-color: black;
+}
+
+.burger::before {
+    top: 0;
+}
+
+.burger::after {
+    bottom: 0;
+}
+
+/* Добавляем класс active для анимации иконки бургера */
+.burger.active span {
+    transform: scale(0);
+}
+
+.burger.active::before {
+    top: 50%;
+    transform: rotate(-45deg) translate(0, -50%);
+}
+
+.burger.active::after {
+    bottom: 50%;
+    transform: rotate(45deg) translate(0, 50%);
+}
+
+header .logo {
+    height: auto;
+    width: 65px;
+    float: left;
+    margin-left: 5%;
+}
+
+#firm_name {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bolder;
+    float: left;
+
+    vertical-align: middle;
+    margin: 12px 0;
+    font-size: 32px;
+}
+
+.navbar {
+    float: right;
+    font-family: Montserrat, serif;
+    font-weight: 500;
+    font-size: larger;
+    color: black;
+    text-decoration: none;
+    margin-right: 5%;
+    margin-top: 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: inherit;
+    vertical-align: middle; /* Выравнивание элементов по вертикали */
+}
+
+.navbar a:not(:last-child)::after {
+
+    content: "|"; /* Add the separator content */
+    margin-left: 10px; /* Adjust the space between link and separator */
+    color: black; /* Color of the separator */
+    display: inline-block; /* Make sure the separator is inline with the text */
+    vertical-align: middle; /* Выравнивание элементов по вертикали */
+}
+
+.navbar a:hover {
+    font-weight: bold;
+}
+
+.navbar a:hover::after {
+    font-weight: 500; /* To ensure the separator doesn't get bold on hover */
+}
+
+.num-icon {
+    max-width: 20px; /* Максимальная ширина логотипа */
+    height: auto; /* Сохраняем пропорции */
+    vertical-align: middle; /* Выравнивание элементов по вертикали */
+}
+
+@media (max-width: 1200px) {
+    .navbar a:nth-child(1),
+    .navbar a:nth-child(2) {
+        display: none; /* Скрываем первый, второй и третий элементы в мобильной версии */
+    }
+}
+@media (max-width: 1100px) {
+    .navbar a:nth-child(1),
+    .navbar a:nth-child(2) {
+        display: none; /* Скрываем первый, второй и третий элементы в мобильной версии */
+    }
+
+    .logo {
+        width: 55px; /* Максимальная ширина логотипа */
+        height: auto; /* Сохраняем пропорции */
+        margin-left: 5%; /* Отступ слева от логотипа */
+    }
+
+    #firm_name {
+        font-size: 26px;
+        margin: 16px 0;
+    }
+}
+
+@media (max-width: 950px) {
+
+    .navbar a:nth-child(3) {
+        display: none; /* Скрываем первый, второй и третий элементы в мобильной версии */
+    }
+
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        width: 100%; /* Занимаем всю доступную ширину */
+        float: left;
+        margin-left: 5%;
+
+        display: none;
+        flex-direction: column;
+
+        margin-bottom: 20px; /* Увеличиваем отступы между элементами */
+        font-size: 24px;
+    }
+
+    .navbar a:not(:last-child)::after {
+        content: none; /* Убираем разделитель для мобильной версии */
+        margin-left: 0; /* Убираем отступ разделителя для мобильной версии */
+    }
+
+    .navbar a:nth-child(1),
+    .navbar a:nth-child(2),
+    .navbar a:nth-child(3) {
+        display: none; /* Скрываем первый, второй и третий элементы в мобильной версии */
+    }
+
+    .logo {
+        width: 60px; /* Максимальная ширина логотипа */
+        height: auto; /* Сохраняем пропорции */
+        margin-left: 5%; /* Отступ слева от логотипа */
+    }
+
+    #firm_name {
+        font-size: 24px;
+        margin: 16px 0;
+    }
+
+    .burger {
+        display: flex;
+    }
+}
+
+@media (max-width: 360px) {
+    #firm_name {
+        font-size: 20px;
+        margin: 18px 0;
+    }
+}
+
+/*Footer*/
+footer {
+
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-around; /* Adjust this value */
+    width: 100%;
+}
+
+.footer_fst {
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Changed from vertical-align to text-align */
+}
+
+.line {
+    width: 90%; /* Ensure the line spans the full width */
+    margin: 20px 0;
+}
+
+.contact h3,
+.navigation h3 {
+    margin: 0 0 20px 0;
+    padding: 0;
+}
+
+.contact,
+.navigation {
+    display: flex;
+    float: left;
+    align-items: start;
+    flex-direction: column;
+}
+
+.contact a,
+.navigation a {
+    color: white;
+    float: left;
+    text-align: left;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.contact a img,
+.navigation a img {
+    float: left;
+    margin-right: 10px;
+}
+
+.social-icons a img {
+    float: left;
+    margin: 10px 20px 10px 0;
+}
+
+.footer2 {
+    color: white;
+    margin: 0;
+    bottom: 0;
+    height: 70px;
+    width: 100%;
+    background-color: #050b20;
+    display: flex;
+    align-items: flex-end; /* Adjust alignment */
+}
+
+.footer2 img {
+    margin-left: 2%;
+}
+
+.text-container {
+    margin-left: 0.5%;
+    margin-bottom: 5px;
+}
+
+
+@media (max-width: 500px) {
+    .left h2, .right h2 {
+        font-size: 1.1em;
+    }
+}
+
+
+main {
+    width: 100%;
+    margin-top: 70px;
+}
+.container, .vacancies{
+    margin: 0 10%;
+}
+.container p{
+    font-size: 20px;
+    font-weight: 500;
+    text-align: justify;
+}
+.vacancy{
+        font-size: 20px;
+    font-weight: 500;
+    text-align: justify;
+}

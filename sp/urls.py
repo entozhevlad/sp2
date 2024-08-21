@@ -16,14 +16,22 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
-from main.views import PricePageView, HomePageView
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
-    path('price', PricePageView.as_view(), name='price'),
-    path('home', HomePageView.as_view(), name='home'),
+    path('', include('admin_interface.urls')),
+    path('', include('contacts.urls')),
+    path('', include('catalog.urls'))
 
 ]
 
+# Подключаем статику (CSS, JS, изображения)
+urlpatterns += staticfiles_urlpatterns()
+
+# Подключаем медиафайлы (например, изображения продуктов)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,192 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Студия Печати :: Контакты{% endblock %}</title>
+    <link href="{% static 'css/contacts.css' %}" rel="stylesheet">
+    <script src="{% static 'js/index.js' %}" defer></script>
+    <link type="image/svg+xml" sizes="96x96" rel="icon" href="{% static 'img/favicon/favicon.svg' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <a href="{% url 'main:home' %}">
+        <img class="logo" src="{% static 'img/header/logo.svg' %}" alt=""><p id="firm_name">СТУДИЯ ПЕЧАТИ</p>
+    </a>
+    <div class="burger">
+        <span></span>
+    </div>
+    <nav class="navbar">
+        <a href="#">
+            <img class="num-icon" src="{% static 'img/header/wa.svg' %}" alt="">
+        </a>
+        <a href="https://t.me/sptomsk"><img class="num-icon" src="{% static 'img/header/tg.svg' %}" alt=""></a>
+        <a href="https://wa.me/sptomsk"><img class="num-icon" src="{% static 'img/header/ph.svg' %}" alt="">
+            +7(913)-114-55-24</a>
+        <a href="{% url 'main:price' %}">ПРАЙС</a>
+        <a href="{% url 'catalog:catalog' %}">КАТАЛОГ</a>
+        <a href="{% url 'contacts:contacts' %}"><strong>КОНТАКТЫ</strong></a>
+
+    </nav>
+</header>
+<main>
+    <div class="address" style="margin-top: 70px">
+        <table>
+            <thead>
+            <tr>
+                <th class="hr-lines" id="th1">АДРЕСА</th>
+                <th class="hr-lines" id="th2">ПН-ПТ</th>
+                <th class="hr-lines" id="th3"> СБ-ВС</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>г.Томск, пр-т. Учебная 46</td>
+                <td>09-20</td>
+                <td>10-19</td>
+            </tr>
+            <tr>
+                <td>г.Томск, пр-т. Комсомольский 77</td>
+                <td>08-18</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>г.Томск, Иркутский тракт 194</td>
+                <td>09-20</td>
+                <td>10-19</td>
+            </tr>
+            <tr>
+                <td>г. Томск, ул. Вавилова 10</td>
+                <td>09-19</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>г. Томск, пр-т. Фрунзе 119е</td>
+                <td>09-20</td>
+                <td>-</td>
+            </tr>
+            <tr>
+                <td>г. Томск, ул. Суворова 17</td>
+                <td>09-20</td>
+                <td>10-19</td>
+            </tr>
+            <tr>
+                <td>г.Томск, пр-т. Ленина 41</td>
+                <td>09-19</td>
+                <td>10-18 <br>суббота<br></td>
+            </tr>
+        </table>
+    </div>
+    <div class="hotline">
+        <h2 class="hotline-hr">ГОРЯЧАЯ ЛИНИЯ</h2>
+
+        <table class="hotline-table">
+            <tbody>
+            <tr>
+                <td class="hl1"><a href="https://t.me/sptomsk" target="_blank"><img
+                        src="{% static 'img/header/ph.svg' %}" style="height: 40px"></a></td>
+                <td class="hl2">+7(913)-114-55-24</td>
+                <td class="hl3" rowspan="3"><a href="https://t.me/sptomsk" target="_blank">
+                    <img class="qr-img"
+                         src="{% static 'img/main/contacts/qr_tg.png' %}"></a>
+                </td>
+                <td class="hl4" rowspan="3"><a href="https://t.me/sptomsk" target="_blank">
+                    <img class="qr-img"
+                         src="{% static 'img/main/contacts/qr_wa.png' %}"></a>
+                </td>
+            </tr>
+            <tr>
+                <td class="hl1"><img src="{% static 'img/header/wa.svg' %}" style="height: 40px"></td>
+                <td class="hl2">+7(913)-114-55-24</td>
+            </tr>
+            <tr>
+                <td class="hl1"><a href="https://t.me/sptomsk" target="_blank"><img
+                        src="{% static 'img/header/tg.svg' %}" style="height: 40px"></a></td>
+                <td class="hl2"><a href="https://t.me/sptomsk" target="_blank">@sp_tomsk</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    
+
+
+    <div class="map">
+        <a class="dg-widget-link"
+           href="http://2gis.ru/tomsk/profiles/70000001025710625,70000001027631299,70000001021112001,70000001037942308,70000001078540254,70000001018853225,70000001083395090/center/85.01134872436525,56.49330096298038/zoom/12?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=bigMap">Посмотреть
+            на карте Томска</a>
+        <script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script>
+        <script charset="utf-8">
+            new DGWidgetLoader({
+                width: 1600,
+                height: 400,
+                borderColor: "#a3a3a3",
+                pos: {lat: 56.49330096298038, lon: 85.01134872436525, zoom: 12},
+                opt: {city: "tomsk"},
+                org: [
+                    {id: "70000001025710625"},
+                    {id: "70000001027631299"},
+                    {id: "70000001021112001"},
+                    {id: "70000001037942308"},
+                    {id: "70000001078540254"},
+                    {id: "70000001018853225"},
+                    {id: "70000001083395090"},
+                ],
+            });
+        </script>
+        <noscript style="color: #c00; font-size: 16px; font-weight: bold">Виджет карты использует JavaScript. Включите
+            его в
+            настройках вашего браузера.
+        </noscript>
+    </div>
+</main>
+<footer style="background-image: url('{% static 'img/footer/tryapka.svg' %}')">
+    <div class="footer_fst">
+        <img class="line" src="{% static 'img\footer\line.svg' %}" alt="line">
+        <div class="footer">
+            <div class="contact">
+                <h3>Контакты</h3>
+                <a href="#"><img src="{% static 'img/footer/phone.svg' %}" alt="">+7(913)-114-55-24</a>
+                <div class="social-icons">
+                    <a href="https://t.me/sp_tomsk" target="_blank"><img src="{% static 'img/footer/tg.svg' %}"
+                                                                        alt="Telegram"></a>
+                    <a href="https://wa.me/sptomsk" target="_blank"><img src="{% static 'img/footer/wa.svg' %}"
+                                                                         alt="WhatsApp"></a>
+                    <a href="https://vk.com/sptomsk" target="_blank"><img src="{% static 'img/footer/vk.svg' %}"
+                                                                          alt="VK"></a>
+                    <a href="https://www.instagram.com/studiopechati" target="_blank"><img
+                            src="{% static 'img/footer/inst.svg' %}" alt="Instagram"></a>
+                </div>
+                <a href="#"><img src="{% static 'img/footer/map.svg' %}" alt="">Адреса</a>
+
+            </div>
+            <div class="navigation">
+                <h3>Навигация</h3>
+                <a href="#">Главная страница</a>
+                <a href="#">Услуги</a>
+                <a href="#">Блог</a>
+                <a href="#">Контакты</a>
+
+            </div>
+        </div>
+        <img class="line" src="{% static 'img\footer\line.svg' %}" alt="line">
+    </div>
+
+
+    <div class="footer2">
+        <img src="{% static 'img/footer/logo.svg' %}" alt="">
+        <div class="text-container">
+            <p>© 2024 | SP-TOMSK.RU | Все права защищены.</p>
+        </div>
+    </div>
+
+</footer>
+
+
+</body>
+</html>
