@@ -57,7 +57,7 @@ class ProductVariant(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='variants', verbose_name='Сувенир')
     name = models.CharField(max_length=255, verbose_name='Название', default=product.name)
     color = models.ForeignKey(Color, on_delete=models.SET_NULL, blank=True, null=True, related_name='variants', verbose_name='Цвет')
-
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена', blank=True, default=0.00)
     main_image = models.ImageField(upload_to='variant_images/', blank=True, null=True,
                                    verbose_name='Главное изображение')
     additional_image_1 = models.ImageField(upload_to='variant_images/', blank=True, null=True,
