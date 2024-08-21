@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Студия Печати :: О нас{% endblock %}</title>
+    <title>{% block title %}Каталог — Студия Печати{% endblock %}</title>
     <link href="{% static 'css/catalog.css' %}" rel="stylesheet">
     <script src="{% static 'js/index.js' %}" defer></script>
     <link type="image/svg+xml" sizes="96x96" rel="icon" href="{% static 'img/favicon/favicon.svg' %}">
@@ -16,7 +16,8 @@
 <body>
 <header>
     <a href="{% url 'main:home' %}">
-        <img class="logo" src="{% static 'img/header/logo.svg' %}" alt=""><p id="firm_name">СТУДИЯ ПЕЧАТИ</p>
+        <img class="logo" src="{% static 'img/header/logo.svg' %}" alt="">
+        <p id="firm_name">СТУДИЯ ПЕЧАТИ</p>
     </a>
     <div class="burger">
         <span></span>
@@ -38,43 +39,47 @@
 
 
 <main>
-    <h1>Каталог товаров</h1>
+    <h2 class="catalog-hr">СУВЕНИРНАЯ ПРОДУКЦИЯ</h2>
 
-    <div class="category-list">
-        <a href="{% url 'catalog:catalog' %}" class="{% if not current_category %}active{% endif %}">Все товары</a>
-        {% for category in categories %}
-            <a href="{% url 'catalog:catalog_by_category' category.slug %}" class="{% if current_category and current_category.slug == category.slug %}active{% endif %}">
-                {{ category.name }}
-            </a>
-        {% endfor %}
-    </div>
-
-    <div class="container">
-        {% for product in products %}
-        <div class="product">
-            {% if product.image %}
-            <img src="{{ product.image.url }}" alt="{{ product.name }}">
-            {% else %}
-            <img src="https://via.placeholder.com/250" alt="Нет изображения">
-            {% endif %}
-            <h3>{{ product.name }}</h3>
-            <p>{{ product.description }}</p>
-            {% if product.color %}
-            <p><strong>Цвет:</strong> {{ product.color }}</p>
-            {% endif %}
-            {% if product.price %}
-            <p><strong>Цена:</strong> {{ product.price }} ₽</p>
-            {% endif %}
+    <div class="catalog-container">
+        <div class="category-list">
+            <a href="{% url 'catalog:catalog' %}" class="{% if not current_category %}active{% endif %}">Все товары</a>
+            {% for category in categories %}
+                <a href="{% url 'catalog:catalog_by_category' category.slug %}"
+                   class="{% if current_category and current_category.slug == category.slug %}active{% endif %}">
+                    {{ category.name }}
+                </a>
+            {% endfor %}
         </div>
-        {% endfor %}
+
+        <div class="product-list">
+            {% for variant in variants %}
+                <div class="product">
+                    <a href="{% url 'catalog:product_detail' variant.id %}">
+                        {% if variant.main_image %}
+                            <img src="{{ variant.main_image.url }}" alt="{{ variant.name }}">
+                        {% else %}
+                            <img src="https://via.placeholder.com/250" alt="Нет изображения">
+                        {% endif %}
+                        <h3 class="product-title">
+                            {{ variant.product.name }} /
+                            <span class="description">{{ variant.product.description }}</span>
+                        </h3>
+                        {% if variant.color %}
+                            {# <p><strong>Цвет:</strong> {{ variant.color.name }}</p> #}
+                        {% endif %}
+                        {% if variant.price %}
+                            <p><strong>Цена:</strong> {{ variant.price }} ₽</p>
+                        {% endif %}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </main>
 
 
 {# Конец блока для рефакторинга #}
-
-
-
 
 
 <footer style="background-image: url('{% static 'img/footer/tryapka.svg' %}')">
@@ -86,7 +91,7 @@
                 <a href="#"><img src="{% static 'img/footer/phone.svg' %}" alt="">+7(913)-114-55-24</a>
                 <div class="social-icons">
                     <a href="https://t.me/sp_tomsk" target="_blank"><img src="{% static 'img/footer/tg.svg' %}"
-                                                                        alt="Telegram"></a>
+                                                                         alt="Telegram"></a>
                     <a href="https://wa.me/sptomsk" target="_blank"><img src="{% static 'img/footer/wa.svg' %}"
                                                                          alt="WhatsApp"></a>
                     <a href="https://vk.com/sptomsk" target="_blank"><img src="{% static 'img/footer/vk.svg' %}"
