@@ -40,7 +40,7 @@
 
 <main>
     <h2 class="catalog-hr">СУВЕНИРНАЯ ПРОДУКЦИЯ</h2>
-
+    <button class="category-toggle">Категории</button>
     <div class="catalog-container">
         <div class="category-list">
             <a href="{% url 'catalog:catalog' %}" class="{% if not current_category %}active{% endif %}">Все товары</a>
@@ -56,21 +56,25 @@
             {% for variant in variants %}
                 <div class="product">
                     <a href="{% url 'catalog:product_detail' variant.id %}">
-                        {% if variant.main_image %}
-                            <img src="{{ variant.main_image.url }}" alt="{{ variant.name }}">
-                        {% else %}
-                            <img src="https://via.placeholder.com/250" alt="Нет изображения">
-                        {% endif %}
+                        <div class="image-container">
+                            {% if variant.main_image %}
+                                <img src="{{ variant.main_image.url }}" alt="{{ variant.name }}">
+                            {% else %}
+                                <img src="https://via.placeholder.com/250" alt="Нет изображения">
+                            {% endif %}
+                        </div>
                         <h3 class="product-title">
                             {{ variant.product.name }} /
-                            <span class="description">{{ variant.product.description }}</span>
+                            {% if variant.color %}
+                                <span class="color">Цвет: {{ variant.color.name }}</span>
+                            {% endif %}
                         </h3>
-                        {% if variant.color %}
-                            {# <p><strong>Цвет:</strong> {{ variant.color.name }}</p> #}
-                        {% endif %}
-                        {% if variant.price %}
-                            <p><strong>Цена:</strong> {{ variant.price }} ₽</p>
-                        {% endif %}
+                        <p class="description">{{ variant.product.description }}</p>
+                        <div class="price">
+                            {% if variant.price %}
+                                <p> {{ variant.price_display }} ₽</p>
+                            {% endif %}
+                        </div>
                     </a>
                 </div>
             {% endfor %}

@@ -4,3 +4,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         document.querySelector('.navbar').classList.toggle('open');
     })
 });
+document.querySelector('.category-toggle').addEventListener('click', function() {
+    document.querySelector('.category-list').classList.toggle('show');
+});

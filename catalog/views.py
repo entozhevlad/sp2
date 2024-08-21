@@ -10,6 +10,9 @@ def catalog_view(request, category_slug=None):
         category = get_object_or_404(ProductCategory, slug=category_slug)
         variants = variants.filter(product__category=category)  # Фильтруем варианты по категории продукта
 
+    for variant in variants:
+        variant.price_display = f'{int(variant.price)}'
+
     context = {
         'categories': categories,
         'variants': variants,  # Передаем варианты в контекст
