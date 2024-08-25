@@ -11,7 +11,23 @@ from contacts.models import Adress
 def admin_sp(request):
     categories = Category.objects.all()
     services = Service.objects.all()
-    return render(request, 'admin_sp.html', {'categories': categories, 'services': services})
+    colors = Color.objects.all()
+    product_categories = ProductCategory.objects.all()
+    products = Product.objects.all()
+    product_variants = ProductVariant.objects.all()
+    adresses = Adress.objects.all()
+
+    context = {
+        'categories': categories,
+        'services': services,
+        'colors': colors,
+        'product_categories': product_categories,
+        'products': products,
+        'product_variants': product_variants,
+        'adresses': adresses,
+    }
+
+    return render(request, 'admin_sp.html', context)
 
 @login_required
 def add_category(request):
@@ -120,7 +136,7 @@ def add_product_category(request):
             return redirect('admin_sp')
     else:
         form = ProductCategoryForm()
-    return render(request, 'add_product_category.html', {'form': form})
+    return render(request, 'add_edit_product_category.html', {'form': form})
 
 @login_required
 def edit_product_category(request, category_id):
@@ -216,7 +232,7 @@ def add_adress(request):
             return redirect('admin_sp')
     else:
         form = AdressForm()
-    return render(request, 'add_edit_adress.html', {'form': form})
+    return render(request, 'add_edit_address.html', {'form': form})
 
 @login_required
 def edit_adress(request, adress_id):
@@ -228,7 +244,7 @@ def edit_adress(request, adress_id):
             return redirect('admin_sp')
     else:
         form = AdressForm(instance=adress)
-    return render(request, 'add_edit_adress.html', {'form': form})
+    return render(request, 'add_edit_address.html', {'form': form})
 
 @login_required
 def delete_adress(request, adress_id):

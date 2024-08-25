@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>{% if form.instance.pk %}Изменить{% else %}Добавить{% endif %} услугу</title>
     <link type="image/svg+xml" sizes="96x96" rel="icon" href="{% static 'img/favicon/favicon.svg' %}">
