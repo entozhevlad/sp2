@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Админка{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900&display=swap"
+          rel="stylesheet">
+    <link type="image/svg+xml" sizes="96x96" rel="icon" href="{% static 'img/favicon/favicon.svg' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #666;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .add-link {
+            display: block;
+            margin-top: 10px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar {
+            background-color: #333;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .navbar a {
+            color: #fff;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <a href="{% url 'admin_sp' %}">Главная</a>
+    <a href="{% url 'add_category' %}">Добавить категорию</a>
+    <a href="{% url 'add_service' %}">Добавить услугу</a>
+    <a href="{% url 'add_color' %}">Добавить цвет</a>
+    <a href="{% url 'add_product_category' %}">Добавить категорию товаров</a>
+    <a href="{% url 'add_product' %}">Добавить товар</a>
+    <a href="{% url 'add_product_variant' %}">Добавить вариант товара</a>
+    <a href="{% url 'add_adress' %}">Добавить адрес</a>
+</div>
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

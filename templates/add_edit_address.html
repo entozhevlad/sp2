@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавить/Редактировать Адрес{% endblock %}
+
+{% block content %}
+    <h2>{% if form.instance.pk %}Редактировать Адрес{% else %}Добавить Адрес{% endif %}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+    <a href="{% url 'admin_sp' %}">Назад к списку</a>
+{% endblock %}
