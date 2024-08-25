@@ -50,6 +50,30 @@
             <img src="{% static 'img/main/mob_add.svg' %}" alt="">
         </div>
     </div>
+    <div class="thd">
+    <h2>Новости</h2>
+    {% if news_images|length > 1 %}
+        <!-- Если больше одного изображения, отображаем карусель -->
+        <div class="autoplay">
+            {% for image in news_images %}
+                <div class="carousel-item">
+                    <img src="{{ image.image.url }}" alt="{{ image.alt_text }}">
+                    <div class="overlay">
+                        <div class="text">{{ image.description }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <!-- Если только одно изображение, показываем его без карусели -->
+        <div class="single-image">
+            {% for image in news_images %}
+                <img src="{{ image.image.url }}" alt="{{ image.alt_text }}">
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
     <div class="scd">
         <hr>
         <h1>О нас</h1>

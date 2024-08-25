@@ -17,3 +17,18 @@ prevButton.addEventListener("click", () => {
   const slideWidth = slide.clientWidth;
   slidesContainer.scrollLeft -= slideWidth;
 });
+
+$(document).ready(function(){
+    if ($('.autoplay').children().length > 1) {
+        $('.autoplay').slick({
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            adaptiveHeight: true,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            arrows: true
+        });
+    }
+});
