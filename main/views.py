@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect
-from .models import Service, Category
+from .models import Service, Category, NewsImage
 from django.core.mail import send_mail
 from django.conf import settings
 from contacts.forms import ContactForm
@@ -11,6 +11,15 @@ env = environ.Env()
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
+
+    def get_context_data(self, **kwargs):
+        # Получаем стандартный контекст
+        context = super().get_context_data(**kwargs)
+
+        # Добавляем список изображений новостей в контекст
+        context['news_images'] = NewsImage.objects.all()
+
+        return context
 
 
 def catalog_view(request):

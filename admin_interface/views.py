@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import CategoryForm, ServiceForm, ColorForm, ProductCategoryForm, ProductForm, ProductVariantForm, AdressForm
-from main.models import Category, Service
+from .forms import CategoryForm, ServiceForm, ColorForm, ProductCategoryForm, ProductForm, ProductVariantForm, AdressForm, NewsImageForm
+from main.models import Category, Service, NewsImage
 from catalog.models import Color, ProductCategory, Product, ProductVariant
 from contacts.models import Adress
 
@@ -16,6 +16,7 @@ def admin_sp(request):
     products = Product.objects.all()
     product_variants = ProductVariant.objects.all()
     adresses = Adress.objects.all()
+    news_list = NewsImage.objects.all()
 
     context = {
         'categories': categories,
@@ -25,6 +26,7 @@ def admin_sp(request):
         'products': products,
         'product_variants': product_variants,
         'adresses': adresses,
+        'news_list': news_list,
     }
 
     return render(request, 'admin_sp.html', context)
@@ -276,3 +278,34 @@ def edit_color(request, color_id):
     else:
         form = ColorForm(instance=color)
     return render(request, 'add_edit_color.html', {'form': form})
+
+@login_required
+def add_news(request):
+    if request.method == 'POST':
+        form = NewsImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('admin_sp')
+    else:
+        form = NewsImageForm()
+    return render(request, 'add_edit_news.html', {'form': form})
+
+@login_required
+def edit_news(request, news_id):
+    news_image = get_object_or_404(NewsImage, id=news_id)
+    if request.method == 'POST':
+        form = NewsImageForm(request.POST, request.FILES, instance=news_image)
+        if form.is_valid():
+            form.save()
+            return redirect('admin_sp')
+    else:
+        form = NewsImageForm(instance=news_image)
+    return render(request, 'add_edit_news.html', {'form': form})
+
+@login_required
+def delete_news(request, news_id):
+    news_image = get_object_or_404(NewsImage, id=news_id)
+    if request.method == 'POST':
+        news_image.delete()
+        return redirect('admin_sp')
+    return render(request, 'confirm_delete.html', {'object': news_image, 'type': 'news_image'})

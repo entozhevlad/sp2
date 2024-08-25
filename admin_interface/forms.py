@@ -1,5 +1,5 @@
 from django import forms
-from main.models import Category, Service
+from main.models import Category, Service, NewsImage
 from catalog.models import Color, ProductCategory, Product, ProductVariant
 from contacts.models import Adress
 class CategoryForm(forms.ModelForm):
@@ -42,3 +42,8 @@ class AdressForm(forms.ModelForm):
     class Meta:
         model = Adress
         fields = ['adress', 'graphic_1', 'graphic_2']
+
+class NewsImageForm(forms.ModelForm):
+    class Meta:
+        model = NewsImage
+        fields = ['title', 'image']

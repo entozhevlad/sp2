@@ -20,3 +20,14 @@ class Service(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class NewsImage(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='news/')
+    created_at = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        verbose_name = 'Новость'
+        verbose_name_plural = 'Новости'
+    def __str__(self):
+        return self.title

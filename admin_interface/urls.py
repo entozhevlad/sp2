@@ -40,5 +40,9 @@ urlpatterns = [
     path('admin_sp/add_address/', views.add_adress, name='add_address'),
     path('admin_sp/edit_address/<int:address_id>/', views.edit_adress, name='edit_address'),
     path('admin_sp/delete_address/<int:address_id>/', views.delete_adress, name='delete_address'),
+    # News URLs
+    path('admin_sp/add_news/', views.add_news, name='add_news'),
+    path('admin_sp/edit_news/<int:news_id>/', views.edit_news, name='edit_news'),
+    path('admin_sp/delete_news/<int:news_id>/', views.delete_news, name='delete_news'),
 ]
 
