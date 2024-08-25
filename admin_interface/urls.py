@@ -37,8 +37,8 @@ urlpatterns = [
     path('admin_sp/edit_product_variant/<int:variant_id>/', views.edit_product_variant, name='edit_product_variant'),
     path('admin_sp/delete_product_variant/<int:variant_id>/', views.delete_product_variant, name='delete_product_variant'),
     # Adress URLs
-    path('admin_sp/add_adress/', views.add_adress, name='add_adress'),
-    path('admin_sp/edit_adress/<int:adress_id>/', views.edit_adress, name='edit_adress'),
-    path('admin_sp/delete_adress/<int:adress_id>/', views.delete_adress, name='delete_adress'),
+    path('admin_sp/add_address/', views.add_adress, name='add_address'),
+    path('admin_sp/edit_address/<int:address_id>/', views.edit_adress, name='edit_address'),
+    path('admin_sp/delete_address/<int:address_id>/', views.delete_adress, name='delete_address'),
 ]
 

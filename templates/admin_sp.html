@@ -4,8 +4,6 @@
     {% load static %}
     <meta charset="UTF-8">
     <title>Админка</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900&display=swap"
           rel="stylesheet">
     <link type="image/svg+xml" sizes="96x96" rel="icon" href="{% static 'img/favicon/favicon.svg' %}">
@@ -21,8 +19,38 @@
             color: #333;
         }
 
-        h2 {
-            color: #666;
+        .navbar {
+            background-color: #333;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .navbar a {
+            color: #fff;
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .category-toggle {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
         }
 
         table {
@@ -41,11 +69,6 @@
             background-color: #f2f2f2;
         }
 
-        .add-link {
-            display: block;
-            margin-top: 10px;
-        }
-
         a {
             color: #007bff;
             text-decoration: none;
@@ -54,207 +77,231 @@
         a:hover {
             text-decoration: underline;
         }
-
-        .navbar {
-            background-color: #333;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-
-        .navbar a {
-            color: #fff;
-            margin-right: 10px;
-            text-decoration: none;
-        }
-
-        .navbar a:hover {
-            text-decoration: underline;
-        }
     </style>
 </head>
 <body>
 <div class="navbar">
     <a href="{% url 'admin_sp' %}">Главная</a>
-    <a href="{% url 'add_category' %}">Добавить категорию</a>
-    <a href="{% url 'add_service' %}">Добавить услугу</a>
-    <a href="{% url 'add_color' %}">Добавить цвет</a>
-    <a href="{% url 'add_product_category' %}">Добавить категорию товаров</a>
-    <a href="{% url 'add_product' %}">Добавить товар</a>
-    <a href="{% url 'add_product_variant' %}">Добавить вариант товара</a>
-    <a href="{% url 'add_adress' %}">Добавить адрес</a>
 </div>
 
 <h1>Админка</h1>
 
-<h2>Категории</h2>
-<table>
-    <thead>
-    <tr>
-        <th>Название</th>
-        <th>Действия</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for category in categories %}
-        <tr>
-            <td>{{ category.name }}</td>
-            <td>
-                <a href="{% url 'edit_category' category.id %}">Изменить</a> |
-                <a href="{% url 'delete_category' category.id %}">Удалить</a>
-            </td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-<a href="{% url 'add_category' %}" class="add-link">Добавить категорию</a>
+<!-- Кнопки для переключения разделов -->
+<button class="category-toggle" data-target="categories-section">Категории</button>
+<button class="category-toggle" data-target="services-section">Услуги</button>
+<button class="category-toggle" data-target="colors-section">Цвета</button>
+<button class="category-toggle" data-target="product-categories-section">Категории товаров</button>
+<button class="category-toggle" data-target="products-section">Товары</button>
+<button class="category-toggle" data-target="product-variants-section">Варианты товаров</button>
+<button class="category-toggle" data-target="addresses-section">Адреса офисов</button>
 
-<h2>Услуги</h2>
-<table>
-    <thead>
-    <tr>
-        <th>Название</th>
-        <th>Цена</th>
-        <th>Действия</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for service in services %}
+<!-- Секции с данными -->
+<div id="categories-section" class="section active">
+    <h2>Категории</h2>
+    <table>
+        <thead>
         <tr>
-            <td>{{ service.name }}</td>
-            <td>{{ service.price }}</td>
-            <td>
-                <a href="{% url 'edit_service' service.id %}">Изменить</a> |
-                <a href="{% url 'delete_service' service.id %}">Удалить</a>
-            </td>
+            <th>Название</th>
+            <th>Действия</th>
         </tr>
-    {% endfor %}
-    </tbody>
-</table>
-<a href="{% url 'add_service' %}" class="add-link">Добавить услугу</a>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.name }}</td>
+                <td>
+                    <a href="{% url 'edit_category' category.id %}">Изменить</a> |
+                    <a href="{% url 'delete_category' category.id %}">Удалить</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'add_category' %}" class="add-link">Добавить категорию</a>
+</div>
 
-<h2>Цвета</h2>
-<table>
-    <thead>
-    <tr>
-        <th>Название</th>
-        <th>Изображение</th>
-        <th>Действия</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for color in colors %}
+<div id="services-section" class="section">
+    <h2>Услуги</h2>
+    <table>
+        <thead>
         <tr>
-            <td>{{ color.name }}</td>
-            <td><img src="{{ color.image.url }}" alt="{{ color.name }}" style="width: 50px; height: 50px;"></td>
-            <td>
-                <a href="{% url 'edit_color' color.id %}">Изменить</a> |
-                <a href="{% url 'delete_color' color.id %}">Удалить</a>
-            </td>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Действия</th>
         </tr>
-    {% endfor %}
-    </tbody>
-</table>
-<a href="{% url 'add_color' %}" class="add-link">Добавить цвет</a>
+        </thead>
+        <tbody>
+        {% for service in services %}
+            <tr>
+                <td>{{ service.name }}</td>
+                <td>{{ service.price }}</td>
+                <td>
+                    <a href="{% url 'edit_service' service.id %}">Изменить</a> |
+                    <a href="{% url 'delete_service' service.id %}">Удалить</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'add_service' %}" class="add-link">Добавить услугу</a>
+</div>
 
-<h2>Категории товаров</h2>
-<table>
-    <thead>
-    <tr>
-        <th>Название</th>
-        <th>Действия</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for product_category in product_categories %}
+<div id="colors-section" class="section">
+    <h2>Цвета</h2>
+    <table>
+        <thead>
         <tr>
-            <td>{{ product_category.name }}</td>
-            <td>
-                <a href="{% url 'edit_product_category' product_category.id %}">Изменить</a> |
-                <a href="{% url 'delete_product_category' product_category.id %}">Удалить</a>
-            </td>
+            <th>Название</th>
+            <th>Изображение</th>
+            <th>Действия</th>
         </tr>
-    {% endfor %}
-    </tbody>
-</table>
-<a href="{% url 'add_product_category' %}" class="add-link">Добавить категорию товаров</a>
+        </thead>
+        <tbody>
+        {% for color in colors %}
+            <tr>
+                <td>{{ color.name }}</td>
+                <td><img src="{{ color.image.url }}" alt="{{ color.name }}" style="width: 50px; height: 50px;"></td>
+                <td>
+                    <a href="{% url 'edit_color' color.id %}">Изменить</a> |
+                    <a href="{% url 'delete_color' color.id %}">Удалить</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'add_color' %}" class="add-link">Добавить цвет</a>
+</div>
 
-<h2>Товары</h2>
-<table>
-    <thead>
-    <tr>
-        <th>Название</th>
-        <th>Категория</th>
-        <th>Действия</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for product in products %}
+<div id="product-categories-section" class="section">
+    <h2>Категории товаров</h2>
+    <table>
+        <thead>
         <tr>
-            <td>{{ product.name }}</td>
-            <td>{{ product.category.name }}</td>
-            <td>
-                <a href="{% url 'edit_product' product.id %}">Изменить</a> |
-                <a href="{% url 'delete_product' product.id %}">Удалить</a>
-            </td>
+            <th>Название</th>
+            <th>Действия</th>
         </tr>
-    {% endfor %}
-    </tbody>
-</table>
-<a href="{% url 'add_product' %}" class="add-link">Добавить товар</a>
+        </thead>
+        <tbody>
+        {% for product_category in product_categories %}
+            <tr>
+                <td>{{ product_category.name }}</td>
+                <td>
+                    <a href="{% url 'edit_product_category' product_category.id %}">Изменить</a> |
+                    <a href="{% url 'delete_product_category' product_category.id %}">Удалить</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'add_product_category' %}" class="add-link">Добавить категорию товаров</a>
+</div>
 
-<h2>Варианты товаров</h2>
-<table>
-    <thead>
-    <tr>
-        <th>Товар</th>
-        <th>Название</th>
-        <th>Цвет</th>
-        <th>Цена</th>
-        <th>Действия</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for variant in product_variants %}
+<!-- Товары -->
+<div id="products-section" class="section">
+    <h2>Товары</h2>
+    <table>
+        <thead>
         <tr>
-            <td>{{ variant.product.name }}</td>
-            <td>{{ variant.name }}</td>
-            <td>{{ variant.color.name }}</td>
-            <td>{{ variant.price }}</td>
-            <td>
-                <a href="{% url 'edit_product_variant' variant.id %}">Изменить</a> |
-                <a href="{% url 'delete_product_variant' variant.id %}">Удалить</a>
-            </td>
+            <th>Название</th>
+            <th>Категория</th>
+            <th>Действия</th>
         </tr>
-    {% endfor %}
-    </tbody>
-</table>
-<a href="{% url 'add_product_variant' %}" class="add-link">Добавить вариант товара</a>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.category.name }}</td>
+                <td>
+                    <a href="{% url 'edit_product' product.id %}">Изменить</a> |
+                    <a href="{% url 'delete_product' product.id %}">Удалить</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'add_product' %}" class="add-link">Добавить товар</a>
+</div>
 
-<h2>Адреса офисов</h2>
-<table>
-    <thead>
-    <tr>
-        <th>Адрес</th>
-        <th>График 1</th>
-        <th>График 2</th>
-        <th>Действия</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for adress in adresses %}
+<!-- Варианты товаров -->
+<div id="product-variants-section" class="section">
+    <h2>Варианты товаров</h2>
+    <table>
+        <thead>
         <tr>
-            <td>{{ adress.adress }}</td>
-            <td>{{ adress.graphic_1 }}</td>
-            <td>{{ adress.graphic_2 }}</td>
-            <td>
-                <a href="{% url 'edit_adress' adress.id %}">Изменить</a> |
-                <a href="{% url 'delete_adress' adress.id %}">Удалить</a>
-            </td>
+            <th>Товар</th>
+            <th>Название</th>
+            <th>Цвет</th>
+            <th>Цена</th>
+            <th>Действия</th>
         </tr>
-    {% endfor %}
-    </tbody>
-</table>
-<a href="{% url 'add_adress' %}" class="add-link">Добавить адрес</a>
+        </thead>
+        <tbody>
+        {% for variant in product_variants %}
+            <tr>
+                <td>{{ variant.product.name }}</td>
+                <td>{{ variant.name }}</td>
+                <td>{{ variant.color.name }}</td>
+                <td>{{ variant.price }}</td>
+                <td>
+                    <a href="{% url 'edit_product_variant' variant.id %}">Изменить</a> |
+                    <a href="{% url 'delete_product_variant' variant.id %}">Удалить</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'add_product_variant' %}" class="add-link">Добавить вариант товара</a>
+</div>
 
+<!-- Адреса офисов -->
+<div id="addresses-section" class="section">
+    <h2>Адреса офисов</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Адрес</th>
+            <th>График 1</th>
+            <th>График 2</th>
+            <th>Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for adress in adresses %}
+            <tr>
+                <td>{{ adress.adress }}</td>
+                <td>{{ adress.graphic_1 }}</td>
+                <td>{{ adress.graphic_2 }}</td>
+                <td>
+                    <a href="{% url 'edit_address' adress.id %}">Изменить</a> |
+                    <a href="{% url 'delete_address' adress.id %}">Удалить</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'add_address' %}" class="add-link">Добавить адрес</a>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const buttons = document.querySelectorAll('.category-toggle');
+        const sections = document.querySelectorAll('.section');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const target = button.getAttribute('data-target');
+
+                sections.forEach(section => {
+                    if (section.id === target) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+            });
+        });
+    });
+</script>
 </body>
 </html>
