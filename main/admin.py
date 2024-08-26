@@ -15,3 +15,5 @@ class ServiceAdmin(admin.ModelAdmin):
 @admin.register(NewsImage)
 class NewsImageAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at')
+    fields = ('title', 'image', 'image_big', 'image_mobile', 'created_at')
+    readonly_fields = ('created_at',)

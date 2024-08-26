@@ -6,18 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Студия Печати{% endblock %}</title>
     <link href="{% static 'css/index.css' %}" rel="stylesheet">
-    <script src="{% static 'js/index.js' %}"></script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet">
 
     <link type="image/svg+xml" sizes="96x96" rel="icon" href="{% static 'img/favicon/favicon.svg' %}">
-<link rel="apple-touch-icon" href="{% static 'img/favicon/favicon.svg' %}"/>
+    <link rel="apple-touch-icon" href="{% static 'img/favicon/favicon.svg' %}"/>
 
     <link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}"/>
-
 </head>
 <body>
 <header>
@@ -38,41 +37,42 @@
         <a href="{% url 'main:price' %}">ПРАЙС</a>
         <a href="{% url 'catalog:catalog' %}">КАТАЛОГ</a>
         <a href="{% url 'contacts:contacts' %}">КОНТАКТЫ</a>
-
     </nav>
 </header>
 <main>
-    <div class="fst">
-        <div class="pc">
-            <img src="{% static 'img/main/add_swap.svg' %}" alt="">
-        </div>
-        <div class="mob">
-            <img src="{% static 'img/main/mob_add.svg' %}" alt="">
-        </div>
-    </div>
-    <div class="thd">
-    <h2>Новости</h2>
-    {% if news_images|length > 1 %}
-        <!-- Если больше одного изображения, отображаем карусель -->
-        <div class="autoplay">
-            {% for image in news_images %}
-                <div class="carousel-item">
-                    <img src="{{ image.image.url }}" alt="{{ image.alt_text }}">
-                    <div class="overlay">
-                        <div class="text">{{ image.description }}</div>
+    <div class="news">
+        {% if news_images|length > 1 %}
+            <div class="autoplay_news">
+                {% for image in news_images %}
+                    <div class="news-item">
+                        <picture>
+                            {% if image.image_big %}
+                                <source srcset="{{ image.image_big.url }}" media="(min-width: 1200px)">
+                            {% endif %}
+                            {% if image.image_mobile %}
+                                <source srcset="{{ image.image_mobile.url }}" media="(max-width: 767px)">
+                            {% endif %}
+                            <img src="{{ image.image.url }}" alt="{{ image.title }}" loading="lazy">
+                        </picture>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
-    {% else %}
-        <!-- Если только одно изображение, показываем его без карусели -->
-        <div class="single-image">
-            {% for image in news_images %}
-                <img src="{{ image.image.url }}" alt="{{ image.alt_text }}">
-            {% endfor %}
-        </div>
-    {% endif %}
-</div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="single-image">
+                {% for image in news_images %}
+                    <picture>
+                        {% if image.image_big %}
+                            <source srcset="{{ image.image_big.url }}" media="(min-width: 1200px)">
+                        {% endif %}
+                        {% if image.image_mobile %}
+                            <source srcset="{{ image.image_mobile.url }}" media="(max-width: 767px)">
+                        {% endif %}
+                        <img src="{{ image.image.url }}" alt="{{ image.title }}" loading="lazy">
+                    </picture>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
 
     <div class="scd">
         <hr>
@@ -82,86 +82,69 @@
             <div class="left">
                 <h2>Сеть копицентров в Томске</h2>
                 <p>У нас доступен весь спектр оперативно-полиграфических услуг, а так же изготовление сувенирной
-                    продукции.
-                    Действуют скидки и специальные цены на многие товары, благодаря которым с нами выгодно работать.</p>
+                    продукции. Действуют скидки и специальные цены на многие товары, благодаря которым с нами выгодно работать.</p>
             </div>
             <div class="right">
                 <h2>Появился вопрос? Решим быстро!</h2>
-                <p>Обратившись в Студию печати можете рассчитывать на качественный и вежливый сервис, оперативность
-                    выполнения заказа.</p>
+                <p>Обратившись в Студию печати, можете рассчитывать на качественный и вежливый сервис, оперативность выполнения заказа.</p>
             </div>
         </div>
     </div>
-
 
     <div class="thd">
         <h2>Примеры работ</h2>
         <div class="autoplay">
-            <div class="carousel-item"><img src="{% static 'img/main/home/thd/1.png' %}" alt="Slide 1">
+            <div class="carousel-item"><img src="{% static 'img/main/home/thd/1.png' %}" alt="Slide 1" loading="lazy">
                 <div class="overlay">
                     <div class="text">ПРИМЕР</div>
                 </div>
             </div>
-            <div class="carousel-item"><img src="{% static 'img/main/home/thd/2.png' %}" alt="Slide 2">
+            <div class="carousel-item"><img src="{% static 'img/main/home/thd/2.png' %}" alt="Slide 2" loading="lazy">
                 <div class="overlay">
                     <div class="text">ПРИМЕР</div>
                 </div>
             </div>
-            <div class="carousel-item"><img src="{% static 'img/main/home/thd/3.png' %}" alt="Slide 3">
+            <div class="carousel-item"><img src="{% static 'img/main/home/thd/3.png' %}" alt="Slide 3" loading="lazy">
                 <div class="overlay">
                     <div class="text">ПРИМЕР</div>
                 </div>
             </div>
-            <div class="carousel-item"><img src="{% static 'img/main/home/thd/4.png' %}" alt="Slide 4">
+            <div class="carousel-item"><img src="{% static 'img/main/home/thd/4.png' %}" alt="Slide 4" loading="lazy">
                 <div class="overlay">
                     <div class="text">ПРИМЕР</div>
                 </div>
             </div>
-            <div class="carousel-item"><img src="{% static 'img/main/home/thd/5.png' %}" alt="Slide 5">
+            <div class="carousel-item"><img src="{% static 'img/main/home/thd/5.png' %}" alt="Slide 5" loading="lazy">
                 <div class="overlay">
                     <div class="text">ПРИМЕР</div>
                 </div>
             </div>
-            <div class="carousel-item"><img src="{% static 'img/main/home/thd/6.png' %}" alt="Slide 6">
+            <div class="carousel-item"><img src="{% static 'img/main/home/thd/6.png' %}" alt="Slide 6" loading="lazy">
                 <div class="overlay">
                     <div class="text">ПРИМЕР</div>
                 </div>
             </div>
-            <div class="carousel-item"><img src="{% static 'img/main/home/thd/7.png' %}" alt="Slide 7">
+            <div class="carousel-item"><img src="{% static 'img/main/home/thd/7.png' %}" alt="Slide 7" loading="lazy">
                 <div class="overlay">
                     <div class="text">ПРИМЕР</div>
                 </div>
             </div>
         </div>
-        <!-- Подключаем jQuery -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <!-- Подключаем скрипт Slick -->
-        <script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
-        <script src="{% static 'js/slick.js' %}"></script>
-
     </div>
-
 
     <div class="four">
         <div class="socials">
             <h1 class="socials-hr">Соцсети</h1>
-            <a href="https://vk.com/sptomsk" target="_blank"><img src="{% static 'img/main/home/four/vkontakte.svg' %}"
-                                                                  alt="VK"></a>
-            <a href="https://t.me/sp_tomsk" target="_blank"><img src="{% static 'img/main/home/four/telegram.svg' %}"
-                                                                 alt="Telegram"></a>
-            <a href="https://wa.me/sptomsk" target="_blank"><img src="{% static 'img/main/home/four/whatapp.svg' %}"
-                                                                 alt="WhatsApp"></a>
-            <a href="https://www.instagram.com/studiopechati" target="_blank"><img
-                    src="{% static 'img/main/home/four/instagram.svg' %}" alt="Instagram"></a>
-
+            <a href="https://vk.com/sptomsk" target="_blank"><img src="{% static 'img/main/home/four/vkontakte.svg' %}" alt="VK"></a>
+            <a href="https://t.me/sp_tomsk" target="_blank"><img src="{% static 'img/main/home/four/telegram.svg' %}" alt="Telegram"></a>
+            <a href="https://wa.me/sptomsk" target="_blank"><img src="{% static 'img/main/home/four/whatapp.svg' %}" alt="WhatsApp"></a>
+            <a href="https://www.instagram.com/studiopechati" target="_blank"><img src="{% static 'img/main/home/four/instagram.svg' %}" alt="Instagram"></a>
         </div>
         <div class="property">
             <h1 class="property-hr">Реквизиты</h1>
             <p>ИП Агабекян Нарек Гагикович<br/>
                 ИНН 701716832314<br/>
                 ОГРИП 319703100073091</p>
-
-            </p>
         </div>
     </div>
     <div class="map">
@@ -234,6 +217,11 @@
 
 </footer>
 
-</body>
+<!-- Загрузка скриптов в конце страницы -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+<script type="text/javascript" src="{% static 'slick/slick.min.js' %}" defer></script>
+<script src="{% static 'js/slick.js' %}" defer></script>
+<script src="{% static 'js/index.js' %}" defer></script>
 
+</body>
 </html>

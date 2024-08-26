@@ -223,35 +223,57 @@ hr {
     margin-top: 0;
 }
 
-.fst {
+/*.fst {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: flex-end;*/
+/*    background-color: #173494;*/
+/*}*/
+
+/*.pc {*/
+/*    display: block;*/
+/*}*/
+
+/*.mob {*/
+/*    display: none;*/
+/*}*/
+
+/*.fst .pc img, .fst .mob img {*/
+/*    width: 100%;*/
+/*    height: auto;*/
+/*    display: block;*/
+/*}*/
+
+/*@media (max-width: 767px) {*/
+/*    .pc {*/
+/*        display: none;*/
+/*    }*/
+
+/*    .mob {*/
+/*        display: block;*/
+/*    }*/
+/*}*/
+
+
+/*news*/
+
+.news {
+    margin-top: 65px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    background-color: #173494;
 }
-
-.pc {
-    display: block;
-}
-
-.mob {
-    display: none;
-}
-
-.fst .pc img, .fst .mob img {
+.autoplay_news, .single-image {
     width: 100%;
-    height: auto;
-    display: block;
+    padding: 0;
+    margin: 0;
+    position: relative;
 }
-
-@media (max-width: 767px) {
-    .pc {
-        display: none;
-    }
-
-    .mob {
-        display: block;
-    }
+.slick-slide img, .single-image img {
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Заставляет изображение занимать всю ширину слайда */
+    height: auto; /* Сохраняет пропорции изображения */
+    object-fit: cover; /* Если изображение имеет другой соотношение сторон, оно будет обрезано по размеру слайда */
 }
 
 /*scd*/

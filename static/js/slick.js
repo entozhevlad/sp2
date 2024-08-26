@@ -1,4 +1,14 @@
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", function () {
+    $('.autoplay_news').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        lazyLoad: 'progressive',
+    });
+
     $('.autoplay').slick({
         dots: true,
         infinite: true,
@@ -8,6 +18,7 @@ $(document).ready(function () {
         slidesToShow: 6,
         slidesToScroll: 1,
         focusOnSelect: true,
+        lazyLoad: 'ondemand',
         responsive: [
             {
                 breakpoint: 2520,
