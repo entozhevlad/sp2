@@ -1,83 +1,81 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ product.product.name }}</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .product-detail {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .product-detail img {
-            max-width: 300px;
-            margin-bottom: 20px;
-        }
-        .product-detail h1 {
-            margin: 20px 0;
-        }
-        .product-detail p {
-            margin-bottom: 10px;
-        }
-
-        .other-variants {
-            margin-top: 30px;
-            width: 100%;
-        }
-        .other-variants h2 {
-            margin-bottom: 10px;
-        }
-        .other-variants ul {
-            list-style: none;
-            padding: 0;
-        }
-        .other-variants li {
-            margin-bottom: 5px;
-        }
-        .other-variants a {
-            text-decoration: none;
-            color: #007BFF;
-        }
-        .other-variants a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>{% block title %}Каталог — Студия Печати{% endblock %}</title>
+    <link href="{% static 'css/product_detail.css' %}" rel="stylesheet">
+    <link type="image/svg+xml" sizes="96x96" rel="icon" href="{% static 'img/favicon/favicon.svg' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
 </head>
 <body>
+<header>
+    <a href="{% url 'main:home' %}">
+        <img class="logo" src="{% static 'img/header/logo.svg' %}" alt="">
+        <p id="firm_name">СТУДИЯ ПЕЧАТИ</p>
+    </a>
+    <div class="burger">
+        <span></span>
+    </div>
+    <nav class="navbar">
+        <a href="#">
+            <img class="num-icon" src="{% static 'img/header/wa.svg' %}" alt="">
+        </a>
+        <a href="#"><img class="num-icon" src="{% static 'img/header/tg.svg' %}" alt=""></a>
+        <a href="#"><img class="num-icon" src="{% static 'img/header/ph.svg' %}" alt=""> +7(913)-114-55-24</a>
+        <a href="{% url 'main:price' %}">ПРАЙС</a>
+        <a href="{% url 'catalog:catalog' %}"><strong>КАТАЛОГ</strong></a>
+        <a href="{% url 'contacts:contacts' %}">КОНТАКТЫ</a>
+    </nav>
+</header>
     <div class="product-detail">
+
+
         {% if product.main_image %}
         <img src="{{ product.main_image.url }}" alt="{{ product.product.name }} - {{ product.color.name }}">
         {% else %}
         <img src="https://via.placeholder.com/300" alt="Нет изображения">
         {% endif %}
+
+
         <h1>{{ product.product.name }}</h1>
+
         <p><strong>Описание:</strong> {{ product.product.description }}</p>
+
+        <p>ЦЕНА??</p>
+
         {% if product.color %}
         <p><strong>Цвет:</strong> {{ product.color.name }}</p>
         {% endif %}
+
         {% if product.product.height %}
         <p><strong>Высота:</strong> {{ product.product.height }} см</p>
         {% endif %}
+
         {% if product.product.diameter %}
         <p><strong>Диаметр:</strong> {{ product.product.diameter }} см</p>
         {% endif %}
+
         {% if product.product.material %}
         <p><strong>Материал:</strong> {{ product.product.material }}</p>
         {% endif %}
+
         {% if product.product.application_method %}
         <p><strong>Метод нанесения:</strong> {{ product.product.application_method }}</p>
         {% endif %}
+
         {% if product.product.volume %}
         <p><strong>Объём:</strong> {{ product.product.volume }} л</p>
         {% endif %}
+
         {% if product.product.additional_details %}
         <p><strong>Дополнительные детали:</strong> {{ product.product.additional_details }}</p>
         {% endif %}
+
     </div>
     <!-- Ссылки на другие варианты -->
     <div class="other-variants">
@@ -94,5 +92,48 @@
             {% endfor %}
         </ul>
     </div>
+
+<footer style="background-image: url('{% static 'img/footer/tryapka.svg' %}')">
+    <div class="footer_fst">
+        <img class="line" src="{% static 'img\footer\line.svg' %}" alt="line">
+        <div class="footer">
+            <div class="contact">
+                <h3>Контакты</h3>
+                <a href="#"><img src="{% static 'img/footer/phone.svg' %}" alt="">+7(913)-114-55-24</a>
+                <div class="social-icons">
+                    <a href="https://t.me/sp_tomsk" target="_blank"><img src="{% static 'img/footer/tg.svg' %}"
+                                                                         alt="Telegram"></a>
+                    <a href="https://wa.me/sptomsk" target="_blank"><img src="{% static 'img/footer/wa.svg' %}"
+                                                                         alt="WhatsApp"></a>
+                    <a href="https://vk.com/sptomsk" target="_blank"><img src="{% static 'img/footer/vk.svg' %}"
+                                                                          alt="VK"></a>
+                    <a href="https://www.instagram.com/studiopechati" target="_blank"><img
+                            src="{% static 'img/footer/inst.svg' %}" alt="Instagram"></a>
+                </div>
+                <a href="#"><img src="{% static 'img/footer/map.svg' %}" alt="">Адреса</a>
+
+            </div>
+            <div class="navigation">
+                <h3>Навигация</h3>
+                <a href="#">Главная страница</a>
+                <a href="#">Услуги</a>
+                <a href="#">Блог</a>
+                <a href="#">Контакты</a>
+
+            </div>
+        </div>
+        <img class="line" src="{% static 'img\footer\line.svg' %}" alt="line">
+    </div>
+
+
+    <div class="footer2">
+        <img src="{% static 'img/footer/logo.svg' %}" alt="">
+        <div class="text-container">
+            <a>© 2024 | SP-TOMSK.RU | Все права защищены.</a>
+        </div>
+    </div>
+
+</footer>
+<script src="{% static 'js/index.js' %}" defer></script>
 </body>
 </html>

@@ -17,7 +17,8 @@
 
 <header>
     <a href="{% url 'main:home' %}">
-        <img class="logo" src="{% static 'img/header/logo.svg' %}" alt=""><p id="firm_name">СТУДИЯ ПЕЧАТИ</p>
+        <img class="logo" src="{% static 'img/header/logo.svg' %}" alt="">
+        <p id="firm_name">СТУДИЯ ПЕЧАТИ</p>
     </a>
     <div class="burger">
         <span></span>
@@ -37,6 +38,8 @@
 </header>
 <main>
     <div class="address" style="margin-top: 70px">
+
+
         <table>
             <thead>
             <tr>
@@ -46,41 +49,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>г.Томск, пр-т. Учебная 46</td>
-                <td>09-20</td>
-                <td>10-19</td>
-            </tr>
-            <tr>
-                <td>г.Томск, пр-т. Комсомольский 77</td>
-                <td>08-18</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>г.Томск, Иркутский тракт 194</td>
-                <td>09-20</td>
-                <td>10-19</td>
-            </tr>
-            <tr>
-                <td>г. Томск, ул. Вавилова 10</td>
-                <td>09-19</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>г. Томск, пр-т. Фрунзе 119е</td>
-                <td>09-20</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>г. Томск, ул. Суворова 17</td>
-                <td>09-20</td>
-                <td>10-19</td>
-            </tr>
-            <tr>
-                <td>г.Томск, пр-т. Ленина 41</td>
-                <td>09-19</td>
-                <td>10-18 <br>суббота<br></td>
-            </tr>
+            {% for address in addresses %}
+                <tr>
+                    <td>{{ address.adress }}</td>
+                    <td>{{ address.graphic_1 }}</td>
+                    <td>{{ address.graphic_2 }}</td>
+                </tr>
+            {% endfor %}
         </table>
     </div>
     <div class="hotline">
@@ -113,7 +88,6 @@
             </tbody>
         </table>
     </div>
-    
 
 
     <div class="map">
@@ -154,7 +128,7 @@
                 <a href="#"><img src="{% static 'img/footer/phone.svg' %}" alt="">+7(913)-114-55-24</a>
                 <div class="social-icons">
                     <a href="https://t.me/sp_tomsk" target="_blank"><img src="{% static 'img/footer/tg.svg' %}"
-                                                                        alt="Telegram"></a>
+                                                                         alt="Telegram"></a>
                     <a href="https://wa.me/sptomsk" target="_blank"><img src="{% static 'img/footer/wa.svg' %}"
                                                                          alt="WhatsApp"></a>
                     <a href="https://vk.com/sptomsk" target="_blank"><img src="{% static 'img/footer/vk.svg' %}"

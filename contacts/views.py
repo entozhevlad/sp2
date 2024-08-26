@@ -5,9 +5,10 @@ from django.conf import settings
 from .forms import ContactForm
 import environ
 
+from .models import Adress
+
 env = environ.Env()
-class ContactsPageView(TemplateView):
-    template_name = 'contacts.html'
+
 
 
 def contact_view(request):
@@ -36,3 +37,8 @@ def contact_view(request):
 
 def success_view(request):
     return render(request, 'success.html')
+
+def address_view(request):
+    addresses = Adress.objects.all()
+    return render(request, 'contacts.html', {'addresses': addresses})
+
