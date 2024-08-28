@@ -49,13 +49,16 @@
 </main>
 
 {% block footer %}
-    <footer style="background-image: url('{% static 'img/footer/tryapka.svg' %}')">
+    <footer style="background-image: url('{% static 'img/footer/tryapka.svg' %}');
+            background-size: cover; /* Масштабирует изображение, чтобы оно полностью заполнило футер */
+            background-repeat: no-repeat; /* Предотвращает дублирование изображения */
+            background-position: center;">
         <div class="footer_fst">
             <img class="line" src="{% static 'img\footer\line.svg' %}" alt="line">
             <div class="footer-container">
                 <div class="contact">
                     <h3>Контакты</h3>
-                    <a href="#"><img src="{% static 'img/footer/phone.svg' %}" alt="">+7(913)-114-55-24</a>
+                    <p><img src="{% static 'img/footer/phone.svg' %}" alt="">+7(913)-114-55-24</p>
                     <div class="social-icons">
                         <a href="https://t.me/sp_tomsk" target="_blank"><img src="{% static 'img/footer/tg.svg' %}"
                                                                              alt="Telegram"></a>

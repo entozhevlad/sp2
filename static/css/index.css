@@ -261,8 +261,10 @@ footer {
     align-items: start;
     flex-direction: column;
 }
+.contact p{
 
-.contact a,
+}
+.contact a, .contact p,
 .navigation a {
     color: white;
     text-align: left;
@@ -270,7 +272,7 @@ footer {
     font-size: 16px;
 }
 
-.contact a img,
+.contact a img, .contact p img,
 .navigation a img {
     margin-right: 10px;
 }
@@ -319,7 +321,7 @@ footer {
         width: 100%;
     }
 
-    .contact a,
+    .contact a, .contact p,
     .navigation a {
         color: white;
         text-align: left;
@@ -349,7 +351,7 @@ footer {
         text-transform: uppercase;
     }
 
-    .contact a,
+    .contact a, .contact p,
     .navigation a {
         font-size: 22px;
         margin: 5px 0;
@@ -1202,6 +1204,25 @@ body.menu-open {
     .catalog-hr {
         font-size: 20px;
     }
+
+    .product-title {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 320px) {
+    .product-list {
+        grid-template-columns: repeat(1, 100%);
+    }
+
+    .product-title, .description {
+        font-size: 16px;
+        margin: 0;
+    }
+
+    .product {
+        margin: 5px;
+    }
 }
 
 /*КАРТОЧКА ТОВАРА*/
@@ -1295,12 +1316,17 @@ body.menu-open {
 }
 
 .cards {
-    display: flex; /* Используем flexbox для горизонтального выравнивания */
-    gap: 30px; /* Расстояние между карточками */
-    overflow-x: auto; /* Включаем горизонтальную прокрутку, если не хватает места */
-    padding-bottom: 10px; /* Добавляем немного отступа снизу, чтобы скроллбар не перекрывал карточки */
-    margin-bottom: 20px; /* Нижний отступ для отступа от других элементов на странице */
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
     scrollbar-width: none;
+}
+
+.cards .product {
+    flex: 0 0 auto; /* Устанавливаем фиксированную ширину карточки для предотвращения сжатия */
+    width: 200px; /* Фиксированная ширина карточки */
 }
 
 @media (max-width: 1280px) {
@@ -1491,11 +1517,10 @@ td {
     right: 0;
     width: 40%;
 }
-
-@media (max-width: 1345px) {
+@media (max-width: 1600px) {
     .hr-lines#th1:after,
     .hr-lines#th1:before {
-        width: 35%;
+        width: 37%;
     }
 
     .hr-lines#th2:after,
@@ -1507,6 +1532,19 @@ td {
     .hr-lines#th3:before {
         width: 28%;
     }
+
+    .hotline-hr:after,
+    .hotline-hr:before {
+        width: 37%;
+    }
+}
+@media (max-width: 1367px) {
+    .hr-lines#th1:after,
+    .hr-lines#th1:before {
+        width: 35%;
+    }
+
+
 
     .hotline-hr:after,
     .hotline-hr:before {
@@ -1540,7 +1578,7 @@ td {
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 770px) {
     .hr-lines#th1:after,
     .hr-lines#th1:before {
         width: 25%;
@@ -1569,11 +1607,11 @@ td {
 
     .hotline-hr:after,
     .hotline-hr:before {
-        width: 20%;
+        width: 26%;
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 620px) {
     thead {
         font-size: 18px;
     }
@@ -1584,8 +1622,29 @@ td {
 
     .hr-lines#th1:after,
     .hr-lines#th1:before {
-        width: 20%;
+        width: 26%;
 
+    }
+
+    .hr-lines#th2:after,
+    .hr-lines#th2:before {
+        width: 10%;
+    }
+
+    .hr-lines#th3:after,
+    .hr-lines#th3:before {
+        width: 10%;
+    }
+
+    td {
+        border-bottom: 1px solid rgba(23, 52, 148, 0.3);
+    }
+
+}
+@media (max-width: 426px) {
+    .hr-lines#th1:after,
+    .hr-lines#th1:before {
+        width: 16%;
     }
 
     .hr-lines#th2:after,
@@ -1598,84 +1657,119 @@ td {
         width: 8%;
     }
 
-    td {
-        border-bottom: 1px solid rgba(23, 52, 148, 0.3);
+    .hotline-hr:after,
+    .hotline-hr:before {
+        width: 16%;
     }
-
 }
 
-.hotline-table {
-    margin: 0;
-    padding: 0;
+.hotline-links {
+    display: flex;
+    align-self: center;
+    padding: 0 10%;
 }
 
-.hl1 {
-    width: 5%;
+.numbers {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: start;
 }
-
-.hl2 {
-    text-align: left;
-    width: 45%;
+.numbers p{
+    margin: 0 0 10px 0;
 }
-
-.hl3, .hl4 {
-    text-align: center;
-    width: 25%;
-}
-
-a {
-    text-decoration: none;
+.numbers a, .numbers p {
     color: black;
+    text-decoration: none;
+    font-size: 30px;
+    display: flex; /* Изменяем display на flex */
+    align-items: center; /* Выравнивание по центру по вертикали */
+    flex-grow: 1;
+    margin-bottom: 10px; /* Добавляем отступ между ссылками */
 }
 
 
-@media (max-width: 850px) {
-    .hl1 {
-        border: none;
+.numbers img {
+    height: 45px;
+    width: auto;
+    margin-right: 20px;
+}
+
+.qrs {
+    display: flex;
+    flex-grow: 2;
+    justify-content: end;
+}
+.qrs a img{
+    height: 100%;
+    width: auto;
+}
+
+@media (max-width: 1225px) {
+    .numbers a, .numbers p {
+        font-size: 22px;
+    }
+    .qrs a img {
+        height: 200px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hotline-links {
+        padding: 0 5%;
     }
 
-    .hl2 {
-        font-size: 18px;
-        width: 35%;
-        border: none;
+    .numbers a, .numbers p {
+        font-size: 22px;
     }
 
-    .hl3, .hl4 {
-        width: 30%;
-        border: none;
+    .numbers img {
+        height: 40px;
     }
 
-    .qr-img {
+    .qrs a img {
         height: 150px;
-        width: auto;
     }
 }
 
-@media (max-width: 620px) {
-    .hl1 {
-        border: none;
+/* Адаптация для экранов до 768px */
+@media (max-width: 768px) {
+    .hotline-links {
+        padding: 0 5%;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .hl2 {
+
+
+    .numbers a, .numbers p {
+        font-size: 20px;
+    }
+
+    .numbers img {
+        height: 35px;
+    }
+
+    .qrs {
+        justify-content: center;
+        margin-top: 20px;
+    }
+}
+
+/* Адаптация для экранов до 480px */
+@media (max-width: 480px) {
+    .numbers a, .numbers p {
+        font-size: 20px;
+    }
+
+    .numbers img {
+        height: 40px;
+    }
+
+    .qrs {
         display: none;
-        width: 0;
-        border: none;
-    }
-
-    .hl3, .hl4 {
-        width: 47.5%;
-        border: none;
-    }
-
-    .qr-img {
-        height: 150px;
-        width: auto;
     }
 }
 
-@media (max-width: 400px) {
-    .qr-img {
-        height: 120px;
-        width: auto;
-    }
-}
+
