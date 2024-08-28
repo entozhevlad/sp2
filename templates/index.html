@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Студия Печати{% endblock title%}</title>
+    <title>{% block title %}Студия Печати{% endblock title %}</title>
     <link href="{% static 'css/index.css' %}" rel="stylesheet">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,10 +71,10 @@
                 </div>
                 <div class="navigation">
                     <h3>Навигация</h3>
-                    <a href="#">Главная страница</a>
-                    <a href="#">Услуги</a>
-                    <a href="#">Блог</a>
-                    <a href="#">Контакты</a>
+                    <a href="{% url 'main:home' %}">Главная страница</a>
+                    <a href="{% url 'main:price' %}">Услуги</a>
+                    <a href="{% url 'catalog:catalog' %}">Сувенирная продукция</a>
+                    <a href="{% url 'contacts:contacts' %}">Контакты</a>
 
                 </div>
             </div>
@@ -85,18 +85,15 @@
         <div class="footer2">
             <img src="{% static 'img/footer/logo.svg' %}" alt="">
             <div class="text-container">
-                <a>© 2024 | SP-TOMSK.RU | Все права защищены.</a>
+                <p>© 2024 | SP-TOMSK.RU | Все права защищены.</p>
             </div>
         </div>
 
     </footer>
 {% endblock footer %}
 <!-- Загрузка скриптов в конце страницы -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
-<script type="text/javascript" src="{% static 'slick/slick.min.js' %}" defer></script>
-<script src="{% static 'js/slick.js' %}"></script>
 <script src="{% static 'js/index.js' %}" defer></script>
-<script src="{% static 'js/catalog.js' %}" defer></script>
+{% block scripts %}{% endblock %}
 
 </body>
 </html>

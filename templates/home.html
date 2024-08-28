@@ -1,5 +1,10 @@
 {% extends "index.html" %}
 {% load static %}
+{% block scripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script type="text/javascript" src="{% static 'slick/slick.min.js' %}" defer></script>
+    <script src="{% static 'js/slick.js' %}"></script>
+{% endblock %}
 {% block main %}
     <div class="news">
         {% if news_images|length > 1 %}

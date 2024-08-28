@@ -917,6 +917,7 @@ ul {
     }
 
 }
+
 /*КАТАЛОГ*/
 
 .catalog-hr {
@@ -953,6 +954,11 @@ ul {
     display: flex;
 }
 
+/* Отключение прокрутки основного контента */
+body.menu-open {
+    overflow: hidden;
+}
+
 /* Затемняющий фон */
 .overlay {
     position: fixed;
@@ -979,6 +985,8 @@ ul {
     transition: transform 0.3s ease-in-out; /* Анимация для появления меню */
     display: flex;
     flex-direction: column;
+    overflow-y: auto; /* Добавляем прокрутку только для бокового меню */
+    max-height: 100vh; /* Ограничиваем высоту бокового меню */
 }
 
 .category-list a {
@@ -1269,7 +1277,7 @@ ul {
     flex-direction: row;
     gap: 10px;
     margin-bottom: 20px;
-    overflow-x: auto ;
+    overflow-x: auto;
     scrollbar-width: none;
 }
 
@@ -1294,6 +1302,7 @@ ul {
     margin-bottom: 20px; /* Нижний отступ для отступа от других элементов на странице */
     scrollbar-width: none;
 }
+
 @media (max-width: 1280px) {
     .product_price {
         width: 178px;
@@ -1349,13 +1358,16 @@ ul {
         flex-direction: column;
         gap: 20px;
     }
-    .product_img{
+
+    .product_img {
         border: none;
     }
-    .product_info h1{
+
+    .product_info h1 {
         margin: 20px 0;
     }
-    .other-variants{
+
+    .other-variants {
         margin-bottom: 20px;
     }
 }
@@ -1366,7 +1378,7 @@ ul {
     display: flex;
 }
 
-table {
+.addresses {
     margin: 0 10%;
     width: 100%;
 }
