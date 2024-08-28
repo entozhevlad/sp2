@@ -75,7 +75,7 @@
                         <p class="description">{{ variant.product.description }}</p>
                         <div class="price">
                             {% if variant.price %}
-                                <p> {{ variant.price_display }} ₽</p>
+                                <p> {{ variant.price|floatformat }} ₽</p>
                             {% endif %}
                         </div>
                     </a>

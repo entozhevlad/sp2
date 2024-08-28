@@ -32,67 +32,114 @@
         <a href="{% url 'contacts:contacts' %}">КОНТАКТЫ</a>
     </nav>
 </header>
+<main>
     <div class="product-detail">
+        <div class="product_general">
+            <div class="product_img">
+                {% if product.main_image %}
+                    <img src="{{ product.main_image.url }}" alt="{{ product.product.name }} - {{ product.color.name }}">
+                {% else %}
+                    <img src="https://via.placeholder.com/300" alt="Нет изображения">
+                {% endif %}
+            </div>
+            <div class="product_info">
+                <h1>{{ product.product.name }}</h1>
 
+                <!-- Ссылки на другие варианты -->
+                <div class="other-variants">
+                    {% for variant in other_variants %}
+                        <a href="{% url 'catalog:product_detail' variant.id %}">
+                            <img src="{{ variant.main_image.url|default:"Нет изображения" }}" alt="">
+                        </a>
+                    {% endfor %}
+                </div>
+                {% if product.color %}
+                    <p>Цвет: {{ product.color.name }}</p>
+                {% endif %}
 
-        {% if product.main_image %}
-        <img src="{{ product.main_image.url }}" alt="{{ product.product.name }} - {{ product.color.name }}">
-        {% else %}
-        <img src="https://via.placeholder.com/300" alt="Нет изображения">
-        {% endif %}
+                {% if product.product.size %}
+                    <p>Размер: {{ product.product.size }}</p>
+                {% endif %}
 
+                {% if product.product.density %}
+                    <p>Плотность: {{ product.product.density }}</p>
+                {% endif %}
 
-        <h1>{{ product.product.name }}</h1>
+                {% if product.product.height %}
+                    <p>Высота: {{ product.product.height }}</p>
+                {% endif %}
 
-        <p><strong>Описание:</strong> {{ product.product.description }}</p>
+                {% if product.product.diameter %}
+                    <p>Диаметр: {{ product.product.diameter }}</p>
+                {% endif %}
 
-        <p>ЦЕНА??</p>
+                {% if product.product.material %}
+                    <p>Материал: {{ product.product.material }}</p>
+                {% endif %}
 
-        {% if product.color %}
-        <p><strong>Цвет:</strong> {{ product.color.name }}</p>
-        {% endif %}
+                {% if product.product.application_method %}
+                    <p>Метод нанесения: {{ product.product.application_method }}</p>
+                {% endif %}
 
-        {% if product.product.height %}
-        <p><strong>Высота:</strong> {{ product.product.height }} см</p>
-        {% endif %}
+                {% if product.product.volume %}
+                    <p>Объём: {{ product.product.volume }}</p>
+                {% endif %}
+                {% if product.product.kit %}
+                    <p>Комплектация: {{ product.product.kit }}</p>
+                {% endif %}
+                {% if product.product.appointment %}
+                    <p>Назначение: {{ product.product.appointment }}</p>
+                {% endif %}
+                <div class="product_price">
+                    <h2>{{ product.price|floatformat  }}₽</h2>
+                </div>
 
-        {% if product.product.diameter %}
-        <p><strong>Диаметр:</strong> {{ product.product.diameter }} см</p>
-        {% endif %}
+            </div>
 
-        {% if product.product.material %}
-        <p><strong>Материал:</strong> {{ product.product.material }}</p>
-        {% endif %}
+            {#style="background-image: url('{% static '/img/main/product_detail/price_btn.svg' %}')"#}
+        </div>
 
-        {% if product.product.application_method %}
-        <p><strong>Метод нанесения:</strong> {{ product.product.application_method }}</p>
-        {% endif %}
-
-        {% if product.product.volume %}
-        <p><strong>Объём:</strong> {{ product.product.volume }} л</p>
-        {% endif %}
+        <p><strong>ОПИСАНИЕ</strong> <br>
+            {{ product.product.description }}</p>
 
         {% if product.product.additional_details %}
-        <p><strong>Дополнительные детали:</strong> {{ product.product.additional_details }}</p>
+            <p><strong>Дополнительные детали:</strong> <br>
+                {{ product.product.additional_details }}</p>
         {% endif %}
 
-    </div>
-    <!-- Ссылки на другие варианты -->
-    <div class="other-variants">
-        <h2>Другие варианты:</h2>
-        <ul>
-            {% for variant in other_variants %}
-            <li>
-                <a href="{% url 'catalog:product_detail' variant.id %}">
-                    {{ variant.color.name }} - {{ variant.main_image.url|default:"Нет изображения" }}
-                </a>
-            </li>
-            {% empty %}
-            <li>Нет других вариантов</li>
-            {% endfor %}
-        </ul>
+        <div class="other-product">
+            <p><strong>ЕЩЕ:</strong></p>
+            <div class="cards">
+                {% for variant in random_products %}
+                    <div class="product">
+                        <a href="{% url 'catalog:product_detail' variant.id %}">
+                            <div class="image-container">
+                                {% if variant.main_image %}
+                                    <img src="{{ variant.main_image.url }}" alt="{{ variant.name }}">
+                                {% else %}
+                                    <img src="https://via.placeholder.com/250" alt="Нет изображения">
+                                {% endif %}
+                            </div>
+                            <h3 class="product-title">
+                                {{ variant.product.name }} /
+                                {% if variant.color %}
+                                    <span class="color">Цвет: {{ variant.color.name }}</span>
+                                {% endif %}
+                            </h3>
+                            <p class="description">{{ variant.product.description }}</p>
+                            <div class="price">
+                                {% if variant.price %}
+                                    <p>{{ variant.price|floatformat  }} ₽</p>
+                                {% endif %}
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 
+</main>
 <footer style="background-image: url('{% static 'img/footer/tryapka.svg' %}')">
     <div class="footer_fst">
         <img class="line" src="{% static 'img\footer\line.svg' %}" alt="line">
