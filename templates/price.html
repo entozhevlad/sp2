@@ -1,41 +1,13 @@
+{% extends "index.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} Прайс-лист — Студия Печати{% endblock %}</title>
-    <link href="{% static 'css/price.css' %}" rel="stylesheet">
-    <script src="{% static 'js/index.js' %}" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link type="image/svg+xml" sizes="96x96" rel="icon" href="{% static 'img/favicon/favicon.svg' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet">
-</head>
-<body>
-<header>
-    <a href="{% url 'main:home' %}">
-        <img class="logo" src="{% static 'img/header/logo.svg' %}" alt=""><p id="firm_name">СТУДИЯ ПЕЧАТИ</p>
-    </a>
-    <div class="burger">
-        <span></span>
-    </div>
-    <nav class="navbar">
-        <a href="#">
-            <img class="num-icon" src="{% static 'img/header/wa.svg' %}" alt="">
-        </a>
-        <a href="#"><img class="num-icon" src="{% static 'img/header/tg.svg' %}" alt=""></a>
-        <a href="#"><img class="num-icon" src="{% static 'img/header/ph.svg' %}" alt=""> +7(913)-114-55-24</a>
-        <a href="{% url 'main:price' %}"><strong>ПРАЙС</strong></a>
-        <a href="{% url 'catalog:catalog' %}">КАТАЛОГ</a>
-        <a href="{% url 'contacts:contacts' %}">КОНТАКТЫ</a>
-
-    </nav>
-</header>
-
-<main>
-    <div class="list">
+{% block title %} Прайс-лист — Студия Печати{% endblock %}
+{% block nav-links %}
+    <a href="{% url 'main:price' %}"><strong>ПРАЙС</strong></a>
+    <a href="{% url 'catalog:catalog' %}">КАТАЛОГ</a>
+    <a href="{% url 'contacts:contacts' %}">КОНТАКТЫ</a>
+{% endblock %}
+{% block main %}
+<div class="list">
         <ul>
             {% for category in categories %}
                 <li class="category">
@@ -45,7 +17,7 @@
                             {% if service.category.id == category.id %}
                                 <table class="service">
                                     <td id="td1">{{ service.name }}</td>
-                                    <td id="td2">{{ service.price_display}} &#8381;</td>
+                                    <td id="td2">{{ service.price_display }} &#8381;</td>
 
                                 </table>
                             {% endif %}
@@ -56,51 +28,4 @@
         </ul>
         <strong id="prim">*только по адресу пр-т Ленина 41</strong>
     </div>
-</main>
-
-
-<footer style="background-image: url('{% static 'img/footer/tryapka.svg' %}')">
-    <div class="footer_fst">
-        <img class="line" src="{% static 'img\footer\line.svg' %}" alt="line">
-        <div class="footer">
-            <div class="contact">
-                <h3>Контакты</h3>
-                <a href="#"><img src="{% static 'img/footer/phone.svg' %}" alt="">+7(913)-114-55-24</a>
-                <div class="social-icons">
-                    <a href="https://t.me/sp_tomsk" target="_blank"><img src="{% static 'img/footer/tg.svg' %}"
-                                                                        alt="Telegram"></a>
-                    <a href="https://wa.me/sptomsk" target="_blank"><img src="{% static 'img/footer/wa.svg' %}"
-                                                                         alt="WhatsApp"></a>
-                    <a href="https://vk.com/sptomsk" target="_blank"><img src="{% static 'img/footer/vk.svg' %}"
-                                                                          alt="VK"></a>
-                    <a href="https://www.instagram.com/studiopechati" target="_blank"><img
-                            src="{% static 'img/footer/inst.svg' %}" alt="Instagram"></a>
-                </div>
-                <a href="#"><img src="{% static 'img/footer/map.svg' %}" alt="">Адреса</a>
-
-            </div>
-            <div class="navigation">
-                <h3>Навигация</h3>
-                <a href="#">Главная страница</a>
-                <a href="#">Услуги</a>
-                <a href="#">Блог</a>
-                <a href="#">Контакты</a>
-
-            </div>
-        </div>
-        <img class="line" src="{% static 'img\footer\line.svg' %}" alt="line">
-    </div>
-
-
-    <div class="footer2">
-        <img src="{% static 'img/footer/logo.svg' %}" alt="">
-        <div class="text-container">
-            <a>© 2024 | SP-TOMSK.RU | Все права защищены.</a>
-        </div>
-    </div>
-
-</footer>
-
-</body>
-
-</html>
+{% endblock %}
