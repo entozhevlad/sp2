@@ -11,11 +11,12 @@
         <div class="product_general">
             <div class="additional-img">
                 {% if product.main_image %}
-                    <img src="{{ product.main_image.url }}" alt="{{ product.product.name }} - {{ product.color.name }}" onclick="replaceMainImage(this)">
+                    <img src="{{ product.main_image.url }}" alt="{{ product.product.name }} - {{ product.color.name }}"
+                         onclick="replaceMainImage(this)">
                 {% endif %}
                 {% if product.additional_image_1 %}
                     <img src="{{ product.additional_image_1.url|default:"Нет изображения" }}" alt=""
-                        onclick="replaceMainImage(this)">
+                         onclick="replaceMainImage(this)">
                 {% endif %}
                 {% if product.additional_image_2 %}
                     <img src="{{ product.additional_image_2.url|default:"Нет изображения" }}" alt=""
@@ -96,7 +97,10 @@
 
         <p><strong>ОПИСАНИЕ</strong> <br>
             {{ product.product.description }}</p>
-
+        {% if product.product.optional_image %}
+            <p><strong>Размерная сетка:</strong> <br>
+                <img src="{{ product.product.optional_image.url }}" alt=""></p>
+        {% endif %}
         {% if product.product.additional_details %}
             <p><strong>Дополнительные детали:</strong> <br>
                 {{ product.product.additional_details }}</p>
@@ -135,13 +139,13 @@
     </div>
 
     <script>
-function replaceMainImage(clickedImg) {
-        // Находим главное изображение по ID
-        var mainImage = document.getElementById('main-image');
+        function replaceMainImage(clickedImg) {
+            // Находим главное изображение по ID
+            var mainImage = document.getElementById('main-image');
 
-        // Заменяем src главного изображения на src нажатого изображения
-        mainImage.src = clickedImg.src;
-    }
+            // Заменяем src главного изображения на src нажатого изображения
+            mainImage.src = clickedImg.src;
+        }
     </script>
 {% endblock %}
 

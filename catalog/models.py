@@ -38,6 +38,8 @@ class Product(models.Model):
     appointment = models.CharField(blank=True, null=True, verbose_name='Назначение')
     kit = models.CharField(blank=True, null=True, verbose_name='Комплектация')
     additional_details = models.TextField(blank=True, null=True, verbose_name='Дополнительные детали')
+    optional_image = models.ImageField(upload_to='product_images/', blank=True, null=True,
+                                           verbose_name='Опциональное изображение (Размерная сетка)')
     # Дополнительные свойства
     height = models.CharField(max_length=255, blank=True, null=True, verbose_name='Высота')
     size = models.CharField(max_length=255, blank=True, null=True, verbose_name='Размер')
