@@ -2,10 +2,16 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import CategoryForm, ServiceForm, ColorForm, ProductCategoryForm, ProductForm, ProductVariantForm, AdressForm, NewsImageForm
+from .forms import CategoryForm, ServiceForm, ColorForm, ProductCategoryForm, ProductForm, ProductVariantForm, \
+    AdressForm, NewsImageForm
 from main.models import Category, Service, NewsImage
 from catalog.models import Color, ProductCategory, Product, ProductVariant
 from contacts.models import Adress
+
+
+def is_ajax(request):
+    return request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
+
 
 @login_required
 def admin_sp(request):
@@ -31,16 +37,30 @@ def admin_sp(request):
 
     return render(request, 'admin_sp.html', context)
 
+
+from django.http import JsonResponse
+
+
 @login_required
 def add_category(request):
     if request.method == 'POST':
         form = CategoryForm(request.POST)
         if form.is_valid():
-            form.save()
+            category = form.save()
+            if is_ajax(request):
+                return JsonResponse({'success': True, 'category_id': category.id})
             return redirect('admin_sp')
+        else:
+            if is_ajax(request):
+                return JsonResponse({'success': False, 'errors': form.errors})
     else:
         form = CategoryForm()
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'add_category.html', {'form': form})
+
 
 @login_required
 def edit_category(request, category_id):
@@ -49,29 +69,56 @@ def edit_category(request, category_id):
         form = CategoryForm(request.POST, instance=category)
         if form.is_valid():
             form.save()
+            if is_ajax(request):
+                return JsonResponse({'success': True})
             return redirect('admin_sp')
+        else:
+            if is_ajax(request):
+                return JsonResponse({'success': False, 'errors': form.errors})
     else:
         form = CategoryForm(instance=category)
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'edit_category.html', {'form': form})
+
 
 @login_required
 def delete_category(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     if request.method == 'POST':
         category.delete()
+        if is_ajax(request):
+            return JsonResponse({'success': True})
         return redirect('admin_sp')
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'confirm_delete.html', {'object': category, 'type': 'category'})
+
 
 @login_required
 def add_service(request):
     if request.method == 'POST':
         form = ServiceForm(request.POST)
         if form.is_valid():
-            form.save()
+            service = form.save()
+            if is_ajax(request):
+                return JsonResponse({'success': True, 'service_id': service.id})
             return redirect('admin_sp')
+        else:
+            if is_ajax(request):
+                return JsonResponse({'success': False, 'errors': form.errors})
     else:
         form = ServiceForm()
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'add_service.html', {'form': form})
+
 
 @login_required
 def edit_service(request, service_id):
@@ -80,18 +127,35 @@ def edit_service(request, service_id):
         form = ServiceForm(request.POST, instance=service)
         if form.is_valid():
             form.save()
+            if is_ajax(request):
+                return JsonResponse({'success': True})
             return redirect('admin_sp')
+        else:
+            if is_ajax(request):
+                return JsonResponse({'success': False, 'errors': form.errors})
     else:
         form = ServiceForm(instance=service)
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'edit_service.html', {'form': form})
+
 
 @login_required
 def delete_service(request, service_id):
     service = get_object_or_404(Service, id=service_id)
     if request.method == 'POST':
         service.delete()
+        if is_ajax(request):
+            return JsonResponse({'success': True})
         return redirect('admin_sp')
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'confirm_delete.html', {'object': service, 'type': 'service'})
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -109,24 +173,62 @@ def login_view(request):
 
 
 @login_required
+def add_color(request):
+    if request.method == 'POST':
+        form = ColorForm(request.POST, request.FILES)
+        if form.is_valid():
+            color = form.save()
+            if is_ajax(request):
+                return JsonResponse({'success': True, 'color_id': color.id})
+            return redirect('admin_sp')
+        else:
+            if is_ajax(request):
+                return JsonResponse({'success': False, 'errors': form.errors})
+    else:
+        form = ColorForm()
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
+    return render(request, 'add_edit_color.html', {'form': form})
+
+
+@login_required
 def edit_color(request, color_id):
     color = get_object_or_404(Color, id=color_id)
     if request.method == 'POST':
         form = ColorForm(request.POST, request.FILES, instance=color)
         if form.is_valid():
             form.save()
+            if is_ajax(request):
+                return JsonResponse({'success': True})
             return redirect('admin_sp')
+        else:
+            if is_ajax(request):
+                return JsonResponse({'success': False, 'errors': form.errors})
     else:
         form = ColorForm(instance=color)
-    return render(request, 'edit_color.html', {'form': form})
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
+    return render(request, 'add_edit_color.html', {'form': form})
+
 
 @login_required
 def delete_color(request, color_id):
     color = get_object_or_404(Color, id=color_id)
     if request.method == 'POST':
         color.delete()
+        if is_ajax(request):
+            return JsonResponse({'success': True})
         return redirect('admin_sp')
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'confirm_delete.html', {'object': color, 'type': 'color'})
+
 
 # ProductCategory Views
 @login_required
@@ -134,11 +236,21 @@ def add_product_category(request):
     if request.method == 'POST':
         form = ProductCategoryForm(request.POST)
         if form.is_valid():
-            form.save()
+            product_category = form.save()
+            if is_ajax(request):
+                return JsonResponse({'success': True, 'category_id': product_category.id})
             return redirect('admin_sp')
+        else:
+            if is_ajax(request):
+                return JsonResponse({'success': False, 'errors': form.errors})
     else:
         form = ProductCategoryForm()
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'add_edit_product_category.html', {'form': form})
+
 
 @login_required
 def edit_product_category(request, category_id):
@@ -147,18 +259,35 @@ def edit_product_category(request, category_id):
         form = ProductCategoryForm(request.POST, instance=category)
         if form.is_valid():
             form.save()
+            if is_ajax(request):
+                return JsonResponse({'success': True})
             return redirect('admin_sp')
+        else:
+            if is_ajax(request):
+                return JsonResponse({'success': False, 'errors': form.errors})
     else:
         form = ProductCategoryForm(instance=category)
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'add_edit_product_category.html', {'form': form})
+
 
 @login_required
 def delete_product_category(request, category_id):
     category = get_object_or_404(ProductCategory, id=category_id)
     if request.method == 'POST':
         category.delete()
+        if is_ajax(request):
+            return JsonResponse({'success': True})
         return redirect('admin_sp')
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'confirm_delete.html', {'object': category, 'type': 'product_category'})
+
 
 # Product Views
 @login_required
@@ -166,11 +295,21 @@ def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST)
         if form.is_valid():
-            form.save()
+            product = form.save()
+            if is_ajax(request):
+                return JsonResponse({'success': True, 'product_id': product.id})
             return redirect('admin_sp')
+        else:
+            if is_ajax(request):
+                return JsonResponse({'success': False, 'errors': form.errors})
     else:
         form = ProductForm()
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'add_edit_product.html', {'form': form})
+
 
 @login_required
 def edit_product(request, product_id):
@@ -179,18 +318,35 @@ def edit_product(request, product_id):
         form = ProductForm(request.POST, instance=product)
         if form.is_valid():
             form.save()
+            if is_ajax(request):
+                return JsonResponse({'success': True})
             return redirect('admin_sp')
+        else:
+            if is_ajax(request):
+                return JsonResponse({'success': False, 'errors': form.errors})
     else:
         form = ProductForm(instance=product)
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'add_edit_product.html', {'form': form})
+
 
 @login_required
 def delete_product(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     if request.method == 'POST':
         product.delete()
+        if is_ajax(request):
+            return JsonResponse({'success': True})
         return redirect('admin_sp')
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'confirm_delete.html', {'object': product, 'type': 'product'})
+
 
 # ProductVariant Views
 @login_required
@@ -198,11 +354,21 @@ def add_product_variant(request):
     if request.method == 'POST':
         form = ProductVariantForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            product_variant = form.save()
+            if is_ajax(request):
+                return JsonResponse({'success': True, 'variant_id': product_variant.id})
             return redirect('admin_sp')
+        else:
+            if is_ajax(request):
+                return JsonResponse({'success': False, 'errors': form.errors})
     else:
         form = ProductVariantForm()
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'add_edit_product_variant.html', {'form': form})
+
 
 @login_required
 def edit_product_variant(request, variant_id):
@@ -211,18 +377,35 @@ def edit_product_variant(request, variant_id):
         form = ProductVariantForm(request.POST, request.FILES, instance=variant)
         if form.is_valid():
             form.save()
+            if is_ajax(request):
+                return JsonResponse({'success': True})
             return redirect('admin_sp')
+        else:
+            if is_ajax(request):
+                return JsonResponse({'success': False, 'errors': form.errors})
     else:
         form = ProductVariantForm(instance=variant)
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'add_edit_product_variant.html', {'form': form})
+
 
 @login_required
 def delete_product_variant(request, variant_id):
     variant = get_object_or_404(ProductVariant, id=variant_id)
     if request.method == 'POST':
         variant.delete()
+        if is_ajax(request):
+            return JsonResponse({'success': True})
         return redirect('admin_sp')
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'confirm_delete.html', {'object': variant, 'type': 'product_variant'})
+
 
 # Adress Views
 @login_required
@@ -230,11 +413,21 @@ def add_adress(request):
     if request.method == 'POST':
         form = AdressForm(request.POST)
         if form.is_valid():
-            form.save()
+            adress = form.save()
+            if is_ajax(request):
+                return JsonResponse({'success': True, 'adress_id': adress.id})
             return redirect('admin_sp')
+        else:
+            if is_ajax(request):
+                return JsonResponse({'success': False, 'errors': form.errors})
     else:
         form = AdressForm()
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'add_edit_address.html', {'form': form})
+
 
 @login_required
 def edit_adress(request, adress_id):
@@ -243,52 +436,56 @@ def edit_adress(request, adress_id):
         form = AdressForm(request.POST, instance=adress)
         if form.is_valid():
             form.save()
+            if is_ajax(request):
+                return JsonResponse({'success': True})
             return redirect('admin_sp')
+        else:
+            if is_ajax(request):
+                return JsonResponse({'success': False, 'errors': form.errors})
     else:
         form = AdressForm(instance=adress)
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'add_edit_address.html', {'form': form})
+
 
 @login_required
 def delete_adress(request, adress_id):
     adress = get_object_or_404(Adress, id=adress_id)
     if request.method == 'POST':
         adress.delete()
+        if is_ajax(request):
+            return JsonResponse({'success': True})
         return redirect('admin_sp')
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'confirm_delete.html', {'object': adress, 'type': 'adress'})
 
-@login_required
-def add_color(request):
-    if request.method == 'POST':
-        form = ColorForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('admin_sp')
-    else:
-        form = ColorForm()
-    return render(request, 'add_edit_color.html', {'form': form})
-
-@login_required
-def edit_color(request, color_id):
-    color = get_object_or_404(Color, id=color_id)
-    if request.method == 'POST':
-        form = ColorForm(request.POST, request.FILES, instance=color)
-        if form.is_valid():
-            form.save()
-            return redirect('admin_sp')
-    else:
-        form = ColorForm(instance=color)
-    return render(request, 'add_edit_color.html', {'form': form})
 
 @login_required
 def add_news(request):
     if request.method == 'POST':
         form = NewsImageForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            news_image = form.save()
+            if is_ajax(request):
+                return JsonResponse({'success': True, 'news_id': news_image.id})
             return redirect('admin_sp')
+        else:
+            if is_ajax(request):
+                return JsonResponse({'success': False, 'errors': form.errors})
     else:
         form = NewsImageForm()
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'add_edit_news.html', {'form': form})
+
 
 @login_required
 def edit_news(request, news_id):
@@ -297,15 +494,31 @@ def edit_news(request, news_id):
         form = NewsImageForm(request.POST, request.FILES, instance=news_image)
         if form.is_valid():
             form.save()
+            if is_ajax(request):
+                return JsonResponse({'success': True})
             return redirect('admin_sp')
+        else:
+            if is_ajax(request):
+                return JsonResponse({'success': False, 'errors': form.errors})
     else:
         form = NewsImageForm(instance=news_image)
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'add_edit_news.html', {'form': form})
+
 
 @login_required
 def delete_news(request, news_id):
     news_image = get_object_or_404(NewsImage, id=news_id)
     if request.method == 'POST':
         news_image.delete()
+        if is_ajax(request):
+            return JsonResponse({'success': True})
         return redirect('admin_sp')
+
+    if is_ajax(request):
+        return JsonResponse({'success': False, 'errors': 'Invalid request'})
+
     return render(request, 'confirm_delete.html', {'object': news_image, 'type': 'news_image'})

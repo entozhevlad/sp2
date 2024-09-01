@@ -297,6 +297,45 @@
         });
     });
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const buttons = document.querySelectorAll('.category-toggle');
+        const sections = document.querySelectorAll('.section');
+        const formsList = document.querySelector('.forms-list');
 
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const target = button.getAttribute('data-target');
+
+                sections.forEach(section => {
+                    if (section.id === target) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Добавление обработчиков на ссылки "Изменить", "Удалить", "Добавить"
+        const actionLinks = document.querySelectorAll('.data-list a');
+        actionLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Загрузка формы в блок forms-list
+                fetch(this.href)
+                    .then(response => response.text())
+                    .then(html => {
+                        formsList.innerHTML = html;
+                        formsList.classList.add('active');
+                    })
+                    .catch(error => {
+                        console.error('Ошибка загрузки формы:', error);
+                    });
+            });
+        });
+    });
+</script>
 </body>
 </html>
