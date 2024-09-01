@@ -1,0 +1,101 @@
+body {
+    font-family: Montserrat, serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+}
+
+.navbar {
+    background-color: #333;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.navbar a {
+    color: #fff;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+main {
+    display: flex;
+}
+
+.category-list {
+    flex-basis: 20%;
+    padding: 0 0 0 2%;
+    border-right: 1px solid #ccc;
+}
+
+.data-list {
+    margin: 0 2%;
+    flex-basis: 60%; /* Изменено, чтобы оставить место для forms-list */
+}
+
+.forms-list {
+    flex-basis: 20%; /* Новый блок справа */
+    padding: 0 2%;
+    border-left: 1px solid #ccc;
+    display: none; /* Изначально скрыт */
+}
+
+.forms-list.active {
+    display: block; /* Появляется при активации */
+}
+
+.category-toggle {
+    display: block;
+    margin: 10px 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    font-size: 20px;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out; /* Анимация для появления меню */
+}
+.category-toggle:hover {
+    font-weight: bold;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+

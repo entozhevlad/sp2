@@ -19,8 +19,6 @@ def catalog_view(request, category_slug=None):
     return render(request, 'catalog.html', context)
 
 
-import random
-
 
 def product_detail(request, product_id):
     product = get_object_or_404(ProductVariant, id=product_id)
@@ -32,7 +30,7 @@ def product_detail(request, product_id):
 
     # Выбираем случайные продукты для блока "ЕЩЕ"
     random_products = list(
-        ProductVariant.objects.exclude(id=product.id).order_by('?')[:10])  # Например, 4 случайных продукта
+        ProductVariant.objects.exclude(id=product.id).order_by('?')[:10])
 
     for variant in random_products:
         variant.price_display = int(variant.price)

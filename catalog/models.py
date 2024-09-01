@@ -35,8 +35,8 @@ class Product(models.Model):
                                  verbose_name='Категория')
     description = models.TextField(verbose_name='Описание')
     material = models.CharField(max_length=255, blank=True, null=True, verbose_name='Материал')
-    appointment = models.TextField(blank=True, null=True, verbose_name='Назначение')
-    kit = models.TextField(blank=True, null=True, verbose_name='Комплектация')
+    appointment = models.CharField(blank=True, null=True, verbose_name='Назначение')
+    kit = models.CharField(blank=True, null=True, verbose_name='Комплектация')
     additional_details = models.TextField(blank=True, null=True, verbose_name='Дополнительные детали')
     # Дополнительные свойства
     height = models.CharField(max_length=255, blank=True, null=True, verbose_name='Высота')

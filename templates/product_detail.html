@@ -7,17 +7,38 @@
     <a href="{% url 'contacts:contacts' %}">КОНТАКТЫ</a>
 {% endblock %}
 {% block main %}
-<div class="product-detail">
+    <div class="product-detail">
         <div class="product_general">
+            <div class="additional-img">
+                {% if product.main_image %}
+                    <img src="{{ product.main_image.url }}" alt="{{ product.product.name }} - {{ product.color.name }}" onclick="replaceMainImage(this)">
+                {% endif %}
+                {% if product.additional_image_1 %}
+                    <img src="{{ product.additional_image_1.url|default:"Нет изображения" }}" alt=""
+                        onclick="replaceMainImage(this)">
+                {% endif %}
+                {% if product.additional_image_2 %}
+                    <img src="{{ product.additional_image_2.url|default:"Нет изображения" }}" alt=""
+                         onclick="replaceMainImage(this)">
+                {% endif %}
+                {% if product.additional_image_3 %}
+                    <img src="{{ product.additional_image_3.url|default:"Нет изображения" }}" alt=""
+                         onclick="replaceMainImage(this)">
+                {% endif %}
+            </div>
             <div class="product_img">
                 {% if product.main_image %}
-                    <img src="{{ product.main_image.url }}" alt="{{ product.product.name }} - {{ product.color.name }}">
+                    <img id="main-image" src="{{ product.main_image.url }}"
+                         alt="{{ product.product.name }} - {{ product.color.name }}">
                 {% else %}
-                    <img src="https://via.placeholder.com/300" alt="Нет изображения">
+                    <img id="main-image" src="https://via.placeholder.com/300" alt="Нет изображения">
                 {% endif %}
+
+
             </div>
             <div class="product_info">
                 <h1>{{ product.product.name }}</h1>
+
 
                 <!-- Ссылки на другие варианты -->
                 <div class="other-variants">
@@ -65,7 +86,7 @@
                     <p>Назначение: {{ product.product.appointment }}</p>
                 {% endif %}
                 <div class="product_price">
-                    <h2>{{ product.price|floatformat  }}₽</h2>
+                    <h2>{{ product.price|floatformat }}₽</h2>
                 </div>
 
             </div>
@@ -103,7 +124,7 @@
                             <p class="description">{{ variant.product.description }}</p>
                             <div class="price">
                                 {% if variant.price %}
-                                    <p>{{ variant.price|floatformat  }} ₽</p>
+                                    <p>{{ variant.price|floatformat }} ₽</p>
                                 {% endif %}
                             </div>
                         </a>
@@ -112,5 +133,15 @@
             </div>
         </div>
     </div>
+
+    <script>
+function replaceMainImage(clickedImg) {
+        // Находим главное изображение по ID
+        var mainImage = document.getElementById('main-image');
+
+        // Заменяем src главного изображения на src нажатого изображения
+        mainImage.src = clickedImg.src;
+    }
+    </script>
 {% endblock %}
 

@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Добавить/Редактировать Товар{% endblock %}
 
 {% block content %}
+
     <h2>{% if form.instance.pk %}Редактировать Товар{% else %}Добавить Товар{% endif %}</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Сохранить</button>
     </form>
-    <a href="{% url 'admin_sp' %}">Назад к списку</a>
+    <a  href="{% url 'admin_sp' %}">Назад к списку</a>
 {% endblock %}
