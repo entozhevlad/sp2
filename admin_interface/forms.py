@@ -32,7 +32,7 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = [
-            'name', 'category', 'description', 'material', 'appointment', 'kit', 'additional_details',
+            'name', 'category', 'description', 'material', 'appointment', 'kit', 'additional_details', 'optional_image',
             'height', 'size', 'density', 'diameter', 'application_method', 'volume'
         ]
 
