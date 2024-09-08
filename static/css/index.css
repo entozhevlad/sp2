@@ -1286,6 +1286,12 @@ body.menu-open {
     padding: 5%;
 }
 
+.additional-img img{
+
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
 .product_info {
     flex: 1;
     display: flex;
@@ -1407,6 +1413,10 @@ body.menu-open {
     }
 }
 
+#tshort_sizes{
+    width: 100%;
+}
+
 @media (max-width: 768px) {
     .product_general {
         display: flex;
@@ -1416,6 +1426,17 @@ body.menu-open {
 
     .product_img {
         border: none;
+        order: 0;
+    }
+
+    .additional-img{
+        flex-direction: row;
+        order: 1;
+        width: 100%;
+    }
+
+    .product_info{
+        order: 2;
     }
 
     .product_info h1 {

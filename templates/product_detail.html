@@ -8,7 +8,29 @@
 {% endblock %}
 {% block main %}
     <div class="product-detail">
+
         <div class="product_general">
+{#        <div class="images">#}
+{#            <div class="additional-img">#}
+{#                {% if product.main_image %}#}
+{#                    <img src="{{ product.main_image.url }}" alt="{{ product.product.name }} - {{ product.color.name }}"#}
+{#                         onclick="replaceMainImage(this)">#}
+{#                {% endif %}#}
+{#                {% if product.additional_image_1 %}#}
+{#                    <img src="{{ product.additional_image_1.url|default:"Нет изображения" }}" alt=""#}
+{#                         onclick="replaceMainImage(this)">#}
+{#                {% endif %}#}
+{#                {% if product.additional_image_2 %}#}
+{#                    <img src="{{ product.additional_image_2.url|default:"Нет изображения" }}" alt=""#}
+{#                         onclick="replaceMainImage(this)">#}
+{#                {% endif %}#}
+{#                {% if product.additional_image_3 %}#}
+{#                    <img src="{{ product.additional_image_3.url|default:"Нет изображения" }}" alt=""#}
+{#                         onclick="replaceMainImage(this)">#}
+{#                {% endif %}#}
+{#            </div>#}
+
+{#        </div>#}
             <div class="additional-img">
                 {% if product.main_image %}
                     <img src="{{ product.main_image.url }}" alt="{{ product.product.name }} - {{ product.color.name }}"
@@ -99,7 +121,7 @@
             {{ product.product.description }}</p>
         {% if product.product.optional_image %}
             <p><strong>Размерная сетка:</strong> <br>
-                <img src="{{ product.product.optional_image.url }}" alt=""></p>
+                <img id="tshort_sizes" src="{{ product.product.optional_image.url }}" alt=""></p>
         {% endif %}
         {% if product.product.additional_details %}
             <p><strong>Дополнительные детали:</strong> <br>
