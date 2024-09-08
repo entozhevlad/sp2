@@ -1286,8 +1286,9 @@ body.menu-open {
     padding: 5%;
 }
 
-.additional-img img{
-
+.additional-img img {
+    border: 1px solid rgba(224, 224, 224, 0.5);
+    border-radius: 10px;
     overflow-x: auto;
     scrollbar-width: none;
 }
@@ -1413,7 +1414,7 @@ body.menu-open {
     }
 }
 
-#tshort_sizes{
+#tshort_sizes {
     width: 100%;
 }
 
@@ -1429,13 +1430,13 @@ body.menu-open {
         order: 0;
     }
 
-    .additional-img{
+    .additional-img {
         flex-direction: row;
         order: 1;
         width: 100%;
     }
 
-    .product_info{
+    .product_info {
         order: 2;
     }
 

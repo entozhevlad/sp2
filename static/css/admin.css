@@ -1,101 +1,41 @@
 body {
-    font-family: Montserrat, serif;
-    background-color: #f7f7f7;
     margin: 0;
     padding: 0;
+    font-family: Montserrat, serif;
 }
-
-h1 {
-    color: #333;
-}
-
-.navbar {
-    background-color: #333;
-    padding: 10px;
-    margin-bottom: 20px;
-}
-
-.navbar a {
-    color: #fff;
-    margin-right: 10px;
-    text-decoration: none;
-}
-
-.navbar a:hover {
-    text-decoration: underline;
-}
-
-main {
-    display: flex;
-}
-
-.category-list {
-    flex-basis: 20%;
-    padding: 0 0 0 2%;
-    border-right: 1px solid #ccc;
-}
-
-.data-list {
-    margin: 0 2%;
-    flex-basis: 60%; /* Изменено, чтобы оставить место для forms-list */
-}
-
-.forms-list {
-    flex-basis: 20%; /* Новый блок справа */
-    padding: 0 2%;
-    border-left: 1px solid #ccc;
-    display: none; /* Изначально скрыт */
-}
-
-.forms-list.active {
-    display: block; /* Появляется при активации */
-}
-
-.category-toggle {
-    display: block;
-    margin: 10px 0;
-    padding: 0;
-    background-color: #f7f7f7;
-    font-size: 20px;
-    color: #000;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out; /* Анимация для появления меню */
-}
-.category-toggle:hover {
-    font-weight: bold;
-}
-
-.section {
+.theme-toggle{
     display: none;
 }
-
-.section.active {
-    display: block;
+#header {
+    background-color: #050b20;
+    color: white;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
+#branding{
+    color: white;
+    text-transform: uppercase;
+}
+html[data-theme="light"], :root, html[data-theme="dark"], :root  {
+    --accent: white;
+    --selected-row: #b0bbde;
+    --header-color: #d2d9ef;
+    --secondary: #0A1947;
+    --default-button-bg: #4668d5;
+}
+.module caption{
+    background-color: #0A1947;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-th, td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+#content h1{
+    font-weight: bold;
+    color: black;
 }
 
-th {
-    background-color: #f2f2f2;
+a:link, a:visited {
+    color: black;
 }
-
-a {
-    color: #007bff;
-    text-decoration: none;
+div.breadcrumbs{
+    background-color: #0A1947;
 }
-
-a:hover {
-    text-decoration: underline;
-}
-
