@@ -1,5 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
+from django.dispatch import receiver
+from django.db.models.signals import post_delete
+from django.utils.text import slugify
 
 class Color(models.Model):
     name = models.CharField(max_length=255, verbose_name='Название цвета')
@@ -11,6 +14,13 @@ class Color(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old_instance = Color.objects.get(pk=self.pk)
+            if old_instance.image and old_instance.image != self.image:
+                old_instance.image.delete(False)
+        super().save(*args, **kwargs)
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=100, db_index=True)
@@ -56,6 +66,12 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old_instance = Product.objects.get(pk=self.pk)
+            if old_instance.optional_image and old_instance.optional_image != self.optional_image:
+                old_instance.optional_image.delete(False)
+        super().save(*args, **kwargs)
 
 class ProductVariant(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='variants', verbose_name='Сувенир')
@@ -71,6 +87,8 @@ class ProductVariant(models.Model):
     additional_image_3 = models.ImageField(upload_to='variant_images/', blank=True, null=True,
                                            verbose_name='Дополнительное изображение 3')
 
+    slug = models.SlugField(max_length=255, unique=True, blank=True, verbose_name='Slug', null=True)
+
     class Meta:
         verbose_name = 'Вариант сувенира'
         verbose_name_plural = 'Варианты сувенира'
@@ -81,4 +99,47 @@ class ProductVariant(models.Model):
     def get_other_variants(self):
         return self.product.variants.exclude(id=self.id)
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = f"{self.product.name} {self.color.name if self.color else ''}"
+            self.slug = slugify(base_slug)
+            unique_slug = self.slug
+            num = 1
+            while ProductVariant.objects.filter(slug=unique_slug).exists():
+                unique_slug = f"{self.slug}-{num}"
+                num += 1
+            self.slug = unique_slug
 
+        if self.pk:
+            old_instance = ProductVariant.objects.get(pk=self.pk)
+            if old_instance.main_image and old_instance.main_image != self.main_image:
+                old_instance.main_image.delete(False)
+            if old_instance.additional_image_1 and old_instance.additional_image_1 != self.additional_image_1:
+                old_instance.additional_image_1.delete(False)
+            if old_instance.additional_image_2 and old_instance.additional_image_2 != self.additional_image_2:
+                old_instance.additional_image_2.delete(False)
+            if old_instance.additional_image_3 and old_instance.additional_image_3 != self.additional_image_3:
+                old_instance.additional_image_3.delete(False)
+        super().save(*args, **kwargs)
+
+
+@receiver(post_delete, sender=Color)
+def delete_color_image_on_delete(sender, instance, **kwargs):
+    if instance.image:
+        instance.image.delete(False)
+
+@receiver(post_delete, sender=Product)
+def delete_product_image_on_delete(sender, instance, **kwargs):
+    if instance.optional_image:
+        instance.optional_image.delete(False)
+
+@receiver(post_delete, sender=ProductVariant)
+def delete_variant_images_on_delete(sender, instance, **kwargs):
+    if instance.main_image:
+        instance.main_image.delete(False)
+    if instance.additional_image_1:
+        instance.additional_image_1.delete(False)
+    if instance.additional_image_2:
+        instance.additional_image_2.delete(False)
+    if instance.additional_image_3:
+        instance.additional_image_3.delete(False)

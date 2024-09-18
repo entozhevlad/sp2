@@ -33,9 +33,9 @@
         </div>
 
         <div class="product-list">
-            {% for variant in variants %}
+           {% for variant in variants %}
                 <div class="product">
-                    <a href="{% url 'catalog:product_detail' variant.id %}">
+                    <a href="{% url 'catalog:product_detail' variant.slug %}">
                         <div class="image-container">
                             {% if variant.main_image %}
                                 <img src="{{ variant.main_image.url }}" alt="{{ variant.name }}">
