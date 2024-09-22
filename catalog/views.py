@@ -24,7 +24,7 @@ def catalog_view(request, category_slug=None):
     }
     return render(request, 'catalog.html', context)
 
-@cache_page(60 * 5)  # Кэшируем на 15 минут
+@cache_page(60 * 5)
 def product_detail(request, slug):
     product = get_object_or_404(ProductVariant.objects.select_related('product', 'color'), slug=slug)
     other_variants = product.get_other_variants().select_related('color')
