@@ -1,7 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 from catalog.models import ProductCategory, ProductVariant
-from contacts.models import Adress
-from main.models import Category, Service, NewsImage
+
 
 class ProductVariantSitemap(Sitemap):
     changefreq = 'weekly'

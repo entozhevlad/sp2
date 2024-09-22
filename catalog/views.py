@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import ProductVariant, ProductCategory
 from django.core.paginator import Paginator
 from django.views.decorators.cache import cache_page
@@ -41,4 +41,3 @@ def product_detail(request, slug):
         'random_products': random_products,
     }
     return render(request, 'product_detail.html', context)
-

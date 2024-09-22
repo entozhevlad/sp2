@@ -7,9 +7,6 @@ from .models import Adress
 env = environ.Env()
 
 @cache_page(60 * 5)
-def success_view(request):
-    return render(request, 'success.html')
-@cache_page(60 * 5)
 def address_view(request):
     addresses = Adress.objects.all()
     return render(request, 'contacts.html', {'addresses': addresses})

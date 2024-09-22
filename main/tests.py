@@ -2,6 +2,7 @@ from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from .models import Service, Category
+
 class ServiceViewSeleniumTest(LiveServerTestCase):
     @classmethod
     def setUpClass(cls):
