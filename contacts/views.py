@@ -6,11 +6,12 @@ from .forms import ContactForm
 import environ
 
 from .models import Adress
+from django.views.decorators.cache import cache_page
 
 env = environ.Env()
 
 
-
+@cache_page(60 * 60 * 2)  # Кэшируем на 2 часа
 def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
