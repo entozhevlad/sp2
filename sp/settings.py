@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'main',
     'contacts',
-    'catalog'
+    'catalog',
+    'compressor',
 
 ]
 
@@ -168,3 +169,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 ERRORS_TEMPLATES_PATH = os.path.join(BASE_DIR, 'templates', 'errors')
+
+COMPRESS_ROOT = "comp/"
+COMPRESS_ENABLED = True
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
