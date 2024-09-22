@@ -3,6 +3,7 @@ from django.utils.text import slugify
 from django.dispatch import receiver
 from django.db.models.signals import post_delete
 from django.utils.text import slugify
+from django.urls import reverse
 
 class Color(models.Model):
     name = models.CharField(max_length=255, verbose_name='Название цвета')
@@ -38,6 +39,8 @@ class ProductCategory(models.Model):
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse('catalog:catalog_by_category', kwargs={'category_slug': self.slug})
 
 class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name='Название')
@@ -122,6 +125,8 @@ class ProductVariant(models.Model):
                 old_instance.additional_image_3.delete(False)
         super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse('catalog:product_detail', kwargs={'slug': self.slug})
 
 @receiver(post_delete, sender=Color)
 def delete_color_image_on_delete(sender, instance, **kwargs):

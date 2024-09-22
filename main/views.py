@@ -38,3 +38,6 @@ def service_view(request):
 
     return render(request, 'price.html', {'categories': categories, 'services': services})
 
+class RobotTxtViews(TemplateView):
+    template_name = 'robots.txt'
+    content_type = 'text_plain'
