@@ -7,18 +7,16 @@ import environ
 from django.db.models import Q
 from django.contrib.admin.sites import site
 from django.conf import settings
+from django.views.decorators.cache import cache_page
 
 env = environ.Env()
-
 
 class HomePageView(TemplateView):
     template_name = 'home.html'
 
     def get_context_data(self, **kwargs):
-        # Получаем стандартный контекст
         context = super().get_context_data(**kwargs)
 
-        # Добавляем список изображений новостей в контекст
         context['news_images'] = NewsImage.objects.all()
 
         return context
