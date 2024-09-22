@@ -6,6 +6,7 @@ from contacts.models import Adress
 import environ
 from django.db.models import Q
 from django.contrib.admin.sites import site
+from django.conf import settings
 
 env = environ.Env()
 
@@ -38,6 +39,8 @@ def service_view(request):
 
     return render(request, 'price.html', {'categories': categories, 'services': services})
 
-class RobotTxtViews(TemplateView):
-    template_name = 'robots.txt'
-    content_type = 'text_plain'
+def page_not_found(request, exception):
+    return render(request, f'{settings.ERRORS_TEMPLATES_PATH}/404.html', status=404)
+
+def internal_server_error(request):
+    return render(request, f'{settings.ERRORS_TEMPLATES_PATH}/500.html', status=500)

@@ -8,6 +8,7 @@ from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from .sitemaps import *
 from django.contrib.sitemaps.views import sitemap
+from django.conf.urls import handler404, handler500
 
 sitemaps = {
     'products': ProductVariantSitemap,
@@ -23,6 +24,9 @@ urlpatterns = [
     re_path(r'robots\.txt$', TemplateView.as_view(template_name="sp/robots.txt", content_type='text/plain')),
     re_path(r'^sitemap\.xml$', sitemap, {'sitemaps':sitemaps}),
 ]
+handler404 = 'main.views.page_not_found'
+handler500 = 'main.views.internal_server_error'
+
 
 urlpatterns += staticfiles_urlpatterns()
 

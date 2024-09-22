@@ -30,7 +30,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = 'django-insecure-c*fh5(6if&k@49lc2%#maco5y9kc8i$eu-ks1v&x$$o%i_5&i!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -160,3 +160,5 @@ TEST_USERNAME = env('TEST_USERNAME')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+ERRORS_TEMPLATES_PATH = os.path.join(BASE_DIR, 'templates', 'errors')
