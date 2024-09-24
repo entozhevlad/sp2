@@ -3,3 +3,5 @@ __pycahce__/
 .env
 db.sqlite3
 .venv
+sp_cache
+comp

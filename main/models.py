@@ -1,4 +1,9 @@
 from django.db import models
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
+
+import os
+
 class Category(models.Model):
     name = models.CharField(max_length=100, db_index=True)
     class Meta:
@@ -37,3 +42,23 @@ class NewsImage(models.Model):
     def __str__(self):
         return self.title
 
+    def save(self, *args, **kwargs):
+        if self.pk:
+            old_instance = NewsImage.objects.get(pk=self.pk)
+            if old_instance.image and old_instance.image != self.image:
+                old_instance.image.delete(False)
+            if old_instance.image_big and old_instance.image_big != self.image_big:
+                old_instance.image_big.delete(False)
+            if old_instance.image_mobile and old_instance.image_mobile != self.image_mobile:
+                old_instance.image_mobile.delete(False)
+        super().save(*args, **kwargs)
+
+
+@receiver(post_delete, sender=NewsImage)
+def delete_news_images_on_delete(sender, instance, **kwargs):
+    if instance.image:
+        instance.image.delete(False)
+    if instance.image_big:
+        instance.image_big.delete(False)
+    if instance.image_mobile:
+        instance.image_mobile.delete(False)
