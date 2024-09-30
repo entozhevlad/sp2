@@ -1,8 +1,6 @@
 from django.contrib import admin
-
-# Register your models here.
-from django.contrib import admin
 from .models import Category, Service, NewsImage
+from django.utils.safestring import mark_safe
 
 
 @admin.register(Category)
@@ -14,10 +12,6 @@ class CategoryAdmin(admin.ModelAdmin):
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ['name', 'price', 'category']
     list_editable = ['category']
-
-
-from django.utils.safestring import mark_safe
-
 
 
 @admin.register(NewsImage)

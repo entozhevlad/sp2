@@ -1,36 +1,17 @@
 {% extends "index.html" %}
 {% load static %}
+
 {% block title %} Каталог — Студия Печати{% endblock %}
+
 {% block nav-links %}
     <a href="{% url 'main:price' %}">ПРАЙС</a>
     <a href="{% url 'catalog:catalog' %}"><strong>КАТАЛОГ</strong></a>
     <a href="{% url 'contacts:contacts' %}">КОНТАКТЫ</a>
 {% endblock %}
+
 {% block main %}
     <div class="product-detail">
-
         <div class="product_general">
-{#        <div class="images">#}
-{#            <div class="additional-img">#}
-{#                {% if product.main_image %}#}
-{#                    <img src="{{ product.main_image.url }}" alt="{{ product.product.name }} - {{ product.color.name }}"#}
-{#                         onclick="replaceMainImage(this)">#}
-{#                {% endif %}#}
-{#                {% if product.additional_image_1 %}#}
-{#                    <img src="{{ product.additional_image_1.url|default:"Нет изображения" }}" alt=""#}
-{#                         onclick="replaceMainImage(this)">#}
-{#                {% endif %}#}
-{#                {% if product.additional_image_2 %}#}
-{#                    <img src="{{ product.additional_image_2.url|default:"Нет изображения" }}" alt=""#}
-{#                         onclick="replaceMainImage(this)">#}
-{#                {% endif %}#}
-{#                {% if product.additional_image_3 %}#}
-{#                    <img src="{{ product.additional_image_3.url|default:"Нет изображения" }}" alt=""#}
-{#                         onclick="replaceMainImage(this)">#}
-{#                {% endif %}#}
-{#            </div>#}
-
-{#        </div>#}
             <div class="additional-img">
                 {% if product.main_image %}
                     <img src="{{ product.main_image.url }}" alt="{{ product.product.name }} - {{ product.color.name }}"
@@ -56,21 +37,19 @@
                 {% else %}
                     <img id="main-image" src="https://via.placeholder.com/300" alt="Нет изображения">
                 {% endif %}
-
-
             </div>
             <div class="product_info">
                 <h1>{{ product.product.name }}</h1>
 
-
                 <!-- Ссылки на другие варианты -->
                 <div class="other-variants">
                     {% for variant in other_variants %}
-                        <a href="{% url 'catalog:product_detail' variant.id %}">
+                        <a href="{% url 'catalog:product_detail' variant.slug %}">
                             <img src="{{ variant.main_image.url|default:"Нет изображения" }}" alt="">
                         </a>
                     {% endfor %}
                 </div>
+                
                 {% if product.color %}
                     <p>Цвет: {{ product.color.name }}</p>
                 {% endif %}
@@ -102,27 +81,29 @@
                 {% if product.product.volume %}
                     <p>Объём: {{ product.product.volume }}</p>
                 {% endif %}
+                
                 {% if product.product.kit %}
                     <p>Комплектация: {{ product.product.kit }}</p>
                 {% endif %}
+                
                 {% if product.product.appointment %}
                     <p>Назначение: {{ product.product.appointment }}</p>
                 {% endif %}
+
                 <div class="product_price">
                     <h2>{{ product.price|floatformat }}₽</h2>
                 </div>
-
             </div>
-
-            {#style="background-image: url('{% static '/img/main/product_detail/price_btn.svg' %}')"#}
         </div>
 
         <p><strong>ОПИСАНИЕ</strong> <br>
             {{ product.product.description }}</p>
+        
         {% if product.product.optional_image %}
             <p><strong>Размерная сетка:</strong> <br>
                 <img id="tshort_sizes" src="{{ product.product.optional_image.url }}" alt=""></p>
         {% endif %}
+        
         {% if product.product.additional_details %}
             <p><strong>Дополнительные детали:</strong> <br>
                 {{ product.product.additional_details }}</p>
@@ -133,7 +114,7 @@
             <div class="cards">
                 {% for variant in random_products %}
                     <div class="product">
-                        <a href="{% url 'catalog:product_detail' variant.id %}">
+                        <a href="{% url 'catalog:product_detail' variant.slug %}">
                             <div class="image-container">
                                 {% if variant.main_image %}
                                     <img src="{{ variant.main_image.url }}" alt="{{ variant.name }}">
@@ -170,4 +151,3 @@
         }
     </script>
 {% endblock %}
-

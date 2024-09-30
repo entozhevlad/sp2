@@ -3,6 +3,7 @@ from django.utils.safestring import mark_safe
 
 from .models import Color, ProductCategory, Product, ProductVariant
 
+
 @admin.register(Color)
 class ColorAdmin(admin.ModelAdmin):
     list_display = ('name', 'image')
@@ -26,18 +27,20 @@ class ProductAdmin(admin.ModelAdmin):
     ordering = ('name',)
 
 
-
 @admin.register(ProductVariant)
 class ProductVariantAdmin(admin.ModelAdmin):
-    list_display = ('product', 'name', 'color', 'get_main_image_thumbnail', 'get_additional_image_1_thumbnail',
-                    'get_additional_image_2_thumbnail', 'get_additional_image_3_thumbnail')
-    search_fields = ('product__name', 'name', 'color__name')
+    list_display = (
+        'product', 'name', 'color', 'get_main_image_thumbnail',
+        'get_additional_image_1_thumbnail', 'get_additional_image_2_thumbnail',
+        'get_additional_image_3_thumbnail', 'slug'
+    )
+    search_fields = ('product__name', 'name', 'color__name', 'slug')
     list_filter = ('product', 'color')
 
     # Организуем поля на странице редактирования
     fieldsets = (
         (None, {
-            'fields': ('product', 'name', 'color', 'price')
+            'fields': ('product', 'name', 'color', 'price', 'slug')
         }),
         ('Изображения', {
             'fields': (
@@ -50,8 +53,11 @@ class ProductVariantAdmin(admin.ModelAdmin):
     )
 
     readonly_fields = (
-    'get_main_image_thumbnail', 'get_additional_image_1_thumbnail', 'get_additional_image_2_thumbnail',
-    'get_additional_image_3_thumbnail')
+        'get_main_image_thumbnail', 'get_additional_image_1_thumbnail',
+        'get_additional_image_2_thumbnail', 'get_additional_image_3_thumbnail'
+    )
+
+    prepopulated_fields = {'slug': ('name',)}  # Заполнение slug на основе другого поля
 
     # Отображение миниатюры главного изображения
     def get_main_image_thumbnail(self, obj):
@@ -59,7 +65,7 @@ class ProductVariantAdmin(admin.ModelAdmin):
             return mark_safe(f"<img src='{obj.main_image.url}' width='50px'>")
         return "Нет изображения"
 
-    get_main_image_thumbnail.short_description = 'Главное изображения'
+    get_main_image_thumbnail.short_description = 'Главное изображение'
 
     # Отображение миниатюры дополнительного изображения 1
     def get_additional_image_1_thumbnail(self, obj):
