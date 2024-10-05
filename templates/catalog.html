@@ -11,9 +11,9 @@
 {% endblock %}
 {% block main %}
     <style>
-    main{
-        min-height: 920px;
-    }
+        main {
+            min-height: 920px;
+        }
     </style>
     <div class="catalog_nav">
         <h2 class="catalog-hr">СУВЕНИРНАЯ ПРОДУКЦИЯ</h2>
@@ -33,7 +33,7 @@
         </div>
 
         <div class="product-list">
-           {% for variant in variants %}
+            {% for variant in variants %}
                 <div class="product">
                     <a href="{% url 'catalog:product_detail' variant.slug %}">
                         <div class="image-container">
@@ -59,22 +59,29 @@
                 </div>
             {% endfor %}
         </div>
+    </div>
     <div class="pagination">
-        <span class="step-links">
-            {% if variants.has_previous %}
-                <a href="?page=1">&laquo; первая</a>
-                <a href="?page={{ variants.previous_page_number }}">предыдущая</a>
-            {% endif %}
+    <span class="step-links">
+        {% if variants.has_previous %}
+            <a id="first" href="?page=1">&laquo;</a>
+        {% endif %}
 
-            <span class="current">
-                Страница {{ variants.number }} из {{ variants.paginator.num_pages }}.
-            </span>
-
-            {% if variants.has_next %}
-                <a href="?page={{ variants.next_page_number }}">следующая</a>
-                <a href="?page={{ variants.paginator.num_pages }}">последняя &raquo;</a>
+        {% for page_num in variants.paginator.page_range %}
+            {% if page_num == variants.number %}
+                <span class="current">{{ page_num }}</span>
+            {% elif page_num > variants.number|add:'-3' and page_num < variants.number|add:'3' %}
+                <a href="?page={{ page_num }}">{{ page_num }}</a>
+            {% elif page_num == 1 or page_num == variants.paginator.num_pages %}
+                <a href="?page={{ page_num }}">{{ page_num }}</a>
+            {% elif page_num == variants.number|add:'-3' or page_num == variants.number|add:'3' %}
+                <span>...</span>
             {% endif %}
-        </span>
+        {% endfor %}
+
+        {% if variants.has_next %}
+            <a id="last" href="?page={{ variants.paginator.num_pages }}">&raquo;</a>
+        {% endif %}
+    </span>
     </div>
-    </div>
+
 {% endblock %}
