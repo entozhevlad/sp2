@@ -1,5 +1,32 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Ошибка{% endblock %}
 {% block content %}
-    <h1>Страница не существует</h1>
+    <style>
+
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Занимает всю высоту экрана */
+        }
+        h1,p, img{
+            margin: 0;
+            padding: 0;
+        }
+        h1{
+            font-size: 70px;
+        }
+        p{
+            font-size: 32px;
+            color: #777777;
+        }
+    </style>
+    <main>
+        <img width="550" src="{% static 'img/errors/400.PNG' %}" alt="">
+        <h1>404</h1>
+        <p>Страница не существует</p>
+    </main>
+
 {% endblock %}

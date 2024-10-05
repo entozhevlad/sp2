@@ -1031,10 +1031,20 @@ body.menu-open {
 .product-list {
     width: 81%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
     margin: 0 20px 20px 20px;
 
+}
+
+@media (min-width: 2560px) {
+    .product-list {
+        width: 81%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 0 10% 20px 20px;
+    }
 }
 
 .product {
@@ -1045,6 +1055,12 @@ body.menu-open {
     padding: 15px;
     border-radius: 10px;
     transition: box-shadow 0.3s, transform 0.2s ease-in-out;
+}
+
+@media(min-width: 1024px){
+    .product{
+        height: 400px;
+    }
 }
 
 .product a {
@@ -1249,10 +1265,12 @@ body.menu-open {
 
     margin: 1% 20%;
 
-    bottom: 0;
+
 }
 
-@media(max-width: 769px) {
+
+
+@media (max-width: 769px) {
     .pagination {
         margin: 1% 0;
     }
@@ -1264,7 +1282,7 @@ body.menu-open {
     margin: 0 5px;
 }
 
-.pagination span{
+.pagination span {
     padding: 5px 15px;
 }
 
@@ -1274,7 +1292,7 @@ body.menu-open {
     padding-bottom: 5px; /* Создаем отступ от нижней части текста */
 }
 
-#last, #first{
+#last, #first {
     margin: 0 5px;
 }
 
@@ -1283,7 +1301,7 @@ body.menu-open {
     content: '';
     position: absolute;
     bottom: 0;
-    left: 10%;  /* Отступ слева для внутренней границы */
+    left: 10%; /* Отступ слева для внутренней границы */
     right: 10%; /* Отступ справа для внутренней границы */
     height: 3px; /* Толщина границы */
     background-color: #173494; /* Цвет границы */

@@ -13,7 +13,7 @@ def catalog_view(request, category_slug=None):
         category = get_object_or_404(ProductCategory, slug=category_slug)
         variants = variants.filter(product__category=category)
 
-    paginator = Paginator(variants, 18)
+    paginator = Paginator(variants, 24)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
