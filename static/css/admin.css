@@ -15,13 +15,22 @@ body {
     color: white;
     text-transform: uppercase;
 }
-html[data-theme="light"], :root, html[data-theme="dark"], :root  {
+html[data-theme="light"], :root  {
     --accent: white;
     --selected-row: #b0bbde;
     --header-color: #d2d9ef;
     --secondary: #0A1947;
     --default-button-bg: #4668d5;
 }
+
+html[data-theme="dark"]{
+    --accent: white;
+    --selected-row: #b0bbde;
+    --header-color: #d2d9ef;
+    --secondary: #0A1947;
+    --default-button-bg: #4668d5;
+}
+
 .module caption{
     background-color: #0A1947;
     font-weight: bold;
@@ -39,3 +48,4 @@ a:link, a:visited {
 div.breadcrumbs{
     background-color: #0A1947;
 }
+

@@ -6,14 +6,16 @@
 
 {% block branding %}
     <div id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></div>
-    {% if user.is_anonymous %}
-        {% include "admin/color_theme_toggle.html" %}
-    {% endif %}
+{#    {% if user.is_anonymous %}#}
+{#        {% include "admin/color_theme_toggle.html" %}#}
+{#    {% endif %}#}
+
 {% endblock %}
 
 {% block nav-global %}{% endblock %}
 
 {% block extrastyle %}
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -22,6 +24,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet">
     <link href="{% static 'css/admin.css' %}" rel="stylesheet">
-    
+
+
+
 {% endblock %}
 
