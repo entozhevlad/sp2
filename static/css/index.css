@@ -1057,8 +1057,8 @@ body.menu-open {
     transition: box-shadow 0.3s, transform 0.2s ease-in-out;
 }
 
-@media(min-width: 1024px){
-    .product{
+@media (min-width: 1024px) {
+    .product {
         height: 400px;
     }
 }
@@ -1267,7 +1267,6 @@ body.menu-open {
 
 
 }
-
 
 
 @media (max-width: 769px) {
@@ -1792,6 +1791,127 @@ td {
     display: flex;
     align-self: center;
     padding: 0 10%;
+}
+
+.legal {
+    margin: 0 10%;
+}
+
+.legal-hr {
+    font-size: 26px;
+    text-align: center;
+    color: #173494;
+}
+
+.legal-hr {
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.legal-hr:before {
+    content: " ";
+    height: 2px;
+    background: #000;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 33%;
+}
+
+.legal-hr:after {
+    content: " ";
+    height: 2px;
+    background: #000;
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 33%;
+}
+
+@media (max-width: 1441px) {
+    .legal-hr:after, .legal-hr:before {
+        width: 27%;
+    }
+}
+
+@media (max-width: 1025px) {
+    .legal-hr:after, .legal-hr:before {
+        width: 25%;
+    }
+}
+
+@media (max-width: 950px) {
+    .legal-hr:after, .legal-hr:before {
+        width: 20%;
+    }
+}
+
+@media (max-width: 769px) {
+    .legal-hr:after, .legal-hr:before {
+        width: 15%;
+    }
+}
+
+@media (max-width: 621px) {
+    .legal-hr {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 426px) {
+    .legal-hr:after, .legal-hr:before {
+        width: 7%;
+    }
+}
+
+@media (max-width: 376px) {
+    .legal-hr:after, .legal-hr:before {
+        width: 5%;
+    }
+}
+
+@media (max-width: 321px) {
+    .legal-hr, #th2, #th3 {
+        font-size: 16px;
+    }
+
+    .legal-hr:after, .legal-hr:before {
+        display: none;
+    }
+}
+
+.legal-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+.lft, .cntr, .rght{
+    padding: 0 1%;
+}
+
+@media(max-width: 769px){
+    .legal-flex{
+        flex-direction: column;
+        align-items: center;
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 400px){
+    .legal-flex{
+        font-size: 14px;
+    }
+}
+
+.rght a{
+    font-weight: 500;
+    text-decoration: none;
+    color: black;
 }
 
 .numbers {
