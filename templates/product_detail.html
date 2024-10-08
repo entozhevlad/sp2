@@ -45,7 +45,11 @@
                 <div class="other-variants">
                     {% for variant in other_variants %}
                         <a href="{% url 'catalog:product_detail' variant.slug %}">
-                            <img src="{{ variant.main_image.url|default:"Нет изображения" }}" alt="">
+                            {% if variant.main_image and variant.main_image.url %}
+                                <img src="{{ variant.main_image.url }}" alt="">
+                            {% else %}
+                                <img src="https://via.placeholder.com/300" alt="Нет изображения">
+                            {% endif %}
                         </a>
                     {% endfor %}
                 </div>
