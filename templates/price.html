@@ -7,6 +7,8 @@
     <a href="{% url 'contacts:contacts' %}">КОНТАКТЫ</a>
 {% endblock %}
 {% block main %}
+<h2 id="price-header">ПРАЙС-ЛИСТ</h2>
+    <hr>
 <div class="list">
         <ul>
             {% for category in categories %}
@@ -26,7 +28,6 @@
                 </li>
             {% endfor %}
         </ul>
-        <strong id="prim">*только по адресу пр-т Ленина 41</strong>
     </div>
 {% endblock %}
 

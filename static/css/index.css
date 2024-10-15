@@ -298,22 +298,75 @@ footer {
     color: white;
     margin: 0;
     bottom: 0;
-    height: 70px;
+    /*height: 70px;*/
     width: 100%;
     background-color: #050b20;
+    /*display: flex;*/
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mobile-container {
+    display: none;
+}
+
+
+.desktop-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.desktop-container .property {
+    margin: 0 2%;
+}
+
+.footer2 .desktop-container .property p {
+    margin: 0;
+}
+
+.footer2 .desktop-container .text-container {
     display: flex;
     align-items: flex-end;
 }
 
-.footer2 img {
+.footer2 .text-container img {
     margin-left: 2%;
 }
 
-.text-container {
+.text-container p {
     margin-left: 0.5%;
     margin-bottom: 5px;
 }
 
+@media (max-width: 451px) {
+    .desktop-container {
+        display: none;
+    }
+
+    .mobile-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .text-container {
+        margin: 2% 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mobile-container img {
+        margin-left: 0.5%;
+        height: 100px;
+        width: auto;
+    }
+
+    .mobile-container p {
+        margin: 0;
+    }
+
+}
 
 @media (max-width: 500px) {
     .left h2, .right h2 {
@@ -406,91 +459,101 @@ footer {
 
 .container {
     display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
-
-.left h2,
-.left p {
-    margin-left: 40%;
+.container p {
+    width: 70%;
     color: #0A1947;
-    margin-bottom: 30px;
-    text-align: justify;
-    width: 60%;
-    padding-right: 20px;
+    font-size: 20px;
+    text-align: center;
+
 }
 
-.right p {
-    color: #0A1947;
-    margin-bottom: 30px;
-    text-align: justify;
-    width: 60%;
-    padding-left: 20px;
-}
 
-.right h2 {
-    color: #0A1947;
-    margin-bottom: 30px;
-    text-align: justify;
-    width: 48%;
-    padding-left: 20px;
-}
+/*.left h2,*/
+/*.left p {*/
+/*    margin-left: 40%;*/
+/*    color: #0A1947;*/
+/*    margin-bottom: 30px;*/
+/*    text-align: justify;*/
+/*    width: 60%;*/
+/*    padding-right: 20px;*/
+/*}*/
 
-.container {
-    display: flex;
-    flex-wrap: wrap; /* Позволяет элементам переноситься на новую строку */
-}
+/*.right p {*/
+/*    color: #0A1947;*/
+/*    margin-bottom: 30px;*/
+/*    text-align: justify;*/
+/*    width: 60%;*/
+/*    padding-left: 20px;*/
+/*}*/
 
-.left,
-.right {
-    width: 50%; /* Изначально ширина 50% для десктопа */
-}
+/*.right h2 {*/
+/*    color: #0A1947;*/
+/*    margin-bottom: 30px;*/
+/*    text-align: justify;*/
+/*    width: 48%;*/
+/*    padding-left: 20px;*/
+/*}*/
 
-@media (max-width: 850px) {
-    .left h2,
-    .left p {
-        margin-left: 20%;
-        width: 80%;
-    }
+/*.container {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap; !* Позволяет элементам переноситься на новую строку *!*/
+/*}*/
 
-    .right p {
-        width: 80%;
-    }
+/*.left,*/
+/*.right {*/
+/*    width: 50%; !* Изначально ширина 50% для десктопа *!*/
+/*}*/
 
-    .right h2 {
-        width: 68%;
-    }
-}
+/*@media (max-width: 850px) {*/
+/*    .left h2,*/
+/*    .left p {*/
+/*        margin-left: 20%;*/
+/*        width: 80%;*/
+/*    }*/
 
-/* Стили для мобильных устройств */
-@media (max-width: 768px) {
-    .container {
-        display: flex;
-        flex-direction: column; /* Вертикальное расположение элементов */
-    }
+/*    .right p {*/
+/*        width: 80%;*/
+/*    }*/
 
-    .left,
-    .right {
-        width: 100%; /* Устанавливаем 100% ширину для мобильных устройств */
-        text-align: center; /* Центрируем текст */
+/*    .right h2 {*/
+/*        width: 68%;*/
+/*    }*/
+/*}*/
 
-    }
+/*!* Стили для мобильных устройств *!*/
+/*@media (max-width: 768px) {*/
+/*    .container {*/
+/*        display: flex;*/
+/*        flex-direction: column; !* Вертикальное расположение элементов *!*/
+/*    }*/
 
-    .left h2,
-    .right h2 {
-        width: 90%; /* Устанавливаем 100% ширину для мобильных устройств */
-        margin: 0;
-        padding: 10px 5%;
-        text-align: center;
-    }
+/*    .left,*/
+/*    .right {*/
+/*        width: 100%; !* Устанавливаем 100% ширину для мобильных устройств *!*/
+/*        text-align: center; !* Центрируем текст *!*/
 
-    .left p,
-    .right p {
-        width: 90%; /* Устанавливаем 100% ширину для мобильных устройств */
-        margin: 0;
-        padding: 10px 5%;
+/*    }*/
 
-    }
-}
+/*    .left h2,*/
+/*    .right h2 {*/
+/*        width: 90%; !* Устанавливаем 100% ширину для мобильных устройств *!*/
+/*        margin: 0;*/
+/*        padding: 10px 5%;*/
+/*        text-align: center;*/
+/*    }*/
+
+/*    .left p,*/
+/*    .right p {*/
+/*        width: 90%; !* Устанавливаем 100% ширину для мобильных устройств *!*/
+/*        margin: 0;*/
+/*        padding: 10px 5%;*/
+
+/*    }*/
+/*}*/
 
 
 /*third*/
@@ -578,8 +641,8 @@ footer {
 }
 
 .socials {
-    float: left;
-    width: 50%;
+    /*float: left;*/
+    width: 100%;
 
     text-align: center;
 
@@ -604,22 +667,8 @@ footer {
     text-align: center
 }
 
-.property {
-    float: right;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: justify;
-}
 
-.property p {
-    font-size: 20px;
-    text-decoration: none;
-    color: black;
-}
-
-.socials-hr, .property-hr {
+.socials-hr {
     font-size: 26px;
     text-align: center;
     color: black;
@@ -628,13 +677,13 @@ footer {
     padding: 0;
 }
 
-.socials-hr, .property-hr {
+.socials-hr {
     width: 100%;
     position: relative;
     text-align: center;
 }
 
-.socials-hr:before, .property-hr:before {
+.socials-hr:before {
     content: " ";
     height: 1px;
     background: #000;
@@ -644,7 +693,7 @@ footer {
     left: 0;
 }
 
-.socials-hr:after, .property-hr:after {
+.socials-hr:after {
     content: " ";
     height: 1px;
     background: #000;
@@ -656,10 +705,6 @@ footer {
 
 .socials-hr:before, .socials-hr:after {
     width: 40%;
-}
-
-.property-hr:before, .property-hr:after {
-    width: 38%;
 }
 
 
@@ -718,42 +763,15 @@ footer {
 }
 
 
-.socials,
-.property {
-    width: 50%; /* Ширина 50% для настольных устройств */
-}
+/*.socials,*/
+/*.property {*/
+/*    width: 50%; !* Ширина 50% для настольных устройств *!*/
+/*}*/
 
-@media (max-width: 1256px) {
-
-
-    .property-hr:before, .property-hr:after {
-        width: 33%;
-    }
-
-    .socials {
-        width: 60%;
-    }
-
-    .property {
-        width: 40%;
-    }
-}
 
 @media (max-width: 1055px) {
     .socials-hr:before, .socials-hr:after {
         width: 38%;
-    }
-
-    .property-hr:before, .property-hr:after {
-        width: 30%;
-    }
-
-    .socials {
-        width: 60%;
-    }
-
-    .property {
-        width: 40%;
     }
 }
 
@@ -762,24 +780,8 @@ footer {
         width: 36%;
     }
 
-    .property-hr:before, .property-hr:after {
-        width: 24%;
-    }
-
-    .socials {
-        width: 60%;
-    }
-
     .socials a img {
         width: 110px;
-    }
-
-    .property {
-        width: 40%;
-    }
-
-    .property p {
-        font-size: 18px;
     }
 }
 
@@ -789,17 +791,8 @@ footer {
         flex-direction: column; /* Располагаем элементы по вертикали */
     }
 
-    .socials,
-    .property {
-        width: 100%; /* Заставляем блоки занимать всю ширину экрана на мобильных устройствах */
-    }
-
     .socials-hr:before, .socials-hr:after {
         width: 36%;
-    }
-
-    .property-hr:before, .property-hr:after {
-        width: 34%;
     }
 
     .socials {
@@ -809,23 +802,11 @@ footer {
     .socials a img {
         width: 150px;
     }
-
-    .property {
-        order: 2; /* Реквизиты идут вторыми */
-    }
-
-    .property p {
-        font-size: 20px;
-    }
 }
 
 @media (max-width: 480px) {
     .socials-hr:before, .socials-hr:after {
         width: 28%;
-    }
-
-    .property-hr:before, .property-hr:after {
-        width: 26%;
     }
 }
 
@@ -849,6 +830,23 @@ footer {
 
 
 /*ПРАЙС*/
+#price-header {
+    margin: 0;
+    padding: 0.5% 0 0 0;
+    font-size: 26px;
+    text-align: center;
+    color: #000000;
+    width: 100%;
+    position: relative;
+}
+
+@media (max-width: 451px) {
+    #price-header {
+        font-size: 22px;
+    }
+
+}
+
 li {
     list-style-type: none; /* Убираем маркеры */
 }
@@ -933,8 +931,11 @@ ul {
 }
 
 /*КАТАЛОГ*/
-
+/*.catalog_nav{*/
+/*    padding: 1% 0;*/
+/*}*/
 .catalog-hr {
+    padding: 0.5% 0;
     font-size: 26px;
     text-align: center;
     color: #000000;
@@ -966,6 +967,26 @@ ul {
 
 .catalog-container {
     display: flex;
+}
+
+.catalog-info {
+    width: 81%;
+    display: flex;
+    flex-direction: column;
+}
+
+.catalog-info h4 {
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 0 1% 2%;
+}
+
+@media (max-width: 451px) {
+    .catalog-info h4{
+        font-size: 18px;
+        margin: 2%;
+    }
 }
 
 /* Отключение прокрутки основного контента */
@@ -1029,7 +1050,7 @@ body.menu-open {
 }
 
 .product-list {
-    width: 81%;
+
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
@@ -1057,11 +1078,11 @@ body.menu-open {
     transition: box-shadow 0.3s, transform 0.2s ease-in-out;
 }
 
-@media (min-width: 1024px) {
-    .product {
-        height: 400px;
-    }
-}
+/*@media (min-width: 1024px) {*/
+/*    .product {*/
+/*        height: 400px;*/
+/*    }*/
+/*}*/
 
 .product a {
     text-decoration: none;
@@ -1209,8 +1230,12 @@ body.menu-open {
         display: block;
     }
 
-    .product-list {
+    .catalog-info {
         width: 100%;
+    }
+
+    .product-list {
+
 
         grid-template-columns: repeat(2, 50%);
         margin: 0;
@@ -1308,7 +1333,6 @@ body.menu-open {
 
 /*КАРТОЧКА ТОВАРА*/
 
-/*КАРТОЧКА ТОВАРА*/
 
 .product-detail {
     margin: 0 10%;
@@ -1397,7 +1421,7 @@ body.menu-open {
     font-size: 36px;
     padding: 0;
     margin: 0;
-    text-align: center; /* Центрируем текст внутри h2 */
+    text-align: center;
 }
 
 .other-variants {
@@ -1496,6 +1520,10 @@ body.menu-open {
         gap: 20px;
     }
 
+    .product_price{
+        align-self: flex-start;
+    }
+
     .product_img {
         border: none;
         order: 0;
@@ -1521,6 +1549,23 @@ body.menu-open {
 }
 
 /*КОНТАКТЫ*/
+#contact-header {
+    margin: 0;
+    padding: 0.5% 0 0 0;
+    font-size: 26px;
+    text-align: center;
+    color: #000000;
+    width: 100%;
+    position: relative;
+}
+
+@media (max-width: 500px) {
+    #contact-header {
+        font-size: 22px;
+        padding: 1% 0 0 0;
+    }
+
+}
 
 .address {
     display: flex;
@@ -1861,7 +1906,7 @@ td {
     }
 }
 
-@media (max-width: 426px) {
+@media (max-width: 450px) {
     .legal-hr:after, .legal-hr:before {
         width: 7%;
     }
@@ -1890,25 +1935,24 @@ td {
     font-size: 20px;
 }
 
-.lft, .cntr, .rght{
+.lft, .cntr, .rght {
     padding: 0 1%;
 }
 
-@media(max-width: 769px){
-    .legal-flex{
+@media (max-width: 769px) {
+    .legal-flex {
         flex-direction: column;
-        align-items: center;
         font-size: 16px;
     }
 }
 
-@media(max-width: 400px){
-    .legal-flex{
+@media (max-width: 400px) {
+    .legal-flex {
         font-size: 14px;
     }
 }
 
-.rght a{
+.rght a {
     font-weight: 500;
     text-decoration: none;
     color: black;

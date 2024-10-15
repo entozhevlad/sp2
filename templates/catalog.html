@@ -11,18 +11,22 @@
 {% endblock %}
 {% block main %}
     <style>
-    @media (min-height: 1000px) {
-        .catalog-container {
-            min-height: 650px;
+        @media (min-height: 1000px) {
+            .catalog-container {
+                min-height: 650px;
+            }
         }
-    }
     </style>
     <div class="catalog_nav">
         <h2 class="catalog-hr">СУВЕНИРНАЯ ПРОДУКЦИЯ</h2>
         <button class="category-toggle"><img src="{% static 'img/main/contacts/setting.svg' %}" alt="setting"></button>
     </div>
 
+
+
+
     <div class="catalog-container">
+
         <div class="overlay"></div>
         <div class="category-list">
             <a href="{% url 'catalog:catalog' %}" class="{% if not current_category %}active{% endif %}">Все товары</a>
@@ -33,33 +37,36 @@
                 </a>
             {% endfor %}
         </div>
+        <div class="catalog-info">
+            <h4>На продукцию из каталога мы можем перенести ваше изображение.</h4>
 
-        <div class="product-list">
-            {% for variant in variants %}
-                <div class="product">
-                    <a href="{% url 'catalog:product_detail' variant.slug %}">
-                        <div class="image-container">
-                            {% if variant.main_image %}
-                                <img src="{{ variant.main_image.url }}" loading="lazy" alt="{{ variant.name }}">
-                            {% else %}
-                                <img src="https://via.placeholder.com/250" loading="lazy" alt="Нет изображения">
-                            {% endif %}
-                        </div>
-                        <h3 class="product-title">
-                            {{ variant.product.name }} /
-                            {% if variant.color %}
-                                <span class="color">Цвет: {{ variant.color.name }}</span>
-                            {% endif %}
-                        </h3>
-                        <p class="description">{{ variant.product.description }}</p>
-                        <div class="price">
-                            {% if variant.price %}
-                                <p> {{ variant.price|floatformat }} ₽</p>
-                            {% endif %}
-                        </div>
-                    </a>
-                </div>
-            {% endfor %}
+            <div class="product-list">
+                {% for variant in variants %}
+                    <div class="product">
+                        <a href="{% url 'catalog:product_detail' variant.slug %}">
+                            <div class="image-container">
+                                {% if variant.main_image %}
+                                    <img src="{{ variant.main_image.url }}" loading="lazy" alt="{{ variant.name }}">
+                                {% else %}
+                                    <img src="https://via.placeholder.com/250" loading="lazy" alt="Нет изображения">
+                                {% endif %}
+                            </div>
+                            <h3 class="product-title">
+                                {{ variant.product.name }} /
+                                {% if variant.color %}
+                                    <span class="color">Цвет: {{ variant.color.name }}</span>
+                                {% endif %}
+                            </h3>
+                            <p class="description">{{ variant.product.description }}</p>
+                            <div class="price">
+                                {% if variant.price %}
+                                    <p> {{ variant.price|floatformat }} ₽</p>
+                                {% endif %}
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
     <div class="pagination">

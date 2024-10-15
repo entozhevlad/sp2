@@ -2,24 +2,22 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-{#    {% load compress %}#}
-{#    {%  compress css %}#}
+    {#    {% load compress %}#}
+    {#    {%  compress css %}#}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Студия Печати{% endblock title %}</title>
     <link href="{% static 'css/index.css' %}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}"/>
-        <link type="image/svg+xml" sizes="96x96" rel="icon" href="{% static 'img/favicon/favicon.svg' %}">
+    <link type="image/svg+xml" sizes="96x96" rel="icon" href="{% static 'img/favicon/favicon.svg' %}">
     <link rel="apple-touch-icon" href="{% static 'img/favicon/favicon.svg' %}"/>
-{#    {% endcompress %}#}
+    {#    {% endcompress %}#}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet">
-
-
 
 
 </head>
@@ -64,7 +62,7 @@
                 <div class="contact">
                     <h3>Контакты</h3>
 
-                    <a href="#"><img src="{% static 'img/footer/map.svg' %}" alt="">Адреса</a>
+                    <a href="{% url 'contacts:contacts' %}"><img src="{% static 'img/footer/map.svg' %}" alt="">Адреса</a>
                     <div class="social-icons">
                         <a href="https://t.me/sp_tomsk" target="_blank"><img
                                 src="{% static 'img/footer/Vector-2.svg' %}"
@@ -94,10 +92,27 @@
 
 
         <div class="footer2">
-            <img src="{% static 'img/footer/logo.svg' %}" alt="">
-            <div class="text-container">
-                <p>© 2024 | SP-TOMSK.RU | Все права защищены.</p>
+            <div class="desktop-container">
+                <div class="text-container">
+                    <img src="{% static 'img/footer/logo.svg' %}" alt="">
+                    <p>© 2024 | SP-TOMSK.RU | Все права защищены.</p>
+                </div>
+                <div class="property">
+                    <p>ИП Агабекян Нарек Гагикович<br/>
+                        ИНН 701716832314<br/>
+                        ОГРНИП 319703100073091</p>
+                </div>
             </div>
+            <div class="mobile-container">
+                <img src="{% static 'img/footer/logo.svg' %}" alt="">
+                <div class="text-container">
+                    <p>© 2024 | SP-TOMSK.RU | Все права защищены.</p>
+                    <p>ИП Агабекян Нарек Гагикович<br/>
+                        ИНН 701716832314<br/>
+                        ОГРНИП 319703100073091</p>
+                </div>
+            </div>
+
         </div>
 
     </footer>
