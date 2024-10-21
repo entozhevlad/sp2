@@ -842,7 +842,8 @@ footer {
 
 @media (max-width: 451px) {
     #price-header {
-        font-size: 22px;
+        font-size: 24px;
+        padding: 2% 0;
     }
 
 }
@@ -935,35 +936,36 @@ ul {
 /*    padding: 1% 0;*/
 /*}*/
 .catalog-hr {
-    padding: 0.5% 0;
-    font-size: 26px;
+    padding: 1% 0;
+    margin: 0;
+    font-size: 30px;
     text-align: center;
     color: #000000;
     width: 100%;
     position: relative;
 }
 
-.catalog-hr:before {
-    content: " ";
-    height: 1px;
-    background: #000;
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 35%;
-}
+/*.catalog-hr:before {*/
+/*    content: " ";*/
+/*    height: 1px;*/
+/*    background: #000;*/
+/*    display: block;*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    left: 0;*/
+/*    width: 35%;*/
+/*}*/
 
-.catalog-hr:after {
-    content: " ";
-    height: 1px;
-    background: #000;
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    width: 35%;
-}
+/*.catalog-hr:after {*/
+/*    content: " ";*/
+/*    height: 1px;*/
+/*    background: #000;*/
+/*    display: block;*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    right: 0;*/
+/*    width: 35%;*/
+/*}*/
 
 .catalog-container {
     display: flex;
@@ -983,7 +985,7 @@ ul {
 }
 
 @media (max-width: 451px) {
-    .catalog-info h4{
+    .catalog-info h4 {
         font-size: 18px;
         margin: 2%;
     }
@@ -1188,8 +1190,16 @@ body.menu-open {
         display: flex;
     }
 
+    /*.catalog-hr {*/
+    /*    font-size: 22px;*/
+    /*}*/
     .catalog-hr {
-        font-size: 22px;
+        font-size: 28px;
+        padding: 2% 0;
+    }
+
+    .catalog_nav hr {
+        display: none;
     }
 
     .category-toggle {
@@ -1253,9 +1263,9 @@ body.menu-open {
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 451px) {
     .catalog-hr {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     .product-title {
@@ -1521,7 +1531,7 @@ body.menu-open {
         gap: 20px;
     }
 
-    .product_price{
+    .product_price {
         align-self: flex-start;
         margin: 2% 0;
     }
@@ -1553,8 +1563,8 @@ body.menu-open {
 /*КОНТАКТЫ*/
 #contact-header {
     margin: 0;
-    padding: 0.5% 0 0 0;
-    font-size: 26px;
+    padding: 1% 0;
+    font-size: 30px;
     text-align: center;
     color: #000000;
     width: 100%;
@@ -1563,8 +1573,8 @@ body.menu-open {
 
 @media (max-width: 500px) {
     #contact-header {
-        font-size: 22px;
-        padding: 1% 0 0 0;
+        font-size: 24px;
+        padding: 2% 0;
     }
 
 }
@@ -1812,7 +1822,7 @@ td {
 
 }
 
-@media (max-width: 426px) {
+@media (max-width: 438px) {
     .hr-lines#th1:after,
     .hr-lines#th1:before {
         width: 16%;
@@ -1830,7 +1840,7 @@ td {
 
     .hotline-hr:after,
     .hotline-hr:before {
-        width: 16%;
+        width: 14%;
     }
 }
 
@@ -1941,7 +1951,7 @@ td {
     padding: 0 1%;
 }
 
-.lft a{
+.lft a {
     text-decoration: None;
     color: black;
 }
