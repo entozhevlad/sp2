@@ -36,8 +36,9 @@
                 <img class="num-icon" src="{% static 'img/header/wa.svg' %}" alt="">
             </a>
             <a href="https://t.me/sptomsk"><img class="num-icon" src="{% static 'img/header/tg.svg' %}" alt=""></a>
-            <a href="https://wa.me/sptomsk"><img class="num-icon" src="{% static 'img/header/ph.svg' %}" alt="">
+            <a href="tel:+79131145524"><img class="num-icon" src="{% static 'img/header/ph.svg' %}" alt="">
                 +7(913)-114-55-24</a>
+
             {% block nav-links %}
                 <a href="{% url 'main:price' %}">ПРАЙС</a>
                 <a href="{% url 'catalog:catalog' %}">КАТАЛОГ</a>
@@ -62,7 +63,8 @@
                 <div class="contact">
                     <h3>Контакты</h3>
 
-                    <a href="{% url 'contacts:contacts' %}"><img src="{% static 'img/footer/map.svg' %}" alt="">Адреса</a>
+                    <a href="{% url 'contacts:contacts' %}"><img src="{% static 'img/footer/map.svg' %}"
+                                                                 alt="">Адреса</a>
                     <div class="social-icons">
                         <a href="https://t.me/sp_tomsk" target="_blank"><img
                                 src="{% static 'img/footer/Vector-2.svg' %}"
@@ -75,7 +77,8 @@
                         <a href="https://www.instagram.com/studiopechati" target="_blank"><img
                                 src="{% static 'img/footer/instagram.svg' %}" alt="Instagram"></a>
                     </div>
-                    <p><img src="{% static 'img/footer/phone.svg' %}" alt="">+7(913)-114-55-24</p>
+                    <a href="tel:+79131145524"><p><img src="{% static 'img/footer/phone.svg' %}" alt="">+7(913)-114-55-24
+                    </p></a>
 
                 </div>
                 <div class="navigation">
