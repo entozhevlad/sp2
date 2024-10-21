@@ -1939,6 +1939,11 @@ td {
     padding: 0 1%;
 }
 
+.lft a{
+    text-decoration: None;
+    color: black;
+}
+
 @media (max-width: 769px) {
     .legal-flex {
         flex-direction: column;
