@@ -1822,7 +1822,7 @@ td {
 
 }
 
-@media (max-width: 438px) {
+@media (max-width: 426px) {
     .hr-lines#th1:after,
     .hr-lines#th1:before {
         width: 16%;
@@ -1840,7 +1840,14 @@ td {
 
     .hotline-hr:after,
     .hotline-hr:before {
-        width: 14%;
+        width: 20%;
+    }
+}
+
+@media (max-width: 330px) {
+    .hotline-hr:after,
+    .hotline-hr:before {
+        width: 16%;
     }
 }
 
