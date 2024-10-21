@@ -1409,7 +1409,7 @@ body.menu-open {
     width: 223px;
     height: 72px;
     align-self: flex-start;
-    margin: auto 0;
+    margin: 15% 0 0 0;
     display: flex; /* Используем Flexbox */
     align-items: center; /* Центрируем по вертикали */
     justify-content: center; /* Центрируем по горизонтали */
@@ -1464,6 +1464,7 @@ body.menu-open {
     .product_price {
         width: 178px;
         height: 58px;
+        margin: auto 0;
     }
 
     .product_price h2 {
@@ -1488,7 +1489,7 @@ body.menu-open {
     .product_price {
         width: 134px;
         height: 43px;
-        margin: 10px 0;
+        margin: auto 0;
     }
 
     .product_price h2 {
@@ -1522,6 +1523,7 @@ body.menu-open {
 
     .product_price{
         align-self: flex-start;
+        margin: 2% 0;
     }
 
     .product_img {
