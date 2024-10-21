@@ -832,8 +832,8 @@ footer {
 /*ПРАЙС*/
 #price-header {
     margin: 0;
-    padding: 0.5% 0 0 0;
-    font-size: 26px;
+    padding: 1% 0 1% 0;
+    font-size: 30px;
     text-align: center;
     color: #000000;
     width: 100%;
@@ -1408,8 +1408,8 @@ body.menu-open {
 .product_price {
     width: 223px;
     height: 72px;
-    align-self: center;
-    margin: auto;
+    align-self: flex-start;
+    margin: auto 0;
     display: flex; /* Используем Flexbox */
     align-items: center; /* Центрируем по вертикали */
     justify-content: center; /* Центрируем по горизонтали */
