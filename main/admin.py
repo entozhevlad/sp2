@@ -17,7 +17,7 @@ class ServiceAdmin(admin.ModelAdmin):
 @admin.register(NewsImage)
 class NewsImageAdmin(admin.ModelAdmin):
     list_display = (
-    'title', 'created_at', 'get_image_thumbnail', 'get_image_big_thumbnail', 'get_image_mobile_thumbnail')
+        'title', 'created_at', 'get_image_thumbnail', 'get_image_big_thumbnail', 'get_image_mobile_thumbnail')
     readonly_fields = ('created_at', 'get_image_thumbnail', 'get_image_big_thumbnail', 'get_image_mobile_thumbnail')
 
     # Организация полей на странице изменения
@@ -58,6 +58,7 @@ class NewsImageAdmin(admin.ModelAdmin):
 
     get_image_mobile_thumbnail.short_description = 'Миниатюра мобильного изображения'
 
+
 @admin.register(WorkExample)
 class WorkExampleAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at', 'get_image_thumbnail')
@@ -80,6 +81,7 @@ class WorkExampleAdmin(admin.ModelAdmin):
         return "Нет изображения"
 
     get_image_thumbnail.short_description = 'Миниатюра изображения'
+
 
 admin.site.site_header = 'Админ-панель Студия Печати'
 admin.site.site_title = 'Админ-панель Студия Печати'
