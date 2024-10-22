@@ -1,8 +1,9 @@
 from django.db import models
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
+from PIL import Image
+from django.core.exceptions import ValidationError
 
-import os
 
 class Category(models.Model):
     name = models.CharField(max_length=100, db_index=True)
@@ -53,6 +54,32 @@ class NewsImage(models.Model):
                 old_instance.image_mobile.delete(False)
         super().save(*args, **kwargs)
 
+class WorkExample(models.Model):
+    title = models.CharField(max_length=12)
+    image = models.ImageField(upload_to='work_examples/')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Пример'
+        verbose_name_plural = 'Примеры работ'
+
+    def __str__(self):
+        return self.title
+
+    def clean(self):
+        img = Image.open(self.image)
+
+        width, height = img.size
+
+        if width != height:
+            raise ValidationError('Изображение должно быть квадратным.')
+
+    def save(self, *args, **kwargs):
+        if WorkExample.objects.count() >= 10:
+            raise ValidationError('Достигнуто максимальное количество примеров работ (10).')
+
+        self.full_clean()
+        super().save(*args, **kwargs)
 
 @receiver(post_delete, sender=NewsImage)
 def delete_news_images_on_delete(sender, instance, **kwargs):
@@ -62,3 +89,8 @@ def delete_news_images_on_delete(sender, instance, **kwargs):
         instance.image_big.delete(False)
     if instance.image_mobile:
         instance.image_mobile.delete(False)
+
+@receiver(post_delete, sender=WorkExample)
+def delete_work_example_images_on_delete(sender, instance, **kwargs):
+    if instance.image:
+        instance.image.delete(False)
