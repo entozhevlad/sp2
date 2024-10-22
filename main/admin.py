@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Service, NewsImage
+from .models import Category, Service, NewsImage, WorkExample
 from django.utils.safestring import mark_safe
 
 
@@ -58,6 +58,28 @@ class NewsImageAdmin(admin.ModelAdmin):
 
     get_image_mobile_thumbnail.short_description = 'Миниатюра мобильного изображения'
 
+@admin.register(WorkExample)
+class WorkExampleAdmin(admin.ModelAdmin):
+    list_display = ('title', 'created_at', 'get_image_thumbnail')
+    readonly_fields = ('created_at', 'get_image_thumbnail')
+
+    # Организация полей на странице изменения
+    fieldsets = (
+        (None, {
+            'fields': ('title', 'created_at')
+        }),
+        ('Изображения', {
+            'fields': ('image', 'get_image_thumbnail')
+        }),
+    )
+
+    # Метод для отображения миниатюры изображения
+    def get_image_thumbnail(self, obj):
+        if obj.image:
+            return mark_safe(f"<img src='{obj.image.url}' height='50px'>")
+        return "Нет изображения"
+
+    get_image_thumbnail.short_description = 'Миниатюра изображения'
 
 admin.site.site_header = 'Админ-панель Студия Печати'
 admin.site.site_title = 'Админ-панель Студия Печати'

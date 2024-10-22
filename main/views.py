@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect
-from .models import Service, Category, NewsImage
+from .models import Service, Category, NewsImage, WorkExample
 import environ
 from django.conf import settings
 from django.views.decorators.cache import cache_page
@@ -14,6 +14,7 @@ class HomePageView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         context['news_images'] = NewsImage.objects.all()
+        context['work_examples'] = WorkExample.objects.all()[:10]  # Ограничение на 10 фото
 
         return context
 
