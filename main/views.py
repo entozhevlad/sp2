@@ -14,11 +14,11 @@ class HomePageView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         context['news_images'] = NewsImage.objects.all()
-        context['work_examples'] = WorkExample.objects.all()[:10]  # Ограничение на 10 фото
+        context['work_examples'] = WorkExample.objects.all()
 
         return context
 
-@cache_page(60 * 5)
+# @cache_page(60 * 5)
 def service_view(request):
     services = Service.objects.filter(is_visible=True)
     categories = Category.objects.all()
