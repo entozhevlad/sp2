@@ -2008,7 +2008,7 @@ td {
     display: flex; /* Изменяем display на flex */
     align-items: center; /* Выравнивание по центру по вертикали */
     flex-grow: 1;
-    margin-bottom: 10px; /* Добавляем отступ между ссылками */
+    margin-bottom: 10px;
 }
 
 
@@ -2096,3 +2096,6 @@ td {
 }
 
 
+/**{*/
+/*    border: red 1px solid;*/
+/*}*/
