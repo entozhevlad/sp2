@@ -2,8 +2,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    {#    {% load compress %}#}
-    {#    {%  compress css %}#}
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Студия Печати{% endblock title %}</title>
@@ -12,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}"/>
     <link type="image/svg+xml" sizes="96x96" rel="icon" href="{% static 'img/favicon/favicon.svg' %}">
     <link rel="apple-touch-icon" href="{% static 'img/favicon/favicon.svg' %}"/>
-    {#    {% endcompress %}#}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -120,9 +118,9 @@
 
     </footer>
 {% endblock footer %}
-{#{% compress js %}#}
+
 <script src="{% static 'js/index.js' %}" defer></script>
-{#{% endcompress %}#}
+
 {% block scripts %}{% endblock %}
 
 </body>

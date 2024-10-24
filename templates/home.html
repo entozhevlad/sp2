@@ -77,40 +77,9 @@
             <a href="https://www.instagram.com/studiopechati" target="_blank"><img
                     src="{% static 'img/main/home/four/instagram.svg' %}" alt="Instagram"></a>
         </div>
-        {#        <div class="property">#}
-        {#            <h1 class="property-hr">Реквизиты</h1>#}
-        {#            <p>ИП Агабекян Нарек Гагикович<br/>#}
-        {#                ИНН 701716832314<br/>#}
-        {#                ОГРИП 319703100073091</p>#}
-        {#        </div>#}
     </div>
     <div class="map">
-        <a class="dg-widget-link"
-           href="http://2gis.ru/tomsk/profiles/70000001025710625,70000001027631299,70000001021112001,70000001037942308,70000001078540254,70000001018853225,70000001083395090/center/85.01134872436525,56.49330096298038/zoom/12?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=bigMap">Посмотреть
-            на карте Томска</a>
-        <script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script>
-        <script charset="utf-8">
-            new DGWidgetLoader({
-                width: 1600,
-                height: 500,
-                borderColor: "#a3a3a3",
-                pos: {lat: 56.49330096298038, lon: 85.01134872436525, zoom: 12},
-                opt: {city: "tomsk"},
-                org: [
-                    {"id": "70000001025710625"},
-                    {"id": "70000001027631299"},
-                    {"id": "70000001021112001"},
-                    {"id": "70000001083395090"},
-                    {"id": "70000001037942308"},
-                    {"id": "70000001078540254"},
-                    {"id": "70000001018853225"},
-                    {"id": "70000001092854657"}],
-            })
-            ;
-        </script>
-        <noscript style="color: #c00; font-size: 16px; font-weight: bold">Виджет карты использует JavaScript. Включите
-            его в настройках вашего браузера.
-        </noscript>
+        {% include 'map.html' %}
     </div>
 {% endblock main %}
 
