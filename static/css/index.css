@@ -1541,6 +1541,9 @@ body.menu-open {
 }
 
 @media (max-width: 768px) {
+    .product_info{
+        width: 100%;
+    }
     .product_general {
         display: flex;
         flex-direction: column;
