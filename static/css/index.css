@@ -1368,7 +1368,7 @@ body.menu-open {
 }
 
 .additional-img {
-    max-width: 7%;
+    max-width: 8%;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -1541,6 +1541,9 @@ body.menu-open {
 }
 
 @media (max-width: 768px) {
+    .additional-img{
+        max-width: 100%;
+    }
     .product_info{
         width: 100%;
     }
