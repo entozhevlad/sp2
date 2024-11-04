@@ -355,6 +355,7 @@ footer {
     }
 
     .text-container {
+        width: 100%;
         margin: 2% 0;
         display: flex;
         flex-direction: column;
