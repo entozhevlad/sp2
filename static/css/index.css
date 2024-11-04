@@ -788,6 +788,23 @@ footer {
     .socials a img {
         width: 110px;
     }
+
+    .socials a[href*="vk.com"]::before {
+        background-size: 110px;
+    }
+
+    .socials a[href*="t.me"]::before {
+        background-size: 110px;
+    }
+
+    .socials a[href*="wa.me"]::before {
+        background-size: 110px;
+    }
+
+    .socials a[href*="instagram.com"]::before {
+        background-size: 110px;
+    }
+
 }
 
 /* Стили для мобильных устройств */
@@ -806,6 +823,22 @@ footer {
 
     .socials a img {
         width: 150px;
+    }
+
+    .socials a[href*="vk.com"]::before {
+        background-size: 150px;
+    }
+
+    .socials a[href*="t.me"]::before {
+        background-size: 150px;
+    }
+
+    .socials a[href*="wa.me"]::before {
+        background-size: 150px;
+    }
+
+    .socials a[href*="instagram.com"]::before {
+        background-size: 150px;
     }
 }
 
@@ -1422,6 +1455,7 @@ body.menu-open {
     margin: 0;
     padding: 0;
 }
+
 /**{*/
 /*    border: 1px red solid;*/
 /*}*/
@@ -1482,9 +1516,10 @@ body.menu-open {
 }
 
 @media (max-width: 1280px) {
-    .product_info{
+    .product_info {
         width: 40%;
     }
+
     .product_price {
         width: 178px;
         height: 58px;
@@ -1532,7 +1567,8 @@ body.menu-open {
         font-size: 36px;
         margin-bottom: 0;
     }
-    .product_info{
+
+    .product_info {
         width: 30%;
     }
 }
@@ -1542,12 +1578,14 @@ body.menu-open {
 }
 
 @media (max-width: 768px) {
-    .additional-img{
+    .additional-img {
         max-width: 100%;
     }
-    .product_info{
+
+    .product_info {
         width: 100%;
     }
+
     .product_general {
         display: flex;
         flex-direction: column;
