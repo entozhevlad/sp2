@@ -9,18 +9,35 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Занимает всю высоту экрана */
+            {#height: 100vh; /* Занимает всю высоту экрана */#}
         }
-        h1,p, img{
+
+        h1, p, img {
             margin: 0;
             padding: 0;
         }
-        h1{
+
+        h1 {
             font-size: 70px;
         }
-        p{
+
+        p {
             font-size: 32px;
             color: #777777;
+        }
+
+        @media (max-width: 600px) {
+            img {
+                width: 300px;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 400px) {
+            img {
+                width: 250px;
+                height: auto;
+            }
         }
     </style>
     <main>
