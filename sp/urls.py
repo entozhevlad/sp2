@@ -10,9 +10,13 @@ from .sitemaps import *
 from django.contrib.sitemaps.views import sitemap
 from django.conf.urls import handler404, handler500
 
+
+
 sitemaps = {
     'products': ProductVariantSitemap,
     'product_category': ProductCategorySitemap,
+    'homepage': HomepageSitemap,
+    'contacts': AddressSitemap,
 }
 
 urlpatterns = [
@@ -21,7 +25,7 @@ urlpatterns = [
 
     path('', include('contacts.urls')),
     path('', include('catalog.urls')),
-    re_path(r'robots\.txt$', TemplateView.as_view(template_name="sp/robots.txt", content_type='text/plain')),
+    re_path(r'robots\.txt$', TemplateView.as_view(template_name="static/robots.txt", content_type='text/plain')),
     re_path(r'^sitemap\.xml$', sitemap, {'sitemaps':sitemaps}),
 ]
 handler404 = 'main.views.page_not_found'
