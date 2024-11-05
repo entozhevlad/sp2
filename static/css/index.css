@@ -757,15 +757,7 @@ footer {
     left: 0; /* Плавный сдвиг псевдоэлемента на место изображения */
 }
 
-@media (hover: none) and (pointer: coarse) {
-    .socials a:hover img {
-        transform: none; /* Отключаем сдвиг изображения на сенсорных экранах */
-    }
 
-    .socials a:hover::before {
-        left: -100%; /* Отключаем появление псевдоэлемента на сенсорных экранах */
-    }
-}
 
 
 /*.socials,*/
@@ -845,6 +837,16 @@ footer {
 @media (max-width: 480px) {
     .socials-hr:before, .socials-hr:after {
         width: 28%;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .socials a:hover img {
+        transform: none; /* Отключаем сдвиг изображения на сенсорных экранах */
+    }
+
+    .socials a:hover::before {
+        left: -100%; /* Отключаем появление псевдоэлемента на сенсорных экранах */
     }
 }
 
