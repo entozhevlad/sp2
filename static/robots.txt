@@ -1,4 +1,5 @@
 User-agent: *
 Disallow: /admin/
+Allow: /static/favicon/
 
 Sitemap: https://sp-tomsk.ru/sitemap.xml
