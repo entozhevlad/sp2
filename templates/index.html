@@ -35,8 +35,18 @@
     <link href="{% static 'css/index.css' %}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}"/>
-    <link type="image/svg+xml" sizes="96x96" rel="icon" href="{% static 'img/favicon/favicon.svg' %}">
-    <link rel="apple-touch-icon" href="{% static 'img/favicon/favicon.svg' %}"/>
+
+{#    <link type="image/svg+xml" sizes="96x96" rel="icon" href="{% static 'img/favicon/favicon.svg' %}">#}
+{#    <link rel="apple-touch-icon" href="{% static 'img/favicon/favicon.svg' %}"/>#}
+{#    <link rel="icon" href="{% static 'img/favicon/favicon.svg' %}" type="image/x-icon">#}
+
+    <link rel="icon" type="image/png" href="{% static 'favicon/favicon-96x96.png' %}" sizes="96x96"/>
+    <link rel="icon" type="image/svg+xml" href="{% static 'favicon/favicon.svg' %}"/>
+    <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}"/>
+    <meta name="apple-mobile-web-app-title" content="SP-TOMSK"/>
+    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}"/>
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
