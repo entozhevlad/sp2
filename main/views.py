@@ -1,3 +1,6 @@
+from datetime import datetime
+
+from django.utils import timezone
 from django.views.generic import TemplateView
 from django.shortcuts import render, redirect
 from .models import Service, Category, NewsImage, WorkExample
@@ -7,6 +10,7 @@ from django.views.decorators.cache import cache_page
 
 env = environ.Env()
 
+
 class HomePageView(TemplateView):
     template_name = 'home.html'
 
@@ -15,8 +19,10 @@ class HomePageView(TemplateView):
 
         context['news_images'] = NewsImage.objects.all()
         context['work_examples'] = WorkExample.objects.all()
+        context['current_year'] = datetime.now().year
 
         return context
+
 
 # @cache_page(60 * 5)
 def service_view(request):
@@ -28,9 +34,11 @@ def service_view(request):
 
     return render(request, 'price.html', {'categories': categories, 'services': services})
 
+
 @cache_page(60 * 5)
 def page_not_found(request, exception):
     return render(request, f'{settings.ERRORS_TEMPLATES_PATH}/404.html', status=404)
+
 
 @cache_page(60 * 5)
 def internal_server_error(request):
