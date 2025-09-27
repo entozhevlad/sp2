@@ -778,6 +778,38 @@ footer {
     }
 
     .socials a img {
+        width: 130px;
+    }
+
+    .socials a[href*="vk.com"]::before {
+        background-size: 130px;
+    }
+
+    .socials a[href*="t.me"]::before {
+        background-size: 130px;
+    }
+
+    .socials a[href*="wa.me"]::before {
+        background-size: 130px;
+    }
+
+    .socials a[href*="instagram.com"]::before {
+        background-size: 130px;
+    }
+
+}
+
+/* Стили для мобильных устройств */
+@media (max-width: 768px) {
+    .socials-hr:before, .socials-hr:after {
+        width: 36%;
+    }
+
+    .socials {
+        order: 1; /* Соцсети идут первыми */
+    }
+
+    .socials a img {
         width: 110px;
     }
 
@@ -796,45 +828,86 @@ footer {
     .socials a[href*="instagram.com"]::before {
         background-size: 110px;
     }
-
-}
-
-/* Стили для мобильных устройств */
-@media (max-width: 768px) {
-    .four {
-        flex-direction: column; /* Располагаем элементы по вертикали */
-    }
-
-    .socials-hr:before, .socials-hr:after {
-        width: 36%;
-    }
-
-    .socials {
-        order: 1; /* Соцсети идут первыми */
-    }
-
-    .socials a img {
-        width: 150px;
-    }
-
-    .socials a[href*="vk.com"]::before {
-        background-size: 150px;
-    }
-
-    .socials a[href*="t.me"]::before {
-        background-size: 150px;
-    }
-
-    .socials a[href*="wa.me"]::before {
-        background-size: 150px;
-    }
-
-    .socials a[href*="instagram.com"]::before {
-        background-size: 150px;
-    }
 }
 
 @media (max-width: 480px) {
+    .four {
+        flex-direction: column; /* Располагаем элементы по вертикали */
+    }
+    .socials a img {
+        width: 120px;
+    }
+
+    .socials a[href*="vk.com"]::before {
+        background-size: 120px;
+    }
+
+    .socials a[href*="t.me"]::before {
+        background-size: 120px;
+    }
+
+    .socials a[href*="wa.me"]::before {
+        background-size: 120px;
+    }
+
+    .socials a[href*="instagram.com"]::before {
+        background-size: 120px;
+    }
+    .socials-hr:before, .socials-hr:after {
+        width: 28%;
+    }
+}
+@media (max-width: 361px) {
+    .four {
+        flex-direction: column; /* Располагаем элементы по вертикали */
+    }
+    .socials a img {
+        width: 110px;
+    }
+
+    .socials a[href*="vk.com"]::before {
+        background-size: 110px;
+    }
+
+    .socials a[href*="t.me"]::before {
+        background-size: 110px;
+    }
+
+    .socials a[href*="wa.me"]::before {
+        background-size: 110px;
+    }
+
+    .socials a[href*="instagram.com"]::before {
+        background-size: 110px;
+    }
+    .socials-hr:before, .socials-hr:after {
+        width: 28%;
+    }
+}
+
+@media (max-width: 320px) {
+    .four {
+        flex-direction: column; /* Располагаем элементы по вертикали */
+    }
+    .socials a img {
+        width: 160px;
+    }
+
+    .socials a[href*="vk.com"]::before {
+        background-size: 160px;
+    }
+
+    .socials a[href*="t.me"]::before {
+        background-size: 160px;
+    }
+
+    .socials a[href*="wa.me"]::before {
+        background-size: 160px;
+    }
+
+    .socials a[href*="instagram.com"]::before {
+        background-size: 160px;
+    }
     .socials-hr:before, .socials-hr:after {
         width: 28%;
     }
